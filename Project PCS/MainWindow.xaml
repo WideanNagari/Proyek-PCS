@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="638*"/>
+        </Grid.ColumnDefinitions>
+        <Image Name="ImageViewer1" Stretch="Uniform" Height="400" Width="400" Grid.Column="1" Margin="41.602,10,196.6,10" />
     </Grid>
 </Window>

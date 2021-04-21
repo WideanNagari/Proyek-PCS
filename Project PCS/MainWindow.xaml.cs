@@ -24,5 +24,10 @@ namespace Project_PCS
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ImageViewer1.Source = new BitmapImage(new Uri(@"Images/KH001.jpg", UriKind.Relative));
+        }
     }
 }

@@ -94,5 +94,67 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CA001.jpg" />
+    <Resource Include="Images\KU001.jpg" />
+    <Resource Include="Images\TI001.jpg" />
+    <Resource Include="Images\YA001.jpg" />
+    <Resource Include="Images\YP001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\GC001.jpeg" />
+    <Resource Include="Images\RF001.jpg" />
+    <Resource Include="Images\YF001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CA002.jpg" />
+    <Resource Include="Images\CA003.png" />
+    <Resource Include="Images\CA004.jpg" />
+    <Resource Include="Images\CC001.jpg" />
+    <Resource Include="Images\CC003.jpg" />
+    <Resource Include="Images\CC004.jpg" />
+    <Resource Include="Images\CS001.jpg" />
+    <Resource Include="Images\CT001.jpg" />
+    <Resource Include="Images\DS001.jpg" />
+    <Resource Include="Images\HV001.jpg" />
+    <Resource Include="Images\IA001.jpg" />
+    <Resource Include="Images\IA002.jpg" />
+    <Resource Include="Images\KB001.jpg" />
+    <Resource Include="Images\KH002.jpg" />
+    <Resource Include="Images\KK001.jpg" />
+    <Resource Include="Images\KK002.jpg" />
+    <Resource Include="Images\LV001.jpg" />
+    <Resource Include="Images\PD001.jpg" />
+    <Resource Include="Images\PE001.jpg" />
+    <Resource Include="Images\RJ001.jpg" />
+    <Resource Include="Images\RU001.jpg" />
+    <Resource Include="Images\RX001.jpg" />
+    <Resource Include="Images\SC002.jpg" />
+    <Resource Include="Images\SC003.jpg" />
+    <Resource Include="Images\SM001.jpg" />
+    <Resource Include="Images\SM002.jpg" />
+    <Resource Include="Images\YC001.jpg" />
+    <Resource Include="Images\YC002.jpg" />
+    <Resource Include="Images\YC003.jpg" />
+    <Resource Include="Images\YD001.jpg" />
+    <Resource Include="Images\YG001.png" />
+    <Resource Include="Images\YJ001.jpg" />
+    <Resource Include="Images\YP002.jpg" />
+    <Resource Include="Images\YP003.jpg" />
+    <Resource Include="Images\YP004.jpg" />
+    <Resource Include="Images\YP005.jpg" />
+    <Resource Include="Images\YU001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CC002.jpg" />
+    <Resource Include="Images\DC001.jpg" />
+    <Resource Include="Images\ES001.png" />
+    <Resource Include="Images\KH001.jpg" />
+    <Resource Include="Images\PE002.png" />
+    <Resource Include="Images\SC001.jpg" />
+    <Resource Include="Images\SE001.jpg" />
+    <Resource Include="Images\SU001.jpeg" />
+    <Resource Include="Images\SU002.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

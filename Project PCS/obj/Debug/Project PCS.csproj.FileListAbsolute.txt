@@ -1,0 +1,15 @@
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\bin\Debug\Project PCS.exe.config
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\bin\Debug\Project PCS.exe
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\bin\Debug\Project PCS.pdb
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csprojAssemblyReference.cache
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MainWindow.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\App.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS_MarkupCompile.cache
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS_MarkupCompile.lref
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MainWindow.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.g.resources
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project_PCS.Properties.Resources.resources
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csproj.GenerateResource.cache
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csproj.CoreCompileInputs.cache
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.exe
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.pdb
