@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Oracle.DataAccess.Client;
 
 namespace Project_PCS
 {
@@ -20,14 +21,35 @@ namespace Project_PCS
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static OracleConnection conn;
+        public static String source, userId, pass;
         public MainWindow()
         {
             InitializeComponent();
         }
+        
+        //ImageViewer1.Source = new BitmapImage(new Uri(@"Images/KH001.jpg", UriKind.Relative));
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ImageViewer1.Source = new BitmapImage(new Uri(@"Images/KH001.jpg", UriKind.Relative));
+            source = dataSource.Text;
+            userId = username.Text;
+            pass = password.Text;
+
+            try
+            {
+                conn = new OracleConnection("Data Source = " + source + "; User ID = " + userId + "; password = " + pass);
+                conn.Open();
+                conn.Close();
+                Menu menu = new Menu();
+                this.Hide();
+                menu.ShowDialog();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

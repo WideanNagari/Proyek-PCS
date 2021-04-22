@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="300" Width="450">
     <Grid>
-        <Grid.ColumnDefinitions>
+        <Label Content="Connection Settings" HorizontalAlignment="Left" Margin="199,21,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Username" HorizontalAlignment="Left" Margin="77,115,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="81,173,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="199,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="199,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="199,227,0,0" VerticalAlignment="Top" Width="176" Click="Button_Click"/>
+        <Label Content="Data Source" HorizontalAlignment="Left" Margin="67,64,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="dataSource" HorizontalAlignment="Left" Height="23" Margin="199,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="155*"/>
             <ColumnDefinition Width="638*"/>
-        </Grid.ColumnDefinitions>
-        <Image Name="ImageViewer1" Stretch="Uniform" Height="400" Width="400" Grid.Column="1" Margin="41.602,10,196.6,10" />
+        </Grid.ColumnDefinitions>-->
+        <!--<Image Name="ImageViewer1" Stretch="Uniform" Height="400" Width="400" Grid.Column="1" Margin="41.602,10,196.6,10" />-->
     </Grid>
 </Window>
