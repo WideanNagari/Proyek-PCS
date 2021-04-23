@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MasterAlatMusik" Height="450" Width="800">
+        Title="MasterAlatMusik" Height="600" Width="1000">
     <Grid>
-        
+        <DataGrid x:Name="dgvMusik" HorizontalAlignment="Left" Height="228" VerticalAlignment="Top" Width="974" Margin="10,76,0,0" ColumnWidth="*" CanUserAddRows="False"/>
     </Grid>
 </Window>

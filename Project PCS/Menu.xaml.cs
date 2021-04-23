@@ -26,7 +26,10 @@ namespace Project_PCS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            MasterAlatMusik m = new MasterAlatMusik();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -13,3 +13,9 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csp
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csproj.CoreCompileInputs.cache
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.exe
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.pdb
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAlatMusik.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\bin\Debug\Oracle.DataAccess.dll
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAlatMusik.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csproj.CopyComplete

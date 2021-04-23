@@ -267,6 +267,7 @@ insert into h_beli values('HBL0005117',to_date('10-06-2020','DD-MM-YYYY'),'KAR00
 insert into h_beli values('HBL0005118',to_date('30-06-2020','DD-MM-YYYY'),'KAR001','SUP16',4725000);
 insert into h_beli values('HBL0005119',to_date('20-07-2020','DD-MM-YYYY'),'KAR002','SUP05',3200000);
 insert into h_beli values('HBL0005120',to_date('15-08-2020','DD-MM-YYYY'),'KAR002','SUP17',12400000);
+insert into h_beli values('HBL0005121',to_date('15-08-2020','DD-MM-YYYY'),'KAR002','SUP17',12400000);
 
 insert into d_beli values('HBL0005101','YA001',2700000,3);
 insert into d_beli values('HBL0005101','SM002',720000,1);
@@ -402,4 +403,10 @@ order by 1;
 select h.nota_jual as "Nota", d.quantity, a.harga
 from h_jual h, d_jual d, alat_musik a
 where h.nota_jual = d.nota_jual and d.id_alat_musik = a.id_alat_musik
+order by 1;
+
+select a.id_alat_musik as "ID", a.nama_alat_musik as "Nama Alat Musik", j.nama_jenis as "Jenis",
+p.nama_produsen as "Produsen", a.stok as "Stok", a.harga as "Harga"
+from alat_musik a, jenis_alat_musik j, produsen p
+where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen
 order by 1;

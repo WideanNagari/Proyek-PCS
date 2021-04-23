@@ -32,9 +32,13 @@ namespace Project_PCS
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            source = dataSource.Text;
-            userId = username.Text;
-            pass = password.Text;
+            //source = dataSource.Text;
+            //userId = username.Text;
+            //pass = password.Text;
+
+            source = "widean";
+            userId = "ifm";
+            pass = "219116863";
 
             try
             {
