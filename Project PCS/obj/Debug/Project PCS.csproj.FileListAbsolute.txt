@@ -19,3 +19,9 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\bin\Debug\Oracle.DataAcce
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAlatMusik.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Project PCS.csproj.CopyComplete
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterProdusen.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterProdusen.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterJenis.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterJenis.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterPromo.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterPromo.baml

@@ -24,9 +24,33 @@ namespace Project_PCS
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Alat_musik_Click(object sender, RoutedEventArgs e)
         {
             MasterAlatMusik m = new MasterAlatMusik();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
+
+        private void Produsen_Click(object sender, RoutedEventArgs e)
+        {
+            MasterProdusen m = new MasterProdusen();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
+
+        private void Jenis_Click(object sender, RoutedEventArgs e)
+        {
+            MasterJenis m = new MasterJenis();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
+
+        private void Promo_Click(object sender, RoutedEventArgs e)
+        {
+            MasterPromo m = new MasterPromo();
             this.Hide();
             m.ShowDialog();
             this.Show();

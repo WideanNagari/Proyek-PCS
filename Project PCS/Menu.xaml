@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="Menu" Height="450" Width="800">
     <Grid>
-        <Button Content="Master Alat Musik" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Width="139" Click="Button_Click" Height="35"/>
+        <Button x:Name="alat_musik" Content="Master Alat Musik" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Alat_musik_Click"/>
+        <Button x:Name="produsen" Content="Master Produsen" HorizontalAlignment="Left" Margin="37,92,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Produsen_Click"/>
+        <Button x:Name="jenis" Content="Master Jenis Alat Musik" HorizontalAlignment="Left" Margin="37,143,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Jenis_Click"/>
+        <Button x:Name="promo" Content="Master promo" HorizontalAlignment="Left" Margin="37,195,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Promo_Click"/>
     </Grid>
 </Window>

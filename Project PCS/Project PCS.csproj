@@ -75,6 +75,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MasterJenis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MasterProdusen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MasterPromo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +95,15 @@
   <ItemGroup>
     <Compile Include="MasterAlatMusik.xaml.cs">
       <DependentUpon>MasterAlatMusik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterJenis.xaml.cs">
+      <DependentUpon>MasterJenis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterProdusen.xaml.cs">
+      <DependentUpon>MasterProdusen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPromo.xaml.cs">
+      <DependentUpon>MasterPromo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>

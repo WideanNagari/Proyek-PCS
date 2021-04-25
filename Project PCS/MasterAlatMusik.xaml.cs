@@ -180,42 +180,42 @@ namespace Project_PCS
         }
         private void getId(string paramNama)
         {
-            OracleCommand cmd = new OracleCommand()
-            {
-                CommandType = CommandType.StoredProcedure,
-                Connection = conn,
-                CommandText = "autogenMusik"
-            };
+            //OracleCommand cmd = new OracleCommand()
+            //{
+            //    CommandType = CommandType.StoredProcedure,
+            //    Connection = conn,
+            //    CommandText = "autogenMusik"
+            //};
 
-            cmd.Parameters.Add(new OracleParameter()
-            {
-                Direction = ParameterDirection.Input,
-                ParameterName = "nama",
-                OracleDbType = OracleDbType.Varchar2,
-                Size = 50,
-                Value = "a s"
-            });
+            //cmd.Parameters.Add(new OracleParameter()
+            //{
+            //    Direction = ParameterDirection.Input,
+            //    ParameterName = "nama",
+            //    OracleDbType = OracleDbType.Varchar2,
+            //    Size = 50,
+            //    Value = "a s"
+            //});
 
-            cmd.Parameters.Add(new OracleParameter()
-            {
-                Direction = ParameterDirection.ReturnValue,
-                ParameterName = "id_musik",
-                OracleDbType = OracleDbType.Varchar2,
-                Size = 999
-            });
+            //cmd.Parameters.Add(new OracleParameter()
+            //{
+            //    Direction = ParameterDirection.ReturnValue,
+            //    ParameterName = "id_musik",
+            //    OracleDbType = OracleDbType.Varchar2,
+            //    Size = 999
+            //});
 
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                id2.Text = cmd.Parameters["id_musik"].Value.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show(ex.Message.ToString());
-            }
-            conn.Close();
+            //try
+            //{
+            //    conn.Open();
+            //    cmd.ExecuteNonQuery();
+            //    id2.Text = cmd.Parameters["id_musik"].Value.ToString();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //    MessageBox.Show(ex.Message.ToString());
+            //}
+            //conn.Close();
         }
         private string katabaru(string kata)
         {
@@ -366,28 +366,32 @@ namespace Project_PCS
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            OracleCommand cmd = new OracleCommand("delete from d_jual where id_alat_musik = '" + id2.Text + "'", conn);
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (dgvMusik.SelectedIndex == -1) MessageBox.Show("Mohon Pilih Alat Musik Yang Ingin Dihapus Terlebih Dahulu!");
+            else
+            {
+                OracleCommand cmd = new OracleCommand("delete from d_jual where id_alat_musik = '" + id2.Text + "'", conn);
+                conn.Close();
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
-            cmd = new OracleCommand("delete from d_beli where id_alat_musik = '" + id2.Text + "'", conn);
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                cmd = new OracleCommand("delete from d_beli where id_alat_musik = '" + id2.Text + "'", conn);
+                conn.Close();
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
-            cmd = new OracleCommand("delete from alat_musik where id_alat_musik = '" + id2.Text + "'", conn);
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                cmd = new OracleCommand("delete from alat_musik where id_alat_musik = '" + id2.Text + "'", conn);
+                conn.Close();
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
-            loadData();
-            reset();
+                loadData();
+                reset();
 
-            MessageBox.Show("Delete Alat Musik Berhasil!");
+                MessageBox.Show("Delete Alat Musik Berhasil!");
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -113,8 +113,9 @@ FOR EACH ROW
 DECLARE
     id number(10);
 BEGIN
-	select count(*)+1 into id from jenis_alat_musik where substr(ID_Jenis,1,3) = 'UKL';
+	select count(*)+1 into id from jenis_alat_musik where substr(ID_Jenis,1,3) = upper(:new.id_jenis);
 	:new.ID_Jenis := :new.ID_Jenis||lpad(id,2,'0');
+	:new.nama_jenis := initcap(:new.nama_jenis);
 END;
 /
 SHOW ERR;
@@ -256,3 +257,9 @@ where kode_promo = 'DISKONKECIL';
 
 delete from promo
 where kode_promo = 'DISKONKECIL';
+
+select a.id_alat_musik as "ID", a.nama_alat_musik as "Nama Alat Musik", j.nama_jenis as "Jenis",
+p.nama_produsen as "Produsen", a.stok as "Stok", a.harga as "Harga"
+from alat_musik a, jenis_alat_musik j, produsen p
+where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and upper(a.nama_alat_musik) like '%A%' 
+order by 1;
