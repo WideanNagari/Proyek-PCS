@@ -12,24 +12,6 @@ begin
 end;
 /
 
---autogen id alat musik
-create or replace function autogenMusik(
-	nama varchar2
-)
-return varchar2
-is
-	id number(10);
-	id_musik varchar2(5);
-	kode varchar2(2);
-begin
-	select substr(nama,1,1)||substr(nama,instr(nama,' ')+1,1) into kode from dual;
-	kode := upper(kode);
-	select max(substr(id_alat_musik,3,3))+1 into id from alat_musik where substr(id_alat_musik,1,2) = kode;
-	id_musik := kode || lpad(id,3,'0');
-	return id_musik;
-end;
-/
-
 --autogen id karyawan
 create or replace function autogenKaryawan
 return varchar2
@@ -133,6 +115,37 @@ DECLARE
 BEGIN
 	select count(*)+1 into id from jenis_alat_musik where substr(ID_Jenis,1,3) = 'UKL';
 	:new.ID_Jenis := :new.ID_Jenis||lpad(id,2,'0');
+END;
+/
+SHOW ERR;
+
+--untuk autogen id alat musik
+CREATE OR REPLACE TRIGGER TR_Musik
+BEFORE INSERT ON Alat_Musik
+FOR EACH ROW
+DECLARE
+	id number(10);
+	id_musik varchar2(5);
+	kode varchar2(2);
+	nama varchar2(50);
+	kurang exception;
+BEGIN
+	if (length(:new.nama_alat_musik)-length(replace(:new.nama_alat_musik,' ',''))<1 
+		or instr(:new.nama_alat_musik,' ',1)=length(:new.nama_alat_musik)) then
+		raise kurang;
+	end if;
+	
+	nama := :new.nama_alat_musik;
+	select substr(nama,1,1)||substr(nama,instr(nama,' ')+1,1) into kode from dual;
+	kode := upper(kode);
+	select nvl(max(substr(id_alat_musik,3,3))+1,'1') into id from alat_musik where substr(id_alat_musik,1,2) = kode;
+	id_musik := kode || lpad(id,3,'0');
+	:new.nama_alat_musik := initcap(:new.nama_alat_musik);
+	:new.id_alat_musik := id_musik;
+	
+	exception
+		when kurang then
+			raise_application_error(-20002,'Nama Alat Musik Minimal 2 Kata!');
 END;
 /
 SHOW ERR;

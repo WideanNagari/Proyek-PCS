@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "task-XY001",
+      "appliesTo": "Project PCS/ImageList/XY001.png",
+      "type": "launch"
+    }
+  ]
+}

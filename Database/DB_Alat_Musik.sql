@@ -38,6 +38,7 @@ create table karyawan
 	id_karyawan varchar2(6) primary key,
 	nama_karyawan varchar2(20),
 	jk_karyawan varchar2(1),
+	password varchar2(10),
 	alamat_karyawan varchar2(20),
 	noTelp_karyawan varchar2(12),
 	dob_karyawan date,
@@ -193,16 +194,16 @@ insert into alat_musik values('CA004','Casio Arranger CTK 2400','KBD01','PD08',1
 insert into alat_musik values('SC003','Scott Cao 750','BLA01','PD12',8,12800000,'SC003.jpg');
 insert into alat_musik values('DS001','Dreamwood Soprano 21 Inch','UKL01','PD15',10,220000,'DS001.jpg');
 
-insert into karyawan values('KAR001','Gemma Elliot','F','Jl. Gurame No. 2','085801023312',to_date('17-09-1995','DD-MM-YYYY'),to_date('10-09-2019','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR002','Wilfred Mercado','M','Jl. Perak Tmr 60','081319273829',to_date('06-06-1979','DD-MM-YYYY'),to_date('11-09-2019','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR003','Aiden Castillo','M','Jl. Barata Jaya X 37','089712452489',to_date('01-07-1990','DD-MM-YYYY'),to_date('03-10-2019','DD-MM-YYYY'),'0');
-insert into karyawan values('KAR004','Alexia Dupont','F','Jl. Kapas No. 1','085842880413',to_date('02-08-1991','DD-MM-YYYY'),to_date('15-11-2019','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR005','Wiktoria Iles','F','Jl. Durian No. 90A','089694875530',to_date('24-03-1997','DD-MM-YYYY'),to_date('20-12-2019','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR006','Jordan Landry','M','Jl. Pekojan No.10','089720482041',to_date('22-01-1995','DD-MM-YYYY'),to_date('22-01-2020','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR007','Celia Lu','F','Jl. Perancis No. 9','089629472947',to_date('01-05-1988','DD-MM-YYYY'),to_date('14-02-2020','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR008','Ammara Legge','F','Jl. Raya Celuk 9','085811384684',to_date('05-10-1985','DD-MM-YYYY'),to_date('08-03-2020','DD-MM-YYYY'),'0');
-insert into karyawan values('KAR009','Ayisha Pope','F','Jl. Arjuna No. 28','081348372941',to_date('15-12-1990','DD-MM-YYYY'),to_date('08-04-2020','DD-MM-YYYY'),'1');
-insert into karyawan values('KAR010','Paris Richmond','M','Jl. Banteng No. 8','089786335382',to_date('29-12-1980','DD-MM-YYYY'),to_date('17-05-2020','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR001','Gemma Elliot','F','ABC','Jl. Gurame No. 2','085801023312',to_date('17-09-1995','DD-MM-YYYY'),to_date('10-09-2019','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR002','Wilfred Mercado','M','DEF','Jl. Perak Tmr 60','081319273829',to_date('06-06-1979','DD-MM-YYYY'),to_date('11-09-2019','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR003','Aiden Castillo','M','GHI','Jl. Barata Jaya X 37','089712452489',to_date('01-07-1990','DD-MM-YYYY'),to_date('03-10-2019','DD-MM-YYYY'),'0');
+insert into karyawan values('KAR004','Alexia Dupont','F','JKL','Jl. Kapas No. 1','085842880413',to_date('02-08-1991','DD-MM-YYYY'),to_date('15-11-2019','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR005','Wiktoria Iles','F','MNO','Jl. Durian No. 90A','089694875530',to_date('24-03-1997','DD-MM-YYYY'),to_date('20-12-2019','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR006','Jordan Landry','M','PQR','Jl. Pekojan No.10','089720482041',to_date('22-01-1995','DD-MM-YYYY'),to_date('22-01-2020','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR007','Celia Lu','F','STU','Jl. Perancis No. 9','089629472947',to_date('01-05-1988','DD-MM-YYYY'),to_date('14-02-2020','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR008','Ammara Legge','F','VWX','Jl. Raya Celuk 9','085811384684',to_date('05-10-1985','DD-MM-YYYY'),to_date('08-03-2020','DD-MM-YYYY'),'0');
+insert into karyawan values('KAR009','Ayisha Pope','F','YZ1','Jl. Arjuna No. 28','081348372941',to_date('15-12-1990','DD-MM-YYYY'),to_date('08-04-2020','DD-MM-YYYY'),'1');
+insert into karyawan values('KAR010','Paris Richmond','M','234','Jl. Banteng No. 8','089786335382',to_date('29-12-1980','DD-MM-YYYY'),to_date('17-05-2020','DD-MM-YYYY'),'1');
 
 insert into customer values('CUS001','Koby Roy','M','Jl Ciputat Raya No. 6','081331125361');
 insert into customer values('CUS002','Eman Mendoza','F','Jl Jend Gatot Subroto 60 Kav 36/80','089687883744');
