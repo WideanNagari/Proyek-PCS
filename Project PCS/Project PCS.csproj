@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MasterCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MasterJenis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +99,9 @@
   <ItemGroup>
     <Compile Include="MasterAlatMusik.xaml.cs">
       <DependentUpon>MasterAlatMusik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterCustomer.xaml.cs">
+      <DependentUpon>MasterCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterJenis.xaml.cs">
       <DependentUpon>MasterJenis.xaml</DependentUpon>

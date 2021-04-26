@@ -55,5 +55,13 @@ namespace Project_PCS
             m.ShowDialog();
             this.Show();
         }
+
+        private void Customer_Click(object sender, RoutedEventArgs e)
+        {
+            MasterCustomer m = new MasterCustomer();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
     }
 }

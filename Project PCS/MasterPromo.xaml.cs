@@ -109,7 +109,7 @@ namespace Project_PCS
         {
             if (rnama.IsChecked == false && rkode.IsChecked == false && rpotongan.IsChecked == false)
                 MessageBox.Show("Mohon Isi Kategori Filter Terlebih Dahulu!");
-            else if (keyword.Text.Equals("")) MessageBox.Show("Mohon Isi Keyword Terlebih Dahulu!");
+            else if (rpotongan.IsChecked == true && keyword.Text.Equals("")) MessageBox.Show("Mohon Isi Keyword Terlebih Dahulu!");
             else
             {
                 try

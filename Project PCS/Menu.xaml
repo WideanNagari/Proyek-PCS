@@ -10,6 +10,7 @@
         <Button x:Name="alat_musik" Content="Master Alat Musik" HorizontalAlignment="Left" Margin="37,37,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Alat_musik_Click"/>
         <Button x:Name="produsen" Content="Master Produsen" HorizontalAlignment="Left" Margin="37,92,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Produsen_Click"/>
         <Button x:Name="jenis" Content="Master Jenis Alat Musik" HorizontalAlignment="Left" Margin="37,143,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Jenis_Click"/>
-        <Button x:Name="promo" Content="Master promo" HorizontalAlignment="Left" Margin="37,195,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Promo_Click"/>
+        <Button x:Name="promo" Content="Master Promo" HorizontalAlignment="Left" Margin="37,195,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Promo_Click"/>
+        <Button x:Name="customer" Content="Master Customer" HorizontalAlignment="Left" Margin="37,249,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Customer_Click"/>
     </Grid>
 </Window>

@@ -43,17 +43,18 @@ namespace Project_PCS
 
         List<produsenX> arrProdusen;
         List<jenisX> arrJenis;
+        
+        public MasterAlatMusik()
+        {
+            InitializeComponent();
+            conn = MainWindow.conn;
+        }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        public MasterAlatMusik()
-        {
-            InitializeComponent();
-            conn = MainWindow.conn;
-        }
         private void loadData()
         {
             ds = new DataTable();
@@ -411,10 +412,7 @@ namespace Project_PCS
             {
                 MessageBox.Show("Mohon Isi Kategori Filter Terlebih Dahulu!");
             }
-            else if (keyword.Text.Equals(""))
-            {
-                MessageBox.Show("Mohon Isi Keyword Terlebih Dahulu!");
-            }
+            else if ((rstok.IsChecked == true || rharga.IsChecked == true) && keyword.Text.Equals("")) MessageBox.Show("Mohon Isi Keyword Terlebih Dahulu!");
             else
             {
                 string where = "";
@@ -538,7 +536,7 @@ namespace Project_PCS
             OracleCommand cmd = new OracleCommand("select nama_jenis as \"nama\", id_jenis as id from jenis_alat_musik order by 2", conn);
             OracleDataReader reader = cmd.ExecuteReader();
             arrJenis = new List<jenisX>();
-            int ctr = 0;
+            int ctr = 1;
             while (reader.Read())
             {
                 arrJenis.Add(new jenisX()
@@ -572,7 +570,7 @@ namespace Project_PCS
             cmd = new OracleCommand("select nama_produsen as \"nama\", id_produsen as id from produsen order by 2", conn);
             reader = cmd.ExecuteReader();
             arrProdusen = new List<produsenX>();
-            ctr = 0;
+            ctr = 1;
             while (reader.Read())
             {
                 arrProdusen.Add(new produsenX()

@@ -120,33 +120,29 @@ namespace Project_PCS
 
         private void Cari_Click(object sender, RoutedEventArgs e)
         {
-            if (keyword.Text.Equals("")) MessageBox.Show("Mohon Isi Keyword Terlebih Dahulu!");
-            else
+            try
             {
-                try
-                {
-                    ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
+                ds = new DataTable();
+                OracleCommand cmd = new OracleCommand();
+                da = new OracleDataAdapter();
 
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_produsen as \"ID\", nama_produsen as \"Nama Produsen\" " +
-                        "from produsen " +
-                        "where upper(nama_produsen) like '%"+keyword.Text.ToUpper()+"%' " +
-                        "order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
-                    da.Fill(ds);
-                    dgvProdusen.ItemsSource = ds.DefaultView;
-                    conn.Close();
-                    caricari = 1;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
+                cmd.Connection = conn;
+                cmd.CommandText = "select id_produsen as \"ID\", nama_produsen as \"Nama Produsen\" " +
+                    "from produsen " +
+                    "where upper(nama_produsen) like '%" + keyword.Text.ToUpper() + "%' " +
+                    "order by 1";
+                conn.Close();
+                conn.Open();
+                cmd.ExecuteReader();
+                da.SelectCommand = cmd;
+                da.Fill(ds);
+                dgvProdusen.ItemsSource = ds.DefaultView;
+                conn.Close();
+                caricari = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
