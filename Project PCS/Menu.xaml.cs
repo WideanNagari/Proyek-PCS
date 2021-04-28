@@ -63,5 +63,13 @@ namespace Project_PCS
             m.ShowDialog();
             this.Show();
         }
+
+        private void Karyawan_Click(object sender, RoutedEventArgs e)
+        {
+            MasterKaryawan m = new MasterKaryawan();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
     }
 }

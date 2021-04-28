@@ -27,3 +27,5 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterPromo.g.c
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterPromo.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterCustomer.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterCustomer.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterKaryawan.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterKaryawan.baml

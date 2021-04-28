@@ -12,5 +12,6 @@
         <Button x:Name="jenis" Content="Master Jenis Alat Musik" HorizontalAlignment="Left" Margin="37,143,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Jenis_Click"/>
         <Button x:Name="promo" Content="Master Promo" HorizontalAlignment="Left" Margin="37,195,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Promo_Click"/>
         <Button x:Name="customer" Content="Master Customer" HorizontalAlignment="Left" Margin="37,249,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Customer_Click"/>
+        <Button x:Name="karyawan" Content="Master Karyawan" HorizontalAlignment="Left" Margin="37,300,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Karyawan_Click"/>
     </Grid>
 </Window>

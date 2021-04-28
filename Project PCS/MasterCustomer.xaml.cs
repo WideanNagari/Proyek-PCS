@@ -24,8 +24,8 @@ namespace Project_PCS
         OracleConnection conn;
         DataTable ds;
         OracleDataAdapter da;
-        List<string> listx;
-        int inserts;
+        //List<string> listx;
+        //int inserts;
         int caricari;
         public MasterCustomer()
         {
@@ -123,7 +123,7 @@ namespace Project_PCS
             caricari = 0;
         }
 
-        private void DgvMusik_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DgvCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgvCustomer.SelectedIndex != -1)
             {
@@ -201,8 +201,7 @@ namespace Project_PCS
 
         private void Rnama_Checked(object sender, RoutedEventArgs e)
         {
-            rL.Visibility = Visibility.Hidden;
-            rP.Visibility = Visibility.Hidden;
+            canvas.Visibility = Visibility.Hidden;
             rL.IsChecked = false;
             rP.IsChecked = false;
             keyword.Text = "";
@@ -211,8 +210,7 @@ namespace Project_PCS
 
         private void Rjk_Checked(object sender, RoutedEventArgs e)
         {
-            rL.Visibility = Visibility.Visible;
-            rP.Visibility = Visibility.Visible;
+            canvas.Visibility = Visibility.Visible;
             keyword.Visibility = Visibility.Hidden;
         }
 

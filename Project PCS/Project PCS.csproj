@@ -83,6 +83,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MasterKaryawan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MasterProdusen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +109,9 @@
     </Compile>
     <Compile Include="MasterJenis.xaml.cs">
       <DependentUpon>MasterJenis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterKaryawan.xaml.cs">
+      <DependentUpon>MasterKaryawan.xaml</DependentUpon>
     </Compile>
     <Compile Include="MasterProdusen.xaml.cs">
       <DependentUpon>MasterProdusen.xaml</DependentUpon>
