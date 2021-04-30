@@ -326,19 +326,7 @@ namespace Project_PCS
             if (dgvCustomer.SelectedIndex == -1) MessageBox.Show("Mohon Pilih Customer Yang Ingin Dihapus Terlebih Dahulu!");
             else
             {
-                OracleCommand cmd = new OracleCommand("delete from d_jual where nota_jual in (select nota_jual from h_jual where ID_Customer = '" + id.Text + "')", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from h_jual where ID_Customer = '" + id.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from customer where ID_Customer = '" + id.Text + "'", conn);
+                OracleCommand cmd = new OracleCommand("delete from customer where ID_Customer = '" + id.Text + "'", conn);
                 conn.Close();
                 conn.Open();
                 cmd.ExecuteNonQuery();

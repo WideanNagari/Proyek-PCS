@@ -451,31 +451,7 @@ namespace Project_PCS
             if (dgvKaryawan.SelectedIndex == -1) MessageBox.Show("Mohon Pilih Karyawan Yang Ingin Dihapus Terlebih Dahulu!");
             else
             {
-                OracleCommand cmd = new OracleCommand("delete from d_jual where nota_jual in (select nota_jual from h_jual where id_karyawan = '" + id.Text + "')", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from h_jual where id_karyawan = '" + id.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from d_beli where nota_beli in (select nota_beli from h_beli where id_karyawan = '" + id.Text + "')", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from h_beli where id_karyawan = '" + id.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from karyawan where id_karyawan = '" + id.Text + "'", conn);
+                OracleCommand cmd = new OracleCommand("delete from karyawan where id_karyawan = '" + id.Text + "'", conn);
                 conn.Close();
                 conn.Open();
                 cmd.ExecuteNonQuery();

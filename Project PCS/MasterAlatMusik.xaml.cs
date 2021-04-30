@@ -370,19 +370,7 @@ namespace Project_PCS
             if (dgvMusik.SelectedIndex == -1) MessageBox.Show("Mohon Pilih Alat Musik Yang Ingin Dihapus Terlebih Dahulu!");
             else
             {
-                OracleCommand cmd = new OracleCommand("delete from d_jual where id_alat_musik = '" + id2.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from d_beli where id_alat_musik = '" + id2.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from alat_musik where id_alat_musik = '" + id2.Text + "'", conn);
+                OracleCommand cmd = new OracleCommand("delete from alat_musik where id_alat_musik = '" + id2.Text + "'", conn);
                 conn.Close();
                 conn.Open();
                 cmd.ExecuteNonQuery();

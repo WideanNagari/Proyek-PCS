@@ -176,84 +176,90 @@ SHOW ERR;
 --update
 
 --delete
+--delete supplier
+CREATE OR REPLACE TRIGGER HAPUS_SUPPLIER
+BEFORE DELETE ON SUPPLIER
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_beli where nota_beli in (select nota_beli from h_beli where ID_Supplier = :old.ID_Supplier);
+	delete from h_beli where ID_Supplier = :old.ID_Supplier;
+END;
+/
+SHOW ERR;
+
 --delete jenis_alat_musik
-delete from d_jual
-where id_alat_musik in (select id_alat_musik from alat_musik where id_jenis = 'UKL01');
-
-delete from d_beli
-where id_alat_musik in (select id_alat_musik from alat_musik where id_jenis = 'UKL01');
-
-delete from alat_musik
-where id_jenis = 'UKL01';
-
-delete from jenis_alat_musik
-where id_jenis = 'UKL01';
+CREATE OR REPLACE TRIGGER HAPUS_JENIS
+BEFORE DELETE ON JENIS_ALAT_MUSIK
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where id_alat_musik in (select id_alat_musik from alat_musik where id_jenis = :old.id_jenis);
+	delete from d_beli where id_alat_musik in (select id_alat_musik from alat_musik where id_jenis = :old.id_jenis);
+	delete from alat_musik where id_jenis = :old.id_jenis;
+END;
+/
+SHOW ERR;
 
 --delete produsen
-delete from d_jual
-where id_alat_musik in (select id_alat_musik from alat_musik where id_produsen = 'PD02');
-
-delete from d_beli
-where id_alat_musik in (select id_alat_musik from alat_musik where id_produsen = 'PD02');
-
-delete from alat_musik
-where id_produsen = 'PD02';
-
-delete from produsen
-where id_produsen = 'PD02';
+CREATE OR REPLACE TRIGGER HAPUS_PRODUSEN
+BEFORE DELETE ON PRODUSEN
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where id_alat_musik in (select id_alat_musik from alat_musik where id_produsen = :old.id_produsen);
+	delete from d_beli where id_alat_musik in (select id_alat_musik from alat_musik where id_produsen = :old.id_produsen);
+	delete from alat_musik where id_produsen = :old.id_produsen;
+END;
+/
+SHOW ERR;
 
 --delete alat_musik
-delete from d_jual
-where id_alat_musik = 'RF001';
-
-delete from d_beli
-where id_alat_musik = 'RF001';
-
-delete from alat_musik
-where id_alat_musik = 'RF001';
+CREATE OR REPLACE TRIGGER HAPUS_MUSIK
+BEFORE DELETE ON ALAT_MUSIK
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where id_alat_musik = :old.id_alat_musik;
+	delete from d_beli where id_alat_musik = :old.id_alat_musik;
+END;
+/
+SHOW ERR;
 
 --delete karyawan
-delete from d_jual
-where nota_jual in (select nota_jual from h_jual where id_karyawan = 'KAR005');
-
-delete from h_jual
-where id_karyawan = 'KAR005';
-
-delete from d_beli
-where nota_beli in (select nota_beli from h_beli where id_karyawan = 'KAR005');
-
-delete from h_beli
-where id_karyawan = 'KAR005';
-
-delete from karyawan
-where id_karyawan = 'KAR005';
+CREATE OR REPLACE TRIGGER HAPUS_KARYAWAN
+BEFORE DELETE ON KARYAWAN
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where nota_jual in (select nota_jual from h_jual where id_karyawan = :old.id_karyawan);
+	delete from h_jual where id_karyawan = :old.id_karyawan;
+	delete from d_beli where nota_beli in (select nota_beli from h_beli where id_karyawan = :old.id_karyawan);
+	delete from h_beli where id_karyawan = :old.id_karyawan;
+END;
+/
+SHOW ERR;
 
 --delete customer
-delete from d_jual
-where nota_jual in (select nota_jual from h_jual where ID_Customer = 'CUS001');
-
-delete from h_jual
-where ID_Customer = 'CUS001';
-
-delete from customer
-where ID_Customer = 'CUS001';
-
---delete supplier
-delete from d_beli
-where nota_beli in (select nota_beli from h_beli where ID_Supplier = 'SUP05');
-
-delete from h_beli
-where ID_Supplier = 'SUP05';
-
-delete from supplier
-where ID_Supplier = 'SUP05';
+CREATE OR REPLACE TRIGGER HAPUS_CUSTOMER
+BEFORE DELETE ON CUSTOMER
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where nota_jual in (select nota_jual from h_jual where ID_Customer = :old.id_customer);
+	delete from h_jual where ID_Customer = :old.id_customer;
+END;
+/
+SHOW ERR;
 
 --delete promo
-delete from d_jual
-where nota_jual in (select nota_jual from h_jual where kode_promo = 'DISKONKECIL');
-
-delete from h_jual
-where kode_promo = 'DISKONKECIL';
-
-delete from promo
-where kode_promo = 'DISKONKECIL';
+CREATE OR REPLACE TRIGGER HAPUS_PROMO
+BEFORE DELETE ON PROMO
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual where nota_jual in (select nota_jual from h_jual where kode_promo = :old.kode_promo);
+	delete from h_jual where kode_promo = :old.kode_promo;
+END;
+/
+SHOW ERR;

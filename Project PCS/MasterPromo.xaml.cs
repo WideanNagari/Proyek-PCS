@@ -240,19 +240,7 @@ namespace Project_PCS
             if (dgvPromo.SelectedIndex == -1) MessageBox.Show("Mohon Pilih Promo Yang Ingin Dihapus Terlebih Dahulu!");
             else
             {
-                OracleCommand cmd = new OracleCommand("delete from d_jual where nota_jual in (select nota_jual from h_jual where kode_promo = '" + id.Text + "')", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from h_jual where kode_promo = '" + id.Text + "'", conn);
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-                cmd = new OracleCommand("delete from promo where kode_promo = '" + id.Text + "'", conn);
+                OracleCommand cmd = new OracleCommand("delete from promo where kode_promo = '" + id.Text + "'", conn);
                 conn.Close();
                 conn.Open();
                 cmd.ExecuteNonQuery();

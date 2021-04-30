@@ -71,5 +71,13 @@ namespace Project_PCS
             m.ShowDialog();
             this.Show();
         }
+
+        private void Supplier_Click(object sender, RoutedEventArgs e)
+        {
+            MasterSupplier m = new MasterSupplier();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
     }
 }
