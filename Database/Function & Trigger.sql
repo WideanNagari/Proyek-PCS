@@ -51,6 +51,19 @@ begin
 end;
 /
 
+--autogen id member
+create or replace function autogenMember
+return varchar2
+is
+	id number(10);
+	id_member varchar2(4);
+begin
+	select max(substr(id_member,4,2))+1 into id from member;
+	id_member := 'M' || lpad(id,3,'0');
+	return id_member;
+end;
+/
+
 --trigger
 
 -- insert
@@ -80,6 +93,19 @@ END;
 /
 SHOW ERR;
 
+--untuk autogen id D_Beli_Aksesoris
+CREATE OR REPLACE TRIGGER TR_D_Beli_Aksesoris
+BEFORE INSERT ON D_Beli_Aksesoris
+FOR EACH ROW
+DECLARE
+    id number(10);
+BEGIN
+	select max(to_number(substr(nota_beli,4,7))) into id from h_beli;
+	:new.nota_beli := 'HBL'||lpad(id,7,'0');
+END;
+/
+SHOW ERR;
+
 --untuk autogen id H_Jual
 CREATE OR REPLACE TRIGGER TR_H_Jual
 BEFORE INSERT ON H_Jual
@@ -96,6 +122,19 @@ SHOW ERR;
 --untuk autogen id D_Jual
 CREATE OR REPLACE TRIGGER TR_D_Jual
 BEFORE INSERT ON D_Jual
+FOR EACH ROW
+DECLARE
+    id number(10);
+BEGIN
+	select max(to_number(substr(nota_jual,4,7))) into id from h_jual;
+	:new.nota_jual := 'HJL'||lpad(id,7,'0');
+END;
+/
+SHOW ERR;
+
+--untuk autogen id D_Jual_Aksesoris
+CREATE OR REPLACE TRIGGER TR_D_Jual_Aksesoris
+BEFORE INSERT ON D_Jual_Aksesoris
 FOR EACH ROW
 DECLARE
     id number(10);
@@ -143,7 +182,6 @@ BEGIN
 	id_musik := kode || lpad(id,3,'0');
 	:new.nama_alat_musik := initcap(:new.nama_alat_musik);
 	:new.id_alat_musik := id_musik;
-	
 	exception
 		when kurang then
 			raise_application_error(-20002,'Nama Alat Musik Minimal 2 Kata!');
@@ -151,6 +189,37 @@ END;
 /
 SHOW ERR;
 
+--untuk autogen id aksesoris
+CREATE OR REPLACE TRIGGER TR_Aksesoris
+BEFORE INSERT ON Aksesoris
+FOR EACH ROW
+DECLARE
+	id number(10);
+	id_aksesoris varchar2(5);
+	kode varchar2(3);
+	nama varchar2(50);
+	kurang exception;
+BEGIN
+	if (length(:new.nama_aksesoris)-length(replace(:new.nama_aksesoris,' ',''))<1 
+		or instr(:new.nama_aksesoris,' ',1)=length(:new.nama_aksesoris)) then
+		raise kurang;
+	end if;
+	
+	nama := :new.nama_aksesoris;
+	select substr(nama,1,1)||substr(nama,instr(nama,' ')+1,1) into kode from dual;
+	kode := 'A'||upper(kode);
+	select nvl(max(substr(id_aksesoris,3,2))+1,'1') into id from aksesoris where substr(id_aksesoris,1,3) = kode;
+	id_aksesoris := kode|| lpad(id,2,'0');
+	:new.nama_aksesoris := initcap(:new.nama_aksesoris);
+	:new.id_aksesoris := id_aksesoris;
+	:new.keterangan := initcap(:new.keterangan);
+	
+	exception
+		when kurang then
+			raise_application_error(-20003,'Nama Aksesoris Minimal 2 Kata!');
+END;
+/
+SHOW ERR;
 --untuk cek kode_promo kembar
 --untuk autogen kode urutan jenis_alat_musik saat insert
 CREATE OR REPLACE TRIGGER TR_Promo
@@ -183,6 +252,7 @@ FOR EACH ROW
 DECLARE
 BEGIN
 	delete from d_beli where nota_beli in (select nota_beli from h_beli where ID_Supplier = :old.ID_Supplier);
+	delete from d_beli_aksesoris where nota_beli in (select nota_beli from h_beli where ID_Supplier = :old.ID_Supplier);
 	delete from h_beli where ID_Supplier = :old.ID_Supplier;
 END;
 /
@@ -233,8 +303,10 @@ FOR EACH ROW
 DECLARE
 BEGIN
 	delete from d_jual where nota_jual in (select nota_jual from h_jual where id_karyawan = :old.id_karyawan);
+	delete from d_jual_aksesoris where nota_jual in (select nota_jual from h_jual where id_karyawan = :old.id_karyawan);
 	delete from h_jual where id_karyawan = :old.id_karyawan;
 	delete from d_beli where nota_beli in (select nota_beli from h_beli where id_karyawan = :old.id_karyawan);
+	delete from d_beli_aksesoris where nota_beli in (select nota_beli from h_beli where id_karyawan = :old.id_karyawan);
 	delete from h_beli where id_karyawan = :old.id_karyawan;
 END;
 /
@@ -247,6 +319,7 @@ FOR EACH ROW
 DECLARE
 BEGIN
 	delete from d_jual where nota_jual in (select nota_jual from h_jual where ID_Customer = :old.id_customer);
+	delete from d_jual_aksesoris where nota_jual in (select nota_jual from h_jual where ID_Customer = :old.id_customer);
 	delete from h_jual where ID_Customer = :old.id_customer;
 END;
 /
@@ -260,6 +333,29 @@ DECLARE
 BEGIN
 	delete from d_jual where nota_jual in (select nota_jual from h_jual where kode_promo = :old.kode_promo);
 	delete from h_jual where kode_promo = :old.kode_promo;
+END;
+/
+SHOW ERR;
+
+--delete member
+CREATE OR REPLACE TRIGGER HAPUS_MEMBER
+BEFORE DELETE ON MEMBER
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from penjualan_member where id_member = :old.id_member;
+END;
+/
+SHOW ERR;
+
+--delete aksesoris
+CREATE OR REPLACE TRIGGER HAPUS_AKSESORIS
+BEFORE DELETE ON AKSESORIS
+FOR EACH ROW
+DECLARE
+BEGIN
+	delete from d_jual_aksesoris where id_aksesoris = :old.id_aksesoris;
+	delete from d_beli_aksesoris where id_aksesoris = :old.id_aksesoris;
 END;
 /
 SHOW ERR;

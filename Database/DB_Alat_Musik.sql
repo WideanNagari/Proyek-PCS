@@ -1,11 +1,16 @@
+DROP TABLE AKSESORIS cascade constraint purge;
 DROP TABLE ALAT_MUSIK cascade constraint purge;
 DROP TABLE CUSTOMER cascade constraint purge;
 DROP TABLE D_BELI cascade constraint purge;
+DROP TABLE D_BELI_AKSESORIS cascade constraint purge;
 DROP TABLE D_JUAL cascade constraint purge;
+DROP TABLE D_JUAL_AKSESORIS cascade constraint purge;
 DROP TABLE H_BELI cascade constraint purge;
 DROP TABLE H_JUAL cascade constraint purge;
 DROP TABLE JENIS_ALAT_MUSIK cascade constraint purge;
 DROP TABLE KARYAWAN cascade constraint purge;
+DROP TABLE MEMBER cascade constraint purge;
+DROP TABLE PENJUALAN_MEMBER cascade constraint purge;
 DROP TABLE PRODUSEN cascade constraint purge;
 DROP TABLE PROMO cascade constraint purge;
 DROP TABLE SUPPLIER cascade constraint purge;
@@ -30,6 +35,16 @@ create table alat_musik
 	id_produsen references produsen(id_produsen),
 	stok number,
 	harga number,
+	nama_file varchar2(10)
+);
+
+create table aksesoris
+(
+	id_aksesoris varchar2(5) primary key,
+	nama_aksesoris varchar2(50),
+	stok number,
+	harga number,
+	keterangan varchar2(30),
 	nama_file varchar2(10)
 );
 
@@ -71,6 +86,24 @@ create table promo
 	besar_potongan number
 );
 
+create table member
+(
+	id_member varchar2(4) primary key,
+	jenis_member varchar2(20),
+	harga_member number,
+	diskon_pembelian number
+);
+
+create table penjualan_member
+(
+	nota_jual_member varchar2(10) primary key,
+	tgl_jual date,
+	id_karyawan references karyawan(id_karyawan),
+	id_customer references customer(id_customer),
+	id_member references member(id_member),
+	subtotal number
+);
+
 create table h_beli
 (
 	nota_beli varchar2(10) primary key,
@@ -87,6 +120,15 @@ create table d_beli
 	harga_beli number,
 	quantity number,
 	constraint pk_dbeli primary key(nota_beli,id_alat_musik)
+);
+
+create table d_beli_aksesoris
+(
+	nota_beli references h_beli(nota_beli),
+	id_aksesoris references aksesoris(id_aksesoris),
+	harga_beli number,
+	quantity number,
+	constraint pk_dbeli2 primary key(nota_beli,id_aksesoris)
 );
 
 create table h_jual
@@ -106,6 +148,14 @@ create table d_jual
 	id_alat_musik references alat_musik(id_alat_musik),
 	quantity number,
 	constraint pk_djual primary key(nota_jual,id_alat_musik)
+);
+
+create table d_jual_aksesoris
+(
+	nota_jual references h_jual(nota_jual),
+	id_aksesoris references aksesoris(id_aksesoris),
+	quantity number,
+	constraint pk_djual2 primary key(nota_jual,id_aksesoris)
 );
 
 insert into jenis_alat_musik values('GTR01','Gitar Akustik');
@@ -194,6 +244,27 @@ insert into alat_musik values('CA004','Casio Arranger CTK 2400','KBD01','PD08',1
 insert into alat_musik values('SC003','Scott Cao 750','BLA01','PD12',8,12800000,'SC003.jpg');
 insert into alat_musik values('DS001','Dreamwood Soprano 21 Inch','UKL01','PD15',10,220000,'DS001.jpg');
 
+insert into aksesoris values('AFC01','Fender Celluloid Pick 0.46 mm',33,5000,'Guitar Pick','AFC01.png');
+insert into aksesoris values('ACA01','Capo Aluminium Alloy',20,25000,'Guitar Capo','ACA01.png');
+insert into aksesoris values('ADP01','D`addario Pro Arte EJ45',2,18000,'Guitar Nylon String','ADP01.png');
+insert into aksesoris values('AAA01','Albert Augustine Classic Red Medium Tension',2,170000,'Guitar Nylon String','AAA01.jpg');
+insert into aksesoris values('AE101','Elixir 16052',5,285000,'Guitar Steel String','AE101.png');
+insert into aksesoris values('ACW01','Cherub WTB-055',7,120000,'Keyboard Sustain','ACW01.png');
+insert into aksesoris values('AGK01','Grenade Keyboard Stand',10,120000,'Keyboard Stand','');
+insert into aksesoris values('AAB01','Aksesoris Biola Fiddle 4/4 15pcs/Set',3,293000,'Violin','AAB01.png');
+insert into aksesoris values('AWD01','Wincent Dynabeat Series 5a Drumstick',5,75000,'Drumset Drumstick','AWD01.jpg');
+insert into aksesoris values('ACU01','Cowboy Ukulele Strings',10,43000,'Ukulele String','ACU01.jpg');
+insert into aksesoris values('AII01','Ibanez IUKS4',7,75000,'Ukulele String','AII01.png');
+insert into aksesoris values('AMM01','Mika Membran Drumhead Power Beat 16 Inch',10,55000,'Drumset Head Membrane','AMM01.png');
+insert into aksesoris values('ASN01','Sticker Note Piano 88 Keys',8,131000,'Piano Sticker','ASN01.jpg');
+insert into aksesoris values('AHK01','Hardcase Keyboard Yamaha PSR Series',5,1200000,'Keyboard Hardcase','AHK01.jpg');
+insert into aksesoris values('ADC01','Dr. Case Nylon Guitar Case',5,650000,'Guitar Case','ADC01.jpg');
+insert into aksesoris values('AD501','D`addario 50PAF05 Acoustic Guitar Strap',11,297500,'Guitar Strap','AD501.png');
+insert into aksesoris values('AVB01','Violin Bow 4/4 Rosewood Carbon',10,150000,'Violin Bow','AVB01.jpg');
+insert into aksesoris values('AMC01','Meinl Cymbal Hsc8B 8 Inch Bell',3,400000,'Drumset Cymbal','AMC01.jpg');
+insert into aksesoris values('AGP01','Guitar Pickguard Sticker 41 inch',13,20000,'Guitar Pickguard','AGP01.jpg');
+insert into aksesoris values('AAF01','Alice Finger Pick AP-100MN',15,15000,'Guitar Pick','AAF01.jpg');
+
 insert into karyawan values('KAR001','Gemma Elliot','F','ABC','Jl. Gurame No. 2','085801023312',to_date('17-09-1995','DD-MM-YYYY'),to_date('10-09-2019','DD-MM-YYYY'),'1');
 insert into karyawan values('KAR002','Wilfred Mercado','M','DEF','Jl. Perak Tmr 60','081319273829',to_date('06-06-1979','DD-MM-YYYY'),to_date('11-09-2019','DD-MM-YYYY'),'1');
 insert into karyawan values('KAR003','Aiden Castillo','M','GHI','Jl. Barata Jaya X 37','089712452489',to_date('01-07-1990','DD-MM-YYYY'),to_date('03-10-2019','DD-MM-YYYY'),'0');
@@ -248,27 +319,41 @@ insert into promo values('MEMBERSEJATI','Diskon Member Sejati',350000);
 insert into promo values('PERMANEN','Promo Permanen',100000);
 insert into promo values('ULTAH','Promo Hari Jadi',1250000);
 
+insert into member values('M001','Member Basic',10000,1);
+insert into member values('M002','Member Silver',50000,5);
+insert into member values('M003','Member Gold',150000,10);
+insert into member values('M004','Member Platinum',200000,15);
+
+insert into penjualan_member values('MB09032001',to_date('09-03-2020','DD-MM-YYYY'),'KAR001','CUS001','M001',10000);
+insert into penjualan_member values('MB24032001',to_date('24-03-2020','DD-MM-YYYY'),'KAR001','CUS003','M003',150000);
+insert into penjualan_member values('MB10042001',to_date('10-04-2020','DD-MM-YYYY'),'KAR003','CUS004','M002',50000);
+insert into penjualan_member values('MB02052001',to_date('02-05-2020','DD-MM-YYYY'),'KAR001','CUS007','M002',50000);
+insert into penjualan_member values('MB15052001',to_date('18-05-2020','DD-MM-YYYY'),'KAR004','CUS008','M004',200000);
+insert into penjualan_member values('MB08062001',to_date('08-06-2020','DD-MM-YYYY'),'KAR005','CUS009','M003',150000);
+insert into penjualan_member values('MB22072001',to_date('22-07-2020','DD-MM-YYYY'),'KAR007','CUS012','M001',10000);
+insert into penjualan_member values('MB04092001',to_date('04-09-2020','DD-MM-YYYY'),'KAR010','CUS014','M003',150000);
+insert into penjualan_member values('MB25092001',to_date('25-09-2020','DD-MM-YYYY'),'KAR009','CUS015','M003',150000);
+
 insert into h_beli values('HBL0005101',to_date('14-09-2019','DD-MM-YYYY'),'KAR001','SUP01',8100000);
-insert into h_beli values('HBL0005102',to_date('14-09-2019','DD-MM-YYYY'),'KAR002','SUP02',9100000);
-insert into h_beli values('HBL0005103',to_date('15-09-2019','DD-MM-YYYY'),'KAR002','SUP03',8500000);
-insert into h_beli values('HBL0005104',to_date('20-09-2019','DD-MM-YYYY'),'KAR001','SUP04',5000000);
+insert into h_beli values('HBL0005102',to_date('14-09-2019','DD-MM-YYYY'),'KAR002','SUP02',9320000);
+insert into h_beli values('HBL0005103',to_date('15-09-2019','DD-MM-YYYY'),'KAR002','SUP03',14750000);
+insert into h_beli values('HBL0005104',to_date('20-09-2019','DD-MM-YYYY'),'KAR001','SUP04',5260000);
 insert into h_beli values('HBL0005105',to_date('03-10-2019','DD-MM-YYYY'),'KAR003','SUP05',8500000);
-insert into h_beli values('HBL0005106',to_date('02-11-2019','DD-MM-YYYY'),'KAR002','SUP01',8000000);
+insert into h_beli values('HBL0005106',to_date('02-11-2019','DD-MM-YYYY'),'KAR002','SUP01',10385000);
 insert into h_beli values('HBL0005107',to_date('15-11-2019','DD-MM-YYYY'),'KAR002','SUP06',17350000);
-insert into h_beli values('HBL0005108',to_date('05-12-2019','DD-MM-YYYY'),'KAR003','SUP07',3000000);
-insert into h_beli values('HBL0005109',to_date('07-01-2020','DD-MM-YYYY'),'KAR001','SUP08',13000000);
-insert into h_beli values('HBL0005110',to_date('20-01-2020','DD-MM-YYYY'),'KAR003','SUP09',5575000);
-insert into h_beli values('HBL0005111',to_date('03-02-2020','DD-MM-YYYY'),'KAR004','SUP10',40000000);
-insert into h_beli values('HBL0005112',to_date('01-03-2020','DD-MM-YYYY'),'KAR002','SUP07',6000000);
-insert into h_beli values('HBL0005113',to_date('17-03-2020','DD-MM-YYYY'),'KAR002','SUP11',19550000);
+insert into h_beli values('HBL0005108',to_date('05-12-2019','DD-MM-YYYY'),'KAR003','SUP07',3587500);
+insert into h_beli values('HBL0005109',to_date('07-01-2020','DD-MM-YYYY'),'KAR001','SUP08',13240000);
+insert into h_beli values('HBL0005110',to_date('20-01-2020','DD-MM-YYYY'),'KAR003','SUP09',5620000);
+insert into h_beli values('HBL0005111',to_date('03-02-2020','DD-MM-YYYY'),'KAR004','SUP10',40245000);
+insert into h_beli values('HBL0005112',to_date('01-03-2020','DD-MM-YYYY'),'KAR002','SUP07',7200000);
+insert into h_beli values('HBL0005113',to_date('17-03-2020','DD-MM-YYYY'),'KAR002','SUP11',19850000);
 insert into h_beli values('HBL0005114',to_date('29-03-2020','DD-MM-YYYY'),'KAR001','SUP12',2000000);
-insert into h_beli values('HBL0005115',to_date('15-04-2020','DD-MM-YYYY'),'KAR005','SUP13',21600000);
+insert into h_beli values('HBL0005115',to_date('15-04-2020','DD-MM-YYYY'),'KAR005','SUP13',22010000);
 insert into h_beli values('HBL0005116',to_date('13-05-2020','DD-MM-YYYY'),'KAR001','SUP14',6600000);
-insert into h_beli values('HBL0005117',to_date('10-06-2020','DD-MM-YYYY'),'KAR005','SUP15',13450000);
-insert into h_beli values('HBL0005118',to_date('30-06-2020','DD-MM-YYYY'),'KAR001','SUP16',4725000);
+insert into h_beli values('HBL0005117',to_date('10-06-2020','DD-MM-YYYY'),'KAR005','SUP15',15625000);
+insert into h_beli values('HBL0005118',to_date('30-06-2020','DD-MM-YYYY'),'KAR001','SUP16',4995000);
 insert into h_beli values('HBL0005119',to_date('20-07-2020','DD-MM-YYYY'),'KAR002','SUP05',3200000);
-insert into h_beli values('HBL0005120',to_date('15-08-2020','DD-MM-YYYY'),'KAR002','SUP17',12400000);
-insert into h_beli values('HBL0005121',to_date('15-08-2020','DD-MM-YYYY'),'KAR002','SUP17',12400000);
+insert into h_beli values('HBL0005120',to_date('15-08-2020','DD-MM-YYYY'),'KAR002','SUP17',12565000);
 
 insert into d_beli values('HBL0005101','YA001',2700000,3);
 insert into d_beli values('HBL0005101','SM002',720000,1);
@@ -320,26 +405,52 @@ insert into d_beli values('HBL0005119','YP004',1700000,1);
 insert into d_beli values('HBL0005120','DC001',350000,4);
 insert into d_beli values('HBL0005120','RJ001',5500000,2);
 
-insert into h_jual values('HJL0005501',to_date('09-03-2020','DD-MM-YYYY'),'CUS001','KAR001',9800000,'',9800000);
+insert into d_beli_aksesoris values('HBL0005102','ASN01',110000,2);
+insert into d_beli_aksesoris values('HBL0005103','AHK01',1000000,3);
+insert into d_beli_aksesoris values('HBL0005103','ADC01',500000,5);
+insert into d_beli_aksesoris values('HBL0005103','AD501',250000,3);
+insert into d_beli_aksesoris values('HBL0005105','AVB01',130000,2);
+insert into d_beli_aksesoris values('HBL0005106','AMC01',350000,5);
+insert into d_beli_aksesoris values('HBL0005106','AGP01',15000,9);
+insert into d_beli_aksesoris values('HBL0005108','AAF01',12500,5);
+insert into d_beli_aksesoris values('HBL0005108','AGK01',105000,5);
+insert into d_beli_aksesoris values('HBL0005109','AMM01',50000,3);
+insert into d_beli_aksesoris values('HBL0005109','AAF01',12000,5);
+insert into d_beli_aksesoris values('HBL0005109','AFC01',3000,10);
+insert into d_beli_aksesoris values('HBL0005110','AGP01',15000,3);
+insert into d_beli_aksesoris values('HBL0005111','ACA01',20000,7);
+insert into d_beli_aksesoris values('HBL0005111','AFC01',3000,10);
+insert into d_beli_aksesoris values('HBL0005111','ADP01',15000,5);
+insert into d_beli_aksesoris values('HBL0005112','AAA01',150000,8);
+insert into d_beli_aksesoris values('HBL0005113','AE101',150000,2);
+insert into d_beli_aksesoris values('HBL0005115','ACW01',110000,1);
+insert into d_beli_aksesoris values('HBL0005115','AGK01',100000,3);
+insert into d_beli_aksesoris values('HBL0005117','AAB01',275000,7);
+insert into d_beli_aksesoris values('HBL0005117','AWD01',62500,4);
+insert into d_beli_aksesoris values('HBL0005118','ACU01',30000,5);
+insert into d_beli_aksesoris values('HBL0005118','AII01',60000,2);
+insert into d_beli_aksesoris values('HBL0005120','ADP01',15000,11);
+
+insert into h_jual values('HJL0005501',to_date('09-03-2020','DD-MM-YYYY'),'CUS001','KAR001',10128000,'',10026720);
 insert into h_jual values('HJL0005502',to_date('15-03-2020','DD-MM-YYYY'),'CUS002','KAR002',25676000,'DISKONBESAR',23676000);
-insert into h_jual values('HJL0005503',to_date('24-03-2020','DD-MM-YYYY'),'CUS003','KAR001',5475000,'DISKONBESAR',3475000);
-insert into h_jual values('HJL0005504',to_date('10-04-2020','DD-MM-YYYY'),'CUS004','KAR003',17800000,'DISKONKECIL',1580000);
+insert into h_jual values('HJL0005503',to_date('24-03-2020','DD-MM-YYYY'),'CUS003','KAR001',5490000,'DISKONBESAR',3141000);
+insert into h_jual values('HJL0005504',to_date('10-04-2020','DD-MM-YYYY'),'CUS004','KAR003',2470000,'DISKONKECIL',2156500);
 insert into h_jual values('HJL0005505',to_date('15-04-2020','DD-MM-YYYY'),'CUS005','KAR002',12780000,'',12780000);
-insert into h_jual values('HJL0005506',to_date('28-04-2020','DD-MM-YYYY'),'CUS006','KAR003',3415000,'',3415000);
-insert into h_jual values('HJL0005507',to_date('02-05-2020','DD-MM-YYYY'),'CUS007','KAR001',75010000,'PANGKASHARGA',73210000);
-insert into h_jual values('HJL0005508',to_date('07-05-2020','DD-MM-YYYY'),'CUS001','KAR004',5900000,'CUCIGUDANG',4400000);
-insert into h_jual values('HJL0005509',to_date('18-05-2020','DD-MM-YYYY'),'CUS008','KAR004',25150000,'PANGKASHARGA',23350000);
-insert into h_jual values('HJL0005510',to_date('08-06-2020','DD-MM-YYYY'),'CUS009','KAR005',33531000,'CUCIGUDANG',32031000);
-insert into h_jual values('HJL0005511',to_date('17-06-2020','DD-MM-YYYY'),'CUS005','KAR005',21000000,'',21000000);
-insert into h_jual values('HJL0005512',to_date('29-06-2020','DD-MM-YYYY'),'CUS008','KAR004',37700000,'HARGAMURAH',26400000);
+insert into h_jual values('HJL0005506',to_date('28-04-2020','DD-MM-YYYY'),'CUS006','KAR003',3415000,'',3540000);
+insert into h_jual values('HJL0005507',to_date('02-05-2020','DD-MM-YYYY'),'CUS007','KAR001',75010000,'PANGKASHARGA',59549500);
+insert into h_jual values('HJL0005508',to_date('07-05-2020','DD-MM-YYYY'),'CUS001','KAR004',5936000,'CUCIGUDANG',4391640);
+insert into h_jual values('HJL0005509',to_date('18-05-2020','DD-MM-YYYY'),'CUS008','KAR004',259655000,'PANGKASHARGA',20540250);
+insert into h_jual values('HJL0005510',to_date('08-06-2020','DD-MM-YYYY'),'CUS009','KAR005',33531000,'CUCIGUDANG',28827900);
+insert into h_jual values('HJL0005511',to_date('17-06-2020','DD-MM-YYYY'),'CUS005','KAR005',21879000,'',21879000);
+insert into h_jual values('HJL0005512',to_date('29-06-2020','DD-MM-YYYY'),'CUS008','KAR004',38180000,'HARGAMURAH',36880000);
 insert into h_jual values('HJL0005513',to_date('06-07-2020','DD-MM-YYYY'),'CUS010','KAR006',131860000,'HARGAMURAH',130560000);
-insert into h_jual values('HJL0005514',to_date('21-07-2020','DD-MM-YYYY'),'CUS011','KAR005',7400000,'DISKONKECIL',7200000);
-insert into h_jual values('HJL0005515',to_date('22-07-2020','DD-MM-YYYY'),'CUS012','KAR007',106200000,'',1006200000);
+insert into h_jual values('HJL0005514',to_date('21-07-2020','DD-MM-YYYY'),'CUS011','KAR005',8275000,'DISKONKECIL',8075000);
+insert into h_jual values('HJL0005515',to_date('22-07-2020','DD-MM-YYYY'),'CUS012','KAR007',100755000,'',106474500);
 insert into h_jual values('HJL0005516',to_date('08-08-2020','DD-MM-YYYY'),'CUS013','KAR008',50650000,'PANGKASHARGA',48850000);
-insert into h_jual values('HJL0005517',to_date('09-08-2020','DD-MM-YYYY'),'CUS002','KAR006',8490000,'CUCIGUDANG',6990000);
-insert into h_jual values('HJL0005518',to_date('04-09-2020','DD-MM-YYYY'),'CUS014','KAR006',10980000,'DISKONBESAR',8980000);
-insert into h_jual values('HJL0005519',to_date('25-09-2020','DD-MM-YYYY'),'CUS015','KAR009',640000,'',640000);
-insert into h_jual values('HJL0005520',to_date('29-09-2020','DD-MM-YYYY'),'CUS013','KAR007',154150000,'DISKONKECIL',153950000);
+insert into h_jual values('HJL0005517',to_date('09-08-2020','DD-MM-YYYY'),'CUS002','KAR006',9112000,'CUCIGUDANG',7621000);
+insert into h_jual values('HJL0005518',to_date('04-09-2020','DD-MM-YYYY'),'CUS014','KAR006',10980000,'DISKONBESAR',8082000);
+insert into h_jual values('HJL0005519',to_date('25-09-2020','DD-MM-YYYY'),'CUS015','KAR009',810000,'',729000);
+insert into h_jual values('HJL0005520',to_date('29-09-2020','DD-MM-YYYY'),'CUS013','KAR007',154981000,'DISKONKECIL',154781000);
 
 insert into d_jual values('HJL0005501','RF001',1);
 insert into d_jual values('HJL0005501','YF001',1);
@@ -390,24 +501,62 @@ insert into d_jual values('HJL0005519','DC001',1);
 insert into d_jual values('HJL0005520','RU001',2);
 insert into d_jual values('HJL0005520','LV001',1);
 
+insert into d_jual_aksesoris values('HJL0005501','AE101',1);
+insert into d_jual_aksesoris values('HJL0005501','ACU01',1);
+insert into d_jual_aksesoris values('HJL0005503','AFC01',3);
+insert into d_jual_aksesoris values('HJL0005504','AGP01',2);
+insert into d_jual_aksesoris values('HJL0005504','ADC01',1);
+insert into d_jual_aksesoris values('HJL0005506','ACA01',2);
+insert into d_jual_aksesoris values('HJL0005506','AII01',1);
+insert into d_jual_aksesoris values('HJL0005508','ADP01',2);
+insert into d_jual_aksesoris values('HJL0005509','AAA01',1);
+insert into d_jual_aksesoris values('HJL0005509','ACA01',2);
+insert into d_jual_aksesoris values('HJL0005509','AD501',2);
+insert into d_jual_aksesoris values('HJL0005511','AAB01',3);
+insert into d_jual_aksesoris values('HJL0005512','ACW01',1);
+insert into d_jual_aksesoris values('HJL0005512','AGK01',3);
+insert into d_jual_aksesoris values('HJL0005514','AMC01',2);
+insert into d_jual_aksesoris values('HJL0005514','AWD01',1);
+insert into d_jual_aksesoris values('HJL0005515','AHK01',1);
+insert into d_jual_aksesoris values('HJL0005515','AGK01',1);
+insert into d_jual_aksesoris values('HJL0005515','AAF01',2);
+insert into d_jual_aksesoris values('HJL0005517','AAB01',2);
+insert into d_jual_aksesoris values('HJL0005517','AAF01',3);
+insert into d_jual_aksesoris values('HJL0005519','AAA01',1);
+insert into d_jual_aksesoris values('HJL0005520','AD501',2);
+insert into d_jual_aksesoris values('HJL0005520','ACU01',2);
+insert into d_jual_aksesoris values('HJL0005520','AVB01',1);
+
 commit;
 
-select h.nota_jual as "Nota", sum(d.quantity*a.harga) as "total", p.besar_potongan as "diskon", p.nama_promo as "promo", 
-sum(d.quantity*a.harga)-p.besar_potongan as "subtotal"
-from h_jual h
-inner join d_jual d on h.nota_jual = d.nota_jual
-inner join alat_musik a on d.id_alat_musik = a.id_alat_musik
-left join promo p on h.kode_promo = p.kode_promo
-group by h.nota_jual, p.besar_potongan, p.nama_promo
-order by 1;
+-- select h.nota_jual as "Nota", sum(d.quantity*a.harga) as "total", p.besar_potongan as "diskon", p.nama_promo as "promo", 
+-- sum(d.quantity*a.harga)-p.besar_potongan as "subtotal"
+-- from h_jual h
+-- inner join d_jual d on h.nota_jual = d.nota_jual
+-- inner join alat_musik a on d.id_alat_musik = a.id_alat_musik
+-- left join promo p on h.kode_promo = p.kode_promo
+-- group by h.nota_jual, p.besar_potongan, p.nama_promo
+-- order by 1;
 
-select h.nota_jual as "Nota", d.quantity, a.harga
-from h_jual h, d_jual d, alat_musik a
-where h.nota_jual = d.nota_jual and d.id_alat_musik = a.id_alat_musik
-order by 1;
+-- select h.nota_jual as "Nota", d.quantity, a.harga
+-- from h_jual h, d_jual d, alat_musik a
+-- where h.nota_jual = d.nota_jual and d.id_alat_musik = a.id_alat_musik
+-- order by 1;
 
-select a.id_alat_musik as "ID", a.nama_alat_musik as "Nama Alat Musik", j.nama_jenis as "Jenis",
-p.nama_produsen as "Produsen", a.stok as "Stok", a.harga as "Harga"
-from alat_musik a, jenis_alat_musik j, produsen p
-where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen
-order by 1;
+-- select a.id_alat_musik as "ID", a.nama_alat_musik as "Nama Alat Musik", j.nama_jenis as "Jenis",
+-- p.nama_produsen as "Produsen", a.stok as "Stok", a.harga as "Harga"
+-- from alat_musik a, jenis_alat_musik j, produsen p
+-- where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen
+-- order by 1;
+
+select h.nota_beli as "nota beli", sum(d.harga_beli*d.quantity)
+from h_beli h, d_beli_aksesoris d
+where h.nota_beli = d.nota_beli
+group by h.nota_beli
+order by 1; 
+
+select h.nota_jual as "nota jual", h.subtotal_jual as "subtotal", h.subtotal_jual+sum(a.harga*d.quantity) as "total semua"
+from h_jual h, d_jual_aksesoris d, aksesoris a
+where h.nota_jual = d.nota_jual and d.id_aksesoris = a.id_aksesoris
+group by h.nota_jual, h.subtotal_jual
+order by 1; 

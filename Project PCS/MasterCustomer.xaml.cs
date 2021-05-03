@@ -76,8 +76,7 @@ namespace Project_PCS
             dgvCustomer.SelectedIndex = -1;
 
             keyword.Visibility = Visibility.Visible;
-            rL.Visibility = Visibility.Hidden;
-            rP.Visibility = Visibility.Hidden;
+            canvas.Visibility = Visibility.Hidden;
             rL.IsChecked = false;
             rP.IsChecked = false;
             rnama.IsChecked = false;

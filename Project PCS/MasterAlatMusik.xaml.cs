@@ -24,7 +24,7 @@ namespace Project_PCS
     public partial class MasterAlatMusik : Window
     {
         OracleConnection conn;
-        DataTable ds, dtjenis, dtprodusen;
+        DataTable ds, dtjenis, dtjenis2, dtprodusen, dtprodusen2;
         OracleDataAdapter da;
         List<string> listx;
         int inserts;
@@ -61,6 +61,8 @@ namespace Project_PCS
             OracleCommand cmd = new OracleCommand();
             da = new OracleDataAdapter();
 
+            dgvMusik.Columns.Clear();
+
             cmd.Connection = conn;
             cmd.CommandText = "select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
                 "p.nama_produsen as \"Produsen\", a.stok as \"Stok\", a.harga as \"Harga\"  " +
@@ -72,7 +74,12 @@ namespace Project_PCS
             cmd.ExecuteReader();
             da.SelectCommand = cmd;
             da.Fill(ds);
+            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
+            Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
+            newC.Binding = bind;
             dgvMusik.ItemsSource = ds.DefaultView;
+            dgvMusik.Columns.Insert(5, newC);
+            dgvMusik.Columns.RemoveAt(6);
             conn.Close();
         }
 
@@ -123,7 +130,8 @@ namespace Project_PCS
                 string sources = cmd.ExecuteScalar().ToString();
                 conn.Close();
 
-                Images.Source = new BitmapImage(new Uri(newPath + sources));
+                if (!sources.Equals("")) Images.Source = new BitmapImage(new Uri(newPath + sources));
+                else Images.Source = null;
 
                 id2.IsReadOnly = true;
                 insert.IsEnabled = false;
@@ -178,45 +186,6 @@ namespace Project_PCS
                     nama2.SelectionStart = nama2.Text.Length;
                 }
             }
-        }
-        private void getId(string paramNama)
-        {
-            //OracleCommand cmd = new OracleCommand()
-            //{
-            //    CommandType = CommandType.StoredProcedure,
-            //    Connection = conn,
-            //    CommandText = "autogenMusik"
-            //};
-
-            //cmd.Parameters.Add(new OracleParameter()
-            //{
-            //    Direction = ParameterDirection.Input,
-            //    ParameterName = "nama",
-            //    OracleDbType = OracleDbType.Varchar2,
-            //    Size = 50,
-            //    Value = "a s"
-            //});
-
-            //cmd.Parameters.Add(new OracleParameter()
-            //{
-            //    Direction = ParameterDirection.ReturnValue,
-            //    ParameterName = "id_musik",
-            //    OracleDbType = OracleDbType.Varchar2,
-            //    Size = 999
-            //});
-
-            //try
-            //{
-            //    conn.Open();
-            //    cmd.ExecuteNonQuery();
-            //    id2.Text = cmd.Parameters["id_musik"].Value.ToString();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //    MessageBox.Show(ex.Message.ToString());
-            //}
-            //conn.Close();
         }
         private string katabaru(string kata)
         {
@@ -275,9 +244,15 @@ namespace Project_PCS
             {
                 try
                 {
-                    string[] file = source.Text.Split('\\');
-                    string filename = file[file.Length - 1];
-                    File.Copy(source.Text, System.IO.Path.Combine(newPath, filename), true);
+                    string[] file, ext;
+                    string filename = "", ext2 = "";
+                    if (!source.Text.Equals(""))
+                    {
+                        file = source.Text.Split('\\');
+                        filename = file[file.Length - 1];
+                        ext = filename.Split('.');
+                        ext2 = "."+ext[1];
+                    }
 
                     OracleCommand cmd = new OracleCommand();
                     conn.Close();
@@ -288,12 +263,33 @@ namespace Project_PCS
                     cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
                     cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
                     cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
-                    cmd.Parameters.Add(":source", filename);
+                    cmd.Parameters.Add(":source", "");
 
                     conn.Close();
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
+
+                    if (!source.Text.Equals(""))
+                    {
+                        cmd = new OracleCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "select id_alat_musik from alat_musik where nama_alat_musik = initcap('"+ nama2.Text + "')";
+                        conn.Close();
+                        conn.Open();
+                        string newName = cmd.ExecuteScalar().ToString();
+                        conn.Close();
+                        File.Copy(source.Text, System.IO.Path.Combine(newPath, newName+ext2), true);
+
+                        cmd = new OracleCommand();
+                        cmd.Connection = conn;
+                        cmd.CommandText = "update alat_musik set nama_file = '"+newName+ext2+ "' where id_alat_musik = '" + newName + "'";
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
+
                     loadData();
                     reset();
                     MessageBox.Show("Alat Musik Baru Berhasil Ditambahkan!");
@@ -321,7 +317,11 @@ namespace Project_PCS
                     {
                         string[] file = source.Text.Split('\\');
                         string filename = file[file.Length - 1];
-                        System.IO.File.Copy(source.Text, System.IO.Path.Combine(newPath, filename), true);
+                        string[] ext = filename.Split('.');
+                        string ext2 = "." + ext[1];
+                        
+                        string newName = id2.Text;
+                        File.Copy(source.Text, System.IO.Path.Combine(newPath, newName + ext2), true);
 
                         conn.Close();
                         cmd = new OracleCommand("Update alat_musik set nama_alat_musik = :nama, id_jenis = :idjenis, " +
@@ -332,7 +332,7 @@ namespace Project_PCS
                         cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
                         cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
                         cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
-                        cmd.Parameters.Add(":source", filename);
+                        cmd.Parameters.Add(":source", newName+ext2);
                         cmd.Parameters.Add("id", id2.Text);
                     }
                     else
@@ -424,19 +424,26 @@ namespace Project_PCS
                     ds = new DataTable();
                     OracleCommand cmd = new OracleCommand();
                     da = new OracleDataAdapter();
-                    
+
+                    dgvMusik.Columns.Clear();
+
                     cmd.Connection = conn;
                     cmd.CommandText = "select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
                         "p.nama_produsen as \"Produsen\", a.stok as \"Stok\", a.harga as \"Harga\"  " +
                         "from alat_musik a, jenis_alat_musik j, produsen p " +
-                        "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and" + where +
-                        " order by 1";
+                        "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and " + where +
+                        "order by 1";
                     conn.Close();
                     conn.Open();
                     cmd.ExecuteReader();
                     da.SelectCommand = cmd;
                     da.Fill(ds);
+                    DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
+                    Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
+                    newC.Binding = bind;
                     dgvMusik.ItemsSource = ds.DefaultView;
+                    dgvMusik.Columns.Insert(5, newC);
+                    dgvMusik.Columns.RemoveAt(6);
                     conn.Close();
                 }
                 catch (Exception ex)
@@ -472,6 +479,7 @@ namespace Project_PCS
             nama2.Text = "";
             stok2.Text = "";
             harga2.Text = "";
+            source.Text = "";
 
             id2.IsReadOnly = true;
             source.IsReadOnly = true;
@@ -504,7 +512,9 @@ namespace Project_PCS
 
             da = new OracleDataAdapter("select nama_jenis as \"nama\", id_jenis as id from jenis_alat_musik order by 2", conn);
             dtjenis = new DataTable();
+            dtjenis2 = new DataTable();
             da.Fill(dtjenis);
+            da.Fill(dtjenis2);
 
             DataRow newRow = dtjenis.NewRow();
             newRow[0] = "All";
@@ -516,15 +526,15 @@ namespace Project_PCS
             jenis.SelectedValuePath = "ID";
             jenis.SelectedIndex = 0;
 
-            jenis2.ItemsSource = dtjenis.DefaultView;
-            jenis2.DisplayMemberPath = dtjenis.Columns["nama"].ToString();
+            jenis2.ItemsSource = dtjenis2.DefaultView;
+            jenis2.DisplayMemberPath = dtjenis2.Columns["nama"].ToString();
             jenis2.SelectedValuePath = "ID";
 
             conn.Open();
             OracleCommand cmd = new OracleCommand("select nama_jenis as \"nama\", id_jenis as id from jenis_alat_musik order by 2", conn);
             OracleDataReader reader = cmd.ExecuteReader();
             arrJenis = new List<jenisX>();
-            int ctr = 1;
+            int ctr = 0;
             while (reader.Read())
             {
                 arrJenis.Add(new jenisX()
@@ -538,7 +548,9 @@ namespace Project_PCS
 
             da = new OracleDataAdapter("select nama_produsen as \"nama\", id_produsen as id from produsen order by 2", conn);
             dtprodusen = new DataTable();
+            dtprodusen2 = new DataTable();
             da.Fill(dtprodusen);
+            da.Fill(dtprodusen2);
 
             DataRow newRow2 = dtprodusen.NewRow();
             newRow2[0] = "All";
@@ -550,15 +562,15 @@ namespace Project_PCS
             produsen.SelectedValuePath = "ID";
             produsen.SelectedIndex = 0;
             
-            produsen2.ItemsSource = dtprodusen.DefaultView;
-            produsen2.DisplayMemberPath = dtprodusen.Columns["nama"].ToString();
+            produsen2.ItemsSource = dtprodusen2.DefaultView;
+            produsen2.DisplayMemberPath = dtprodusen2.Columns["nama"].ToString();
             produsen2.SelectedValuePath = "ID";
 
             conn.Open();
             cmd = new OracleCommand("select nama_produsen as \"nama\", id_produsen as id from produsen order by 2", conn);
             reader = cmd.ExecuteReader();
             arrProdusen = new List<produsenX>();
-            ctr = 1;
+            ctr = 0;
             while (reader.Read())
             {
                 arrProdusen.Add(new produsenX()

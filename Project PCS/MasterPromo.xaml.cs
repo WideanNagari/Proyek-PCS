@@ -43,6 +43,8 @@ namespace Project_PCS
             OracleCommand cmd = new OracleCommand();
             da = new OracleDataAdapter();
 
+            dgvPromo.Columns.Clear();
+
             cmd.Connection = conn;
             cmd.CommandText = "select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
                 "from promo order by 1";
@@ -51,7 +53,12 @@ namespace Project_PCS
             cmd.ExecuteReader();
             da.SelectCommand = cmd;
             da.Fill(ds);
+            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
+            Binding bind = new Binding("Besar Potongan") { StringFormat = "Rp. {0:N0}" };
+            newC.Binding = bind;
             dgvPromo.ItemsSource = ds.DefaultView;
+            dgvPromo.Columns.Insert(2, newC);
+            dgvPromo.Columns.RemoveAt(3);
             conn.Close();
         }
 
@@ -127,17 +134,23 @@ namespace Project_PCS
                     OracleCommand cmd = new OracleCommand();
                     da = new OracleDataAdapter();
 
+                    dgvPromo.Columns.Clear();
+
                     cmd.Connection = conn;
                     cmd.CommandText = "select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
-                        "from promo " +
-                        "where " + where +
+                        "from promo where " + where +
                         " order by 1";
                     conn.Close();
                     conn.Open();
                     cmd.ExecuteReader();
                     da.SelectCommand = cmd;
                     da.Fill(ds);
+                    DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
+                    Binding bind = new Binding("Besar Potongan") { StringFormat = "Rp. {0:N0}" };
+                    newC.Binding = bind;
                     dgvPromo.ItemsSource = ds.DefaultView;
+                    dgvPromo.Columns.Insert(2, newC);
+                    dgvPromo.Columns.RemoveAt(3);
                     conn.Close();
                     caricari = 1;
                 }
@@ -285,8 +298,6 @@ namespace Project_PCS
 
         private void Rkode_Checked(object sender, RoutedEventArgs e)
         {
-            rpotongan.IsChecked = false;
-            rnama.IsChecked = false;
             potongan.IsEnabled = false;
             potongan.SelectedIndex = -1;
             keyword.Text = "";
@@ -294,8 +305,6 @@ namespace Project_PCS
 
         private void Rnama_Checked(object sender, RoutedEventArgs e)
         {
-            rpotongan.IsChecked = false;
-            rkode.IsChecked = false;
             potongan.IsEnabled = false;
             potongan.SelectedIndex = -1;
             keyword.Text = "";
@@ -303,8 +312,6 @@ namespace Project_PCS
 
         private void Rpotongan_Checked(object sender, RoutedEventArgs e)
         {
-            rkode.IsChecked = false;
-            rnama.IsChecked = false;
             potongan.IsEnabled = true;
             potongan.SelectedIndex = 0;
             keyword.Text = "";

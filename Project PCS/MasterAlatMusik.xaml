@@ -105,10 +105,10 @@
                 <ComboBox x:Name="produsen2" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="218" Height="22" Grid.Row="5" Grid.Column="1"/>
                 <ComboBox x:Name="jenis2" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="218" Height="22" Grid.Row="4" Grid.Column="1"/>
                 <TextBox x:Name="id2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="2" Grid.Column="1"/>
-                <TextBox x:Name="nama2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="3" Grid.Column="1" TextChanged="Nama2_TextChanged"/>
-                <TextBox x:Name="stok2" HorizontalAlignment="Left"  Margin="9.8,7.2,0,3.6" TextWrapping="Wrap" Text="" Width="218" Grid.Row="6" Grid.Column="1" TextChanged="Stok2_TextChanged"/>
+                <TextBox x:Name="nama2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="3" Grid.Column="1"/>
+                <TextBox x:Name="stok2" HorizontalAlignment="Left" Margin="9.8,7.2,0,3.6" TextWrapping="Wrap" Text="" Width="218" Grid.Row="6" Grid.Column="1" TextChanged="Stok2_TextChanged"/>
                 <TextBox x:Name="harga2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="7" Grid.Column="1" TextChanged="Harga2_TextChanged"/>
-                <TextBox x:Name="source" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="8" Grid.Column="1" TextChanged="Harga2_TextChanged"/>
+                <TextBox x:Name="source" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="8" Grid.Column="1"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>

@@ -31,3 +31,7 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterKaryawan.
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterKaryawan.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterSupplier.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterSupplier.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterMember.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterMember.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAksesoris.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAksesoris.baml

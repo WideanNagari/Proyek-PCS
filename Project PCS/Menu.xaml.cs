@@ -79,5 +79,21 @@ namespace Project_PCS
             m.ShowDialog();
             this.Show();
         }
+
+        private void Member_Click(object sender, RoutedEventArgs e)
+        {
+            MasterMember m = new MasterMember();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
+
+        private void Aksesoris_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAksesoris m = new MasterAksesoris();
+            this.Hide();
+            m.ShowDialog();
+            this.Show();
+        }
     }
 }
