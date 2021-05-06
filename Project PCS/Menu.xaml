@@ -16,5 +16,7 @@
         <Button x:Name="supplier" Content="Master Supplier" HorizontalAlignment="Left" Margin="39,323,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Supplier_Click"/>
         <Button x:Name="member" Content="Master Member" HorizontalAlignment="Left" Margin="200,23,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Member_Click"/>
         <Button x:Name="aksesoris" Content="Master Aksesoris" HorizontalAlignment="Left" Margin="200,73,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Aksesoris_Click"/>
+        <Button x:Name="transjual" Content="Transaksi Penjualan" HorizontalAlignment="Left" Margin="200,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transjual_Click"/>
+        <Button x:Name="transbeli" Content="Transaksi Pembelian" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transbeli_Click"/>
     </Grid>
 </Window>

@@ -1,0 +1,145 @@
+﻿<Window x:Class="Project_PCS.TransJual"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_PCS"
+        mc:Ignorable="d"
+        Title="TransJual" Height="750" Width="1100" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.6*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.2*"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="dgvMusik" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False"/>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Quantity :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+                <TextBox x:Name="qty" HorizontalAlignment="Left" Height="22"  Margin="15,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" TextChanged="Qty_TextChanged"/>
+                <Button Content="Add" x:Name ="addM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="27" Grid.Row="0" Grid.Column="2" FontSize="16" Margin="10,3,0,0" Click="AddM_Click"/>
+                <Button Content="Reset" x:Name ="resetM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="27" Grid.Row="0" Grid.Column="3" FontSize="16" Margin="10,3,0,0" Click="ResetM_Click"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Quantity :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="0" Grid.Column="0" FontSize="14"/>
+                <TextBox x:Name="qty2" HorizontalAlignment="Left" Height="22"  Margin="15,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" TextChanged="Qty2_TextChanged"/>
+                <Button Content="Add" x:Name ="addA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="27" Grid.Row="0" Grid.Column="2" FontSize="16" Margin="10,3,0,0" Click="AddA_Click"/>
+                <Button Content="Reset" x:Name ="resetA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="110" Height="27" Grid.Row="0" Grid.Column="3" FontSize="16" Margin="10,3,0,0" Click="ResetA_Click"/>
+            </Grid>
+            <DataGrid x:Name="dgvAksesoris" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="4" CanUserAddRows="False"/>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.75*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.45*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Alat Musik" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
+                <Label Content="Nama Alat Musik :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="14"/>
+                <Label Content="Jenis Alat Musik :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <Label Content="Produsen :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0" Grid.Row="2" Grid.Column="2" FontSize="14"/>
+                <TextBox x:Name="keywords" HorizontalAlignment="Left" Height="22"  Margin="10,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="403" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+                <ComboBox x:Name="jenis" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="160" Grid.Row="2" Grid.Column="1"/>
+                <ComboBox x:Name="produsen" HorizontalAlignment="Left" Margin="7,3,0,0" VerticalAlignment="Top" Width="150" Grid.Row="2" Grid.Column="3"/>
+                <Button Content="Cari" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Height="55" Grid.Row="1" Grid.Column="4" Grid.RowSpan="2" FontSize="16" Margin="0,6,0,0" Click="Cari_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Aksesoris Alat Musik" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
+                <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1" FontSize="14"/>
+                <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="108,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <Button Content="Cari" x:Name="cari2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Grid.Row="1" Grid.RowSpan="2" FontSize="16" Margin="500,10,0,0" Click="Cari2_Click"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="14"/>
+                    <RadioButton x:Name="rnama" Content="Nama Aksesoris" HorizontalAlignment="Left" Margin="5,7,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="12"/>
+                    <RadioButton x:Name="rketerangan" Content="Keterangan Aksesoris" HorizontalAlignment="Left" Margin="5,7,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2" FontSize="12"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.12*"/>
+                <RowDefinition Height="1.3*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="0.15*"/>
+            </Grid.RowDefinitions>
+            <Button Content="Back" x:Name ="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="27" Grid.Row="0" FontSize="16" Margin="310,7,0,0" Click="Back_Click"/>
+            <Button Content="Beli" x:Name ="beli" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="27" Grid.Row="5" FontSize="16" Margin="10,7,0,0" Click="Beli_Click"/>
+            <DataGrid x:Name="dgvTrans" HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="400" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="2" CanUserAddRows="False"/>
+            <Label Content="Keranjang Belanja" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0" FontSize="16"/>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Hapus" x:Name ="hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Height="27" Grid.Row="0" Grid.Column="0" FontSize="16" Margin="10,7,0,0" Click="Hapus_Click"/>
+                <Button Content="Bersihkan" x:Name ="clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Height="27" Grid.Row="0" Grid.Column="1" FontSize="16" Margin="10,7,0,0" Click="Clear_Click"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                    <RowDefinition Height="0.15*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Total Belanja :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,0,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" FontWeight="Bold"/>
+                <Label Content="Karyawan :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="14"/>
+                <Label Content="Customer :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <Label Content="Kode Promo :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
+                <Label Content="Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,0,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
+                <Label Content="Subtotal Harga :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
+                <Label Content="Rp." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,0,0,0" Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
+                <Label Content="0" x:Name="jumlah" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Grid.Row="0" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
+                <Label Content="Rp." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,0,0,0" Grid.Row="5" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
+                <Label Content="0" x:Name="subtotal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Grid.Row="5" Grid.Column="1" FontSize="14" FontWeight="Bold"/>
+                <Label Content="abc" x:Name="namaKar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,0,0,0" Grid.Row="1" Grid.Column="1" FontSize="14"/>
+                <Label Content="-" x:Name="member" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3,0,0,0" Grid.Row="4" Grid.Column="1" FontSize="14"/>
+                <ComboBox x:Name="customer" HorizontalAlignment="Left" Margin="7,3,0,0" VerticalAlignment="Top" Width="290" Grid.Row="2" Grid.Column="1" SelectionChanged="Customer_SelectionChanged"/>
+                <ComboBox x:Name="kode" HorizontalAlignment="Left" Margin="7,3,0,0" VerticalAlignment="Top" Width="290" Grid.Row="3" Grid.Column="1" SelectionChanged="Kode_SelectionChanged"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

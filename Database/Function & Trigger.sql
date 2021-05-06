@@ -67,6 +67,24 @@ end;
 --trigger
 
 -- insert
+--untuk autogen id penjualan member
+CREATE OR REPLACE TRIGGER TR_P_MEMBER
+BEFORE INSERT ON PENJUALAN_MEMBER
+FOR EACH ROW
+DECLARE
+	id number(2);
+	nj_member varchar2(10);
+	tgl varchar2(6);
+BEGIN
+	select to_char(sysdate,'DDMMYY') into tgl from dual;
+	nj_member := 'MB'||tgl;
+	select NVL(max(substr(nota_jual_member,9,2))+1,'1') into id from penjualan_member
+	where substr(nota_jual_member,1,8) = nj_member;
+	nj_member := nj_member||lpad(id,2,'0');
+	:new.nota_jual_member := nj_member;
+END;
+/
+
 --untuk autogen id H_Beli
 CREATE OR REPLACE TRIGGER TR_H_Beli
 BEFORE INSERT ON H_Beli
@@ -89,6 +107,7 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_beli,4,7))) into id from h_beli;
 	:new.nota_beli := 'HBL'||lpad(id,7,'0');
+	update alat_musik set stok = stok + :new.quantity where id_alat_musik = :new.id_alat_musik;
 END;
 /
 SHOW ERR;
@@ -102,6 +121,8 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_beli,4,7))) into id from h_beli;
 	:new.nota_beli := 'HBL'||lpad(id,7,'0');
+	
+	update aksesoris set stok = stok + :new.quantity where id_aksesoris = :new.id_aksesoris;
 END;
 /
 SHOW ERR;
@@ -128,6 +149,8 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_jual,4,7))) into id from h_jual;
 	:new.nota_jual := 'HJL'||lpad(id,7,'0');
+	
+	update alat_musik set stok = stok - :new.quantity where id_alat_musik = :new.id_alat_musik;
 END;
 /
 SHOW ERR;
@@ -141,6 +164,8 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_jual,4,7))) into id from h_jual;
 	:new.nota_jual := 'HJL'||lpad(id,7,'0');
+	
+	update aksesoris set stok = stok - :new.quantity where id_aksesoris = :new.id_aksesoris;
 END;
 /
 SHOW ERR;
@@ -208,7 +233,7 @@ BEGIN
 	nama := :new.nama_aksesoris;
 	select substr(nama,1,1)||substr(nama,instr(nama,' ')+1,1) into kode from dual;
 	kode := 'A'||upper(kode);
-	select nvl(max(substr(id_aksesoris,3,2))+1,'1') into id from aksesoris where substr(id_aksesoris,1,3) = kode;
+	select nvl(max(substr(id_aksesoris,4,2))+1,'1') into id from aksesoris where substr(id_aksesoris,1,3) = kode;
 	id_aksesoris := kode|| lpad(id,2,'0');
 	:new.nama_aksesoris := initcap(:new.nama_aksesoris);
 	:new.id_aksesoris := id_aksesoris;
@@ -220,6 +245,7 @@ BEGIN
 END;
 /
 SHOW ERR;
+
 --untuk cek kode_promo kembar
 --untuk autogen kode urutan jenis_alat_musik saat insert
 CREATE OR REPLACE TRIGGER TR_Promo

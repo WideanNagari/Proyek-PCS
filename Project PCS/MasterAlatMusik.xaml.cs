@@ -498,17 +498,8 @@ namespace Project_PCS
             listx.Add("Lesser");
             loadData();
             reset();
-
-            string[] path2;
-            string path;
-            path = System.AppDomain.CurrentDomain.BaseDirectory;
-            path2 = path.Split('\\');
-            newPath = "";
-            for (int i = 0; i < path2.Length - 3; i++)
-            {
-                newPath += path2[i] + "\\";
-            }
-            newPath += "ImageList\\";
+            
+            newPath = System.AppDomain.CurrentDomain.BaseDirectory+"ImageList\\";
 
             da = new OracleDataAdapter("select nama_jenis as \"nama\", id_jenis as id from jenis_alat_musik order by 2", conn);
             dtjenis = new DataTable();

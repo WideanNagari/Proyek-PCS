@@ -95,5 +95,21 @@ namespace Project_PCS
             m.ShowDialog();
             this.Show();
         }
+
+        private void Transjual_Click(object sender, RoutedEventArgs e)
+        {
+            TransJual t = new TransJual();
+            this.Hide();
+            t.ShowDialog();
+            this.Show();
+        }
+
+        private void Transbeli_Click(object sender, RoutedEventArgs e)
+        {
+            TransBeli t = new TransBeli();
+            this.Hide();
+            t.ShowDialog();
+            this.Show();
+        }
     }
 }

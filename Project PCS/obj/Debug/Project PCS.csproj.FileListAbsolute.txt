@@ -35,3 +35,7 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterMember.g.
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterMember.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAksesoris.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\MasterAksesoris.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransJual.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransJual.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransBeli.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransBeli.baml
