@@ -18,5 +18,8 @@
         <Button x:Name="aksesoris" Content="Master Aksesoris" HorizontalAlignment="Left" Margin="200,73,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Aksesoris_Click"/>
         <Button x:Name="transjual" Content="Transaksi Penjualan" HorizontalAlignment="Left" Margin="200,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transjual_Click"/>
         <Button x:Name="transbeli" Content="Transaksi Pembelian" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transbeli_Click"/>
+        <Button x:Name="btnMaster" Content="Master" HorizontalAlignment="Left" Margin="582,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnMaster_Click"/>
+        <Button x:Name="btnTransaksi" Content="Transaksi" HorizontalAlignment="Left" Margin="582,182,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnTransaksi_Click"/>
+        <Button x:Name="btnReport" Content="Report" HorizontalAlignment="Left" Margin="582,248,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnReport_Click"/>
     </Grid>
 </Window>

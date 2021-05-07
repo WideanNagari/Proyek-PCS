@@ -1,0 +1,43 @@
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\Project PCS.exe.config
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\Project PCS.exe
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\Project PCS.pdb
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\Oracle.DataAccess.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.csprojAssemblyReference.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MainWindow.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterAksesoris.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterAlatMusik.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterCustomer.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterJenis.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterKaryawan.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterMember.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterProdusen.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterPromo.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterSupplier.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransBeli.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransJual.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\App.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS_MarkupCompile.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS_MarkupCompile.lref
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MainWindow.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterAksesoris.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterAlatMusik.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterCustomer.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterJenis.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterKaryawan.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterMember.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterProdusen.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterPromo.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\MasterSupplier.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransBeli.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransJual.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.g.resources
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project_PCS.Properties.Resources.resources
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.csproj.GenerateResource.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.csproj.CopyComplete
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.exe
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Project PCS.pdb
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Master.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Master.baml

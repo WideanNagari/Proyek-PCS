@@ -111,5 +111,23 @@ namespace Project_PCS
             t.ShowDialog();
             this.Show();
         }
+
+        private void BtnReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnTransaksi_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnMaster_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Master mm = new Menu_Master();
+            this.Hide();
+            mm.ShowDialog();
+            this.Show();
+        }
     }
 }
