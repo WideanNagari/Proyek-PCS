@@ -25,15 +25,18 @@ namespace Project_PCS
         DataTable ds;
         OracleDataAdapter da;
         int caricari;
-        public MasterProdusen()
+        Menu w_utama;
+        public MasterProdusen(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
+            w_utama = wm;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            w_utama.Show();
         }
         private void loadData()
         {

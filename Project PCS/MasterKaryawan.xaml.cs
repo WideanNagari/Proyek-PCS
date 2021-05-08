@@ -25,7 +25,7 @@ namespace Project_PCS
         DataTable ds;
         OracleDataAdapter da;
         int caricari;
-
+        Menu w_utama;
         private class Pass
         {
             public string id { get; set; }
@@ -33,10 +33,11 @@ namespace Project_PCS
         }
         List<Pass> arrPass;
 
-        public MasterKaryawan()
+        public MasterKaryawan(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
+            w_utama = wm;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,7 +46,7 @@ namespace Project_PCS
             reset();
             caricari = 0;
         }
-        
+
         private void reset()
         {
             salah.Visibility = Visibility.Hidden;
@@ -117,7 +118,7 @@ namespace Project_PCS
             da.Fill(ds);
             dgvKaryawan.ItemsSource = ds.DefaultView;
             conn.Close();
-            
+
             conn.Open();
             cmd = new OracleCommand("select password, id_Karyawan from karyawan order by 2", conn);
             OracleDataReader reader = cmd.ExecuteReader();
@@ -132,11 +133,6 @@ namespace Project_PCS
             }
             conn.Close();
 
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private string katabaru(string kata)
@@ -277,7 +273,7 @@ namespace Project_PCS
                 if (rL.IsChecked == true) where += " and jk_karyawan = 'M' ";
                 else if (rP.IsChecked == true) where += " and jk_karyawan = 'F' ";
 
-                if (checkAll.IsChecked == false) where += " and tgl_masuk >= to_date('"+masukAwal.Text+ "','DD-MM-YYYY') " +
+                if (checkAll.IsChecked == false) where += " and tgl_masuk >= to_date('" + masukAwal.Text + "','DD-MM-YYYY') " +
                         "and tgl_masuk <= to_date('" + masukAkhir.Text + "','DD-MM-YYYY') ";
 
                 if (ractive.IsChecked == true) where += " and status_karyawan = 1 ";
@@ -297,7 +293,7 @@ namespace Project_PCS
                         "end) as \"Jenis Kelamin\", " +
                         "NoTelp_karyawan as \"No Telepon\", alamat_karyawan as \"Alamat\", to_char(DOB_karyawan,'DD-MM-YYYY') as \"DOB\"" +
                         ", to_char(Tgl_Masuk,'DD-MM-YYYY') as \"Tanggal Masuk\" " +
-                        ", status_karyawan as \"Status\" " + 
+                        ", status_karyawan as \"Status\" " +
                         "from karyawan where " + where +
                         " order by 1";
                     conn.Close();
@@ -462,6 +458,83 @@ namespace Project_PCS
 
                 MessageBox.Show("Delete Karyawan Berhasil!");
             }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_member_Click(object sender, RoutedEventArgs e)
+        {
+            MasterMember mm = new MasterMember(w_utama);
+            this.Close();
+            mm.Show();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_utama.Show();
+        }
+
+        private void Btn_promo_Click(object sender, RoutedEventArgs e)
+        {
+            MasterPromo mpr = new MasterPromo(w_utama);
+            this.Close();
+            mpr.Show();
+        }
+
+        private void Btn_jenis_Click(object sender, RoutedEventArgs e)
+        {
+            MasterJenis mj = new MasterJenis(w_utama);
+            this.Close();
+            mj.Show();
+        }
+
+        private void Btn_produsen_Click(object sender, RoutedEventArgs e)
+        {
+            MasterProdusen mpd = new MasterProdusen(w_utama);
+            this.Close();
+            mpd.Show();
+        }
+
+        private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAksesoris ma = new MasterAksesoris(w_utama);
+            this.Close();
+            ma.Show();
+        }
+
+        private void Btn_alat_musik_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAlatMusik mam = new MasterAlatMusik(w_utama);
+            this.Close();
+            mam.Show();
+        }
+
+        private void Btn_supplier_Click(object sender, RoutedEventArgs e)
+        {
+            MasterSupplier ms = new MasterSupplier(w_utama);
+            this.Close();
+            ms.Show();
+        }
+
+        private void Btn_master_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Master mma = new Menu_Master(w_utama);
+            this.Close();
+            mma.Show();
+        }
+
+        private void Btn_customer_Click(object sender, RoutedEventArgs e)
+        {
+            MasterCustomer mk = new MasterCustomer(w_utama);
+            this.Close();
+            mk.Show();
         }
     }
 }

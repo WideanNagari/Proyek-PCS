@@ -43,16 +43,14 @@ namespace Project_PCS
 
         List<produsenX> arrProdusen;
         List<jenisX> arrJenis;
-        
-        public MasterAlatMusik()
+
+        Menu w_utama;
+
+        public MasterAlatMusik(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            w_utama = wm;
         }
 
         private void loadData()
@@ -579,6 +577,85 @@ namespace Project_PCS
             harga.ItemsSource = listx;
 
             caricari = 0;
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_member_Click(object sender, RoutedEventArgs e)
+        {
+            MasterMember mm = new MasterMember(w_utama);
+            this.Close();
+            mm.Show();
+
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_utama.Show();
+        }
+
+        private void Btn_promo_Click(object sender, RoutedEventArgs e)
+        {
+            MasterPromo mpr = new MasterPromo(w_utama);
+            this.Close();
+            mpr.Show();
+        }
+
+        private void Btn_jenis_Click(object sender, RoutedEventArgs e)
+        {
+            MasterJenis mj = new MasterJenis(w_utama);
+            this.Close();
+            mj.Show();
+        }
+
+        private void Btn_produsen_Click(object sender, RoutedEventArgs e)
+        {
+            MasterProdusen mpd = new MasterProdusen(w_utama);
+            this.Close();
+            mpd.Show();
+        }
+
+        private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAksesoris ma = new MasterAksesoris(w_utama);
+            this.Close();
+            ma.Show();
+        }
+
+
+        private void Btn_customer_Click(object sender, RoutedEventArgs e)
+        {
+            MasterCustomer mam = new MasterCustomer(w_utama);
+            this.Close();
+            mam.Show();
+        }
+
+        private void Btn_karyawan_Click(object sender, RoutedEventArgs e)
+        {
+            MasterKaryawan mk = new MasterKaryawan(w_utama);
+            this.Close();
+            mk.Show();
+        }
+
+        private void Btn_supplier_Click(object sender, RoutedEventArgs e)
+        {
+            MasterSupplier ms = new MasterSupplier(w_utama);
+            this.Close();
+            ms.Show();
+        }
+
+        private void Btn_master_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Master mma = new Menu_Master(w_utama);
+            this.Close();
+            mma.Show();
         }
     }
 }

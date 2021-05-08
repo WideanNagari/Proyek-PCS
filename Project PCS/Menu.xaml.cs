@@ -26,7 +26,7 @@ namespace Project_PCS
 
         private void Alat_musik_Click(object sender, RoutedEventArgs e)
         {
-            MasterAlatMusik m = new MasterAlatMusik();
+            MasterAlatMusik m = new MasterAlatMusik(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -34,7 +34,7 @@ namespace Project_PCS
 
         private void Produsen_Click(object sender, RoutedEventArgs e)
         {
-            MasterProdusen m = new MasterProdusen();
+            MasterProdusen m = new MasterProdusen(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -42,7 +42,7 @@ namespace Project_PCS
 
         private void Jenis_Click(object sender, RoutedEventArgs e)
         {
-            MasterJenis m = new MasterJenis();
+            MasterJenis m = new MasterJenis(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -50,7 +50,7 @@ namespace Project_PCS
 
         private void Promo_Click(object sender, RoutedEventArgs e)
         {
-            MasterPromo m = new MasterPromo();
+            MasterPromo m = new MasterPromo(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -58,7 +58,7 @@ namespace Project_PCS
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
-            MasterCustomer m = new MasterCustomer();
+            MasterCustomer m = new MasterCustomer(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -66,7 +66,7 @@ namespace Project_PCS
 
         private void Karyawan_Click(object sender, RoutedEventArgs e)
         {
-            MasterKaryawan m = new MasterKaryawan();
+            MasterKaryawan m = new MasterKaryawan(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -74,7 +74,7 @@ namespace Project_PCS
 
         private void Supplier_Click(object sender, RoutedEventArgs e)
         {
-            MasterSupplier m = new MasterSupplier();
+            MasterSupplier m = new MasterSupplier(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -82,7 +82,7 @@ namespace Project_PCS
 
         private void Member_Click(object sender, RoutedEventArgs e)
         {
-            MasterMember m = new MasterMember();
+            MasterMember m = new MasterMember(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -90,7 +90,7 @@ namespace Project_PCS
 
         private void Aksesoris_Click(object sender, RoutedEventArgs e)
         {
-            MasterAksesoris m = new MasterAksesoris();
+            MasterAksesoris m = new MasterAksesoris(this);
             this.Hide();
             m.ShowDialog();
             this.Show();
@@ -124,10 +124,9 @@ namespace Project_PCS
 
         private void BtnMaster_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Master mm = new Menu_Master();
+            Menu_Master mm = new Menu_Master(this);
             this.Hide();
-            mm.ShowDialog();
-            this.Show();
+            mm.Show();
         }
     }
 }

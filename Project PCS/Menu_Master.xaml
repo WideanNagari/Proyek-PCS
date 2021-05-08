@@ -58,7 +58,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -67,6 +66,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Supplier"
                         FontSize="10"
@@ -80,7 +87,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -89,6 +95,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Karyawan"
                         FontSize="10"
@@ -102,7 +116,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -111,6 +124,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Alat Musik"
                         FontSize="10"
@@ -124,7 +145,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -133,6 +153,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Aksesoris"
                         FontSize="10"
@@ -146,7 +174,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -155,6 +182,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Produsen"
                         FontSize="10"
@@ -168,7 +203,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -177,6 +211,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Jenis Alat"
                         FontSize="10"
@@ -190,7 +232,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -199,6 +240,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Promo"
                         FontSize="10"
@@ -212,7 +261,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -221,6 +269,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
             <Button Content="Member"
                         FontSize="10"
@@ -234,7 +290,6 @@
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
                         <Setter Property="Background" Value="#3B4D61"/>
-                        <Setter Property="BorderThickness" Value="0"/>
                         <Setter Property="Cursor" Value="Hand"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -243,6 +298,14 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
 
             <Button Content="Log Out"
@@ -284,7 +347,7 @@
         <StackPanel Grid.Row="1" Margin="20,20,370,20" Grid.ColumnSpan="2">
 
             <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,20">
+                            Margin="90,0,0,20">
                 <Image Width="60" Height="60"
                    Source="Images/music.png"
                            RenderOptions.BitmapScalingMode="Fant"/>
@@ -292,8 +355,12 @@
                        FontSize="40"
                        FontWeight="Medium"
                        VerticalAlignment="Center"
-                       FontFamily="Fonts/#Thank"
-                               Margin="30,0,0,0"/>
+                       FontFamily="Fonts/#Dosis"
+                               Margin="30,0,30,0"/>
+                <Image Width="60" Height="60"
+                   Source="Images/music.png"
+                           RenderOptions.BitmapScalingMode="Fant"/>
+
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"

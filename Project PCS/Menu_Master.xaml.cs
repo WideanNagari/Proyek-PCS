@@ -19,10 +19,13 @@ namespace Project_PCS
     /// </summary>
     public partial class Menu_Master : Window
     {
-        public Menu_Master()
+        Menu w_menu;
+        public Menu_Master(Menu wm)
         {
             InitializeComponent();
+            w_menu = wm;
         }
+
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -33,7 +36,7 @@ namespace Project_PCS
 
         private void Btn_member_Click(object sender, RoutedEventArgs e)
         {
-            MasterMember mm = new MasterMember();
+            MasterMember mm = new MasterMember(w_menu);
             this.Hide();
             mm.ShowDialog();
             this.Show();
@@ -43,11 +46,12 @@ namespace Project_PCS
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            w_menu.Show();
         }
 
         private void Btn_promo_Click(object sender, RoutedEventArgs e)
         {
-            MasterPromo mpr = new MasterPromo();
+            MasterPromo mpr = new MasterPromo(w_menu);
             this.Hide();
             mpr.ShowDialog();
             this.Show();
@@ -55,7 +59,7 @@ namespace Project_PCS
 
         private void Btn_jenis_Click(object sender, RoutedEventArgs e)
         {
-            MasterJenis mj = new MasterJenis();
+            MasterJenis mj = new MasterJenis(w_menu);
             this.Hide();
             mj.ShowDialog();
             this.Show();
@@ -63,7 +67,7 @@ namespace Project_PCS
 
         private void Btn_produsen_Click(object sender, RoutedEventArgs e)
         {
-            MasterProdusen mpd = new MasterProdusen();
+            MasterProdusen mpd = new MasterProdusen(w_menu);
             this.Hide();
             mpd.ShowDialog();
             this.Show();
@@ -71,42 +75,37 @@ namespace Project_PCS
 
         private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
         {
-            MasterAksesoris ma = new MasterAksesoris();
-            this.Hide();
-            ma.ShowDialog();
-            this.Show();
+            MasterAksesoris ma = new MasterAksesoris(w_menu);
+            this.Close();
+            ma.Show();
         }
 
         private void Btn_alat_musik_Click(object sender, RoutedEventArgs e)
         {
-            MasterAlatMusik mam = new MasterAlatMusik();
-            this.Hide();
-            mam.ShowDialog();
-            this.Show();
+            MasterAlatMusik mam = new MasterAlatMusik(w_menu);
+            this.Close();
+            mam.Show();
         }
 
         private void Btn_karyawan_Click(object sender, RoutedEventArgs e)
         {
-            MasterKaryawan mk = new MasterKaryawan();
-            this.Hide();
-            mk.ShowDialog();
-            this.Show();
+            MasterKaryawan mk = new MasterKaryawan(w_menu);
+            this.Close();
+            mk.Show();
         }
 
         private void Btn_supplier_Click(object sender, RoutedEventArgs e)
         {
-            MasterSupplier ms = new MasterSupplier();
-            this.Hide();
-            ms.ShowDialog();
-            this.Show();
+            MasterSupplier ms = new MasterSupplier(w_menu);
+            this.Close();
+            ms.Show();
         }
 
         private void Btn_customer_Click(object sender, RoutedEventArgs e)
         {
-            MasterCustomer mc = new MasterCustomer();
-            this.Hide();
-            mc.ShowDialog();
-            this.Show();
+            MasterCustomer mc = new MasterCustomer(w_menu);
+            this.Close();
+            mc.Show();
         }
     }
 }

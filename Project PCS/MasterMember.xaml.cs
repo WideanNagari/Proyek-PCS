@@ -26,10 +26,12 @@ namespace Project_PCS
         OracleDataAdapter da;
         int caricari, inserts;
         List<string> listx;
-        public MasterMember()
+        Menu w_utama;
+        public MasterMember(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
+            w_utama = wm;
         }
         private void loadData()
         {
@@ -360,6 +362,7 @@ namespace Project_PCS
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            w_utama.Show();
         }
     }
 }

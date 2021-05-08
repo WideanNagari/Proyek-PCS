@@ -26,15 +26,18 @@ namespace Project_PCS
         OracleDataAdapter da;
         int caricari, inserts;
         List<string> listx;
-        public MasterPromo()
+        Menu w_utama;
+        public MasterPromo(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
+            w_utama = wm;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            w_utama.Show();
         }
 
         private void loadData()
