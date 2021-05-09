@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="MasterMember" Height="570" Width="400" Loaded="Window_Loaded">
+        Title="MasterMember" Height="600" Width="1000" Loaded="Window_Loaded" WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.25*"/>
@@ -14,43 +20,42 @@
             <RowDefinition Height="1.7*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,0.2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Back" x:Name ="back" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="67" Height="22" Grid.Column="1" Grid.Row="0" FontSize="12" Click="Back_Click"/>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.ColumnSpan="3" Margin="0,35,0,0.2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="0.4*"/>
-                <ColumnDefinition Width="0.8*"/>
-                <ColumnDefinition Width="0.8*"/>
+                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="334*"/>
+                <ColumnDefinition Width="101*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="0" Grid.Column="0" FontSize="12"/>
-            <RadioButton x:Name="rharga" Content="Harga" HorizontalAlignment="Left" Margin="2,11,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2" FontSize="11" Checked="Rharga_Checked"/>
-            <RadioButton x:Name="rjenis" Content="Jenis" HorizontalAlignment="Left" Margin="2,11,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rjenis_Checked"/>
-            <RadioButton x:Name="rpotongan" Content="Diskon" HorizontalAlignment="Left" Margin="2,11,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="3" FontSize="11" Checked="Rpotongan_Checked"/>
-            <ComboBox x:Name="potongan" HorizontalAlignment="Left" Margin="60,8,0,0" VerticalAlignment="Top" Width="70" Grid.Row="0" Grid.Column="3"/>
-            <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="60,8,0,0" VerticalAlignment="Top" Width="70" Grid.Row="0" Grid.Column="2"/>
+            <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69.6,6,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="42"/>
+            <RadioButton x:Name="rharga" Content="Harga" HorizontalAlignment="Left" Margin="261.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rharga_Checked" Height="14" Width="50"/>
+            <RadioButton x:Name="rjenis" Content="Jenis" HorizontalAlignment="Left" Margin="116.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rjenis_Checked" Height="14" Width="44"/>
+            <RadioButton x:Name="rpotongan" Content="Diskon" HorizontalAlignment="Left" Margin="467.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rpotongan_Checked" Height="14" Width="52"/>
+            <ComboBox x:Name="potongan" HorizontalAlignment="Left" Margin="532.6,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22"/>
+            <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="316.6,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22"/>
         </Grid>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,43.8,0,0.2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3.6*"/>
-                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="300*"/>
+                <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="0" Grid.Column="0" FontSize="12"/>
-            <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="3,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="0" Grid.Column="1" TextChanged="Keyword_TextChanged"/>
-            <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,9,0,0" Width="67" Height="22" Grid.Column="2" Grid.Row="0" FontSize="12" Click="Cari_Click"/>
+            <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="62"/>
+            <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="115,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" Grid.Column="1" TextChanged="Keyword_TextChanged"/>
+            <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="466,13,0,0" Width="134" Height="22" Grid.Column="1" Grid.Row="0" FontSize="12" Click="Cari_Click"/>
         </Grid>
-        <DataGrid x:Name="dgvMember" HorizontalAlignment="Left" Height="245" VerticalAlignment="Top" Width="365" Margin="10" ColumnWidth="*" Grid.Row="3" CanUserAddRows="False" SelectionChanged="DgvMember_SelectionChanged"/>
+        <DataGrid x:Name="dgvMember" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="600" Margin="0,43.8,0,0" ColumnWidth="*" Grid.Row="2" CanUserAddRows="False" SelectionChanged="DgvMember_SelectionChanged" Grid.Column="1" Grid.RowSpan="2"/>
 
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Margin="0,299.8,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.7*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="600*"/>
+                <ColumnDefinition Width="200*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -61,19 +66,352 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
-            <Label Content="ID Member :" HorizontalAlignment="Left" Margin="25,0,0,25.2" Grid.Row="0" Grid.Column="0" FontSize="12" Grid.RowSpan="2"/>
-            <Label Content="Jenis Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="12"/>
-            <Label Content="Harga Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="12"/>
-            <Label Content="Diskon (%) :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="12"/>
-            <TextBox x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Row="0" Grid.Column="1"/>
-            <TextBox x:Name="jenis" HorizontalAlignment="Left" Height="18"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Row="1" Grid.Column="1"/>
-            <TextBox x:Name="nominal" HorizontalAlignment="Left" Height="18"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Row="2" Grid.Column="1"/>
-            <TextBox x:Name="diskon" HorizontalAlignment="Left" Height="18"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="260" Grid.Row="3" Grid.Column="1"/>
+            <Label Content="ID Member :" HorizontalAlignment="Left" Margin="21,0,0,25" Grid.Row="0" Grid.Column="1" FontSize="12" Grid.RowSpan="2"/>
+            <Label Content="Jenis Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="12" Margin="6,0,0,0"/>
+            <Label Content="Harga Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" FontSize="12"/>
+            <Label Content="Diskon (%) :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" FontSize="12" Margin="24,0,0,0"/>
+            <TextBox x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" Grid.Column="1"/>
+            <TextBox x:Name="jenis" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="1" Grid.Column="1"/>
+            <TextBox x:Name="nominal" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="diskon" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="3" Grid.Column="1"/>
 
-            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,3,0,0" Width="70" Height="20" Grid.Column="0" Grid.Row="5" FontSize="12" Grid.ColumnSpan="2" Click="Insert_Click"/>
-            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Margin="22.6,2.6,0,2.2" Width="70" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Update_Click"/>
-            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" Margin="97.6,2.6,0,2.2" Width="70" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Delete_Click"/>
-            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="275,3,0,0" Width="70" Height="20" Grid.Column="0" Grid.Row="5" FontSize="12" Grid.ColumnSpan="2" Click="Resets_Click"/>
+            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,0,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Insert_Click"/>
+            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Margin="200,0,0,5" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Update_Click"/>
+            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" Margin="285,0,0,5" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Delete_Click"/>
+            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="370,0,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Resets_Click"/>
+        </Grid>
+        <Grid Background="#3B4D61"
+            MouseDown="Grid_MouseDown" Margin="0,0,0,10.2" Grid.ColumnSpan="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="MASTER"
+                Grid.Column="1"
+                Foreground="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontFamily="Fonts/#Dosis"
+                FontWeight="Medium" Margin="0,0,10,0"
+                x:Name="btn_master" Click="Btn_master_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Customer"
+                Foreground="White"
+                FontSize="10"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="2"
+                x:Name="btn_customer" Click="Btn_customer_Click" RenderTransformOrigin="0.503,0.5">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Supplier"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="3"
+                x:Name="btn_supplier"
+                Click="Btn_supplier_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Karyawan"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="4"
+                x:Name="btn_karyawan"
+                Click="Btn_karyawan_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Alat Musik"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="5"
+                x:Name="btn_alat_musik" Click="Btn_alat_musik_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Aksesoris"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="6"
+                x:Name="btn_aksesoris" 
+                Click="Btn_aksesoris_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Produsen"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="7"
+                x:Name="btn_produsen"
+                Click="Btn_produsen_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Jenis Alat"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="8" 
+                x:Name="btn_jenis" 
+                Click="Btn_jenis_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Promo"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="9"
+                x:Name="btn_promo"
+                Click="Btn_promo_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Member"
+                FontSize="10"
+                Foreground="White"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="10"
+                x:Name="btn_member"
+                Click="Btn_member_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Log Out"
+                Foreground="White"
+                FontSize="10"
+                FontWeight="Medium"
+                Margin="0,0,10,0"
+                Grid.Column="12"
+                Grid.ColumnSpan="2"
+                x:Name="LogOut"
+                Click="LogOut_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Width="75" Height="15"
+                            CornerRadius="8"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
         </Grid>
     </Grid>
 </Window>

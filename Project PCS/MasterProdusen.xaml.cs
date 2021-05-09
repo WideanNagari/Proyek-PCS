@@ -237,5 +237,74 @@ namespace Project_PCS
                 MessageBox.Show("Delete Produsen Berhasil!");
             }
         }
+
+        private void Btn_customer_Click(object sender, RoutedEventArgs e)
+        {
+            MasterCustomer mc = new MasterCustomer(w_utama);
+            this.Close();
+            mc.Show();
+        }
+
+        private void Btn_supplier_Click(object sender, RoutedEventArgs e)
+        {
+            MasterSupplier ms = new MasterSupplier(w_utama);
+            this.Close();
+            ms.Show();
+        }
+
+        private void Btn_karyawan_Click(object sender, RoutedEventArgs e)
+        {
+            MasterKaryawan mk = new MasterKaryawan(w_utama);
+            this.Close();
+            mk.Show();
+        }
+
+        private void Btn_alat_musik_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAlatMusik mam = new MasterAlatMusik(w_utama);
+            this.Close();
+            mam.Show();
+        }
+
+        private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
+        {
+            MasterAksesoris ma = new MasterAksesoris(w_utama);
+            this.Close();
+            ma.Show();
+        }
+
+        private void Btn_jenis_Click(object sender, RoutedEventArgs e)
+        {
+            MasterJenis mj = new MasterJenis(w_utama);
+            this.Close();
+            mj.Show();
+        }
+
+        private void Btn_promo_Click(object sender, RoutedEventArgs e)
+        {
+            MasterPromo mpr = new MasterPromo(w_utama);
+            this.Close();
+            mpr.Show();
+        }
+
+        private void Btn_member_Click(object sender, RoutedEventArgs e)
+        {
+            MasterMember mm = new MasterMember(w_utama);
+            this.Close();
+            mm.Show();
+        }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_utama.Show();
+        }
+
+        private void Btn_master_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Master mma = new Menu_Master(w_utama);
+            this.Close();
+            mma.Show();
+        }
     }
 }
