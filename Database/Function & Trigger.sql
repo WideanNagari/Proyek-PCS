@@ -82,6 +82,8 @@ BEGIN
 	where substr(nota_jual_member,1,8) = nj_member;
 	nj_member := nj_member||lpad(id,2,'0');
 	:new.nota_jual_member := nj_member;
+	:new.status := 1;
+	update penjualan_member set status = 0 where id_customer = :new.id_customer;
 END;
 /
 
@@ -385,3 +387,4 @@ BEGIN
 END;
 /
 SHOW ERR;
+commit;
