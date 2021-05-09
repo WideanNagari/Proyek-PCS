@@ -283,7 +283,7 @@ namespace Project_PCS
                             string idpromo = "";
                             if (kode.SelectedIndex != -1) idpromo = kode.SelectedValue.ToString();
 
-                            OracleCommand cmd = new OracleCommand($"insert into h_jual values('', sysdate,'{cus}','{idKaryawan}','{jumlah.Content}','{idpromo}','{subtotal.Content}')", conn);
+                            OracleCommand cmd = new OracleCommand($"insert into h_jual values('', sysdate,'{cus}','{idMember}','{idKaryawan}','{jumlah.Content}','{idpromo}','{subtotal.Content}')", conn);
                             cmd.ExecuteNonQuery();
                             foreach (DataRow row in dt.Rows)
                             {
@@ -367,11 +367,14 @@ namespace Project_PCS
                 "from member m " +
                 "right join penjualan_member p on m.id_member = p.id_member " +
                 "right join customer c on p.id_customer = c.id_customer " +
-                "where c.id_customer = :id";
+                "where c.id_customer = :id and status = 1";
             cmd.Parameters.Add(":id", customer.SelectedValue);
             OracleDataReader reader;
             conn.Open();
             reader = cmd.ExecuteReader();
+            namaMember = "-";
+            idMember = "";
+            diskon = 0;
             while (reader.Read())
             {
                 namaMember = reader.GetValue(1).ToString();

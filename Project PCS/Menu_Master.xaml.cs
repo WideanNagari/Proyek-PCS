@@ -40,7 +40,6 @@ namespace Project_PCS
             this.Hide();
             mm.ShowDialog();
             this.Show();
-
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)

@@ -35,15 +35,10 @@ namespace Project_PCS
             source = dataSource.Text;
             userId = username.Text;
             pass = password.Text;
-
-            //source = "widean";
-            //userId = "ifm";
-            //pass = "219116863";
-
+            
             try
             {
-                conn = new OracleConnection("Data Source = " + source + "; User ID = " + userId + "; password = " + pass);
-                //conn = new OracleConnection("Data Source = widean; User ID = widean; password = 219116863");
+                conn = new OracleConnection("Data Source = widean; User ID = widean; password = 219116863");
                 conn.Open();
                 conn.Close();
                 Menu menu = new Menu();

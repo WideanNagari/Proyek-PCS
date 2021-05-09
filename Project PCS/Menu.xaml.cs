@@ -127,6 +127,31 @@ namespace Project_PCS
             Menu_Master mm = new Menu_Master(this);
             this.Hide();
             mm.Show();
+            this.Show();
+        }
+
+        private void Reportjual_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPenjualan r = new ReportPenjualan();
+            this.Hide();
+            r.ShowDialog();
+            this.Show();
+        }
+
+        private void Reportbeli_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPembelian r = new ReportPembelian();
+            this.Hide();
+            r.ShowDialog();
+            this.Show();
+        }
+
+        private void Reportmember_Click(object sender, RoutedEventArgs e)
+        {
+            ReportMembership r = new ReportMembership();
+            this.Hide();
+            r.ShowDialog();
+            this.Show();
         }
     }
 }
