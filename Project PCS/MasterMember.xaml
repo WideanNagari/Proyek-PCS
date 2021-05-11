@@ -354,8 +354,7 @@
                 FontWeight="Medium"
                 Margin="0,0,10,0"
                 Grid.Column="10"
-                x:Name="btn_member"
-                Click="Btn_member_Click">
+                x:Name="btn_member">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>

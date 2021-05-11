@@ -32,11 +32,12 @@ namespace Project_PCS
             conn = MainWindow.conn;
             w_utama = wm;
         }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
-            w_utama.Show();
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
         private void loadData()
         {

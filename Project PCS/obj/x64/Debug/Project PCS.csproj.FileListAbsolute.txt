@@ -85,3 +85,103 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\x64\Debug\Project PCS
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\x64\Debug\ReportMembership.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\x64\Debug\ReportPembelian.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\x64\Debug\ReportPenjualan.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportMembership.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportPembelian.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportPenjualan.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.Shared.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\sapbusinessobjects.wpf.viewer.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\SAPBusinessObjects.WPF.ViewerShared.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\FlashControlV71.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\stdole.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\bin\x64\Debug\ShockwaveFlashObjects.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportMembership.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportPembelian.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\ReportPenjualan.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csprojAssemblyReference.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MainWindow.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterAksesoris.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterAlatMusik.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterCustomer.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterJenis.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterKaryawan.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterMember.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterProdusen.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterPromo.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterSupplier.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Master.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Report.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Trans.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportMembership.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportPembelian.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportPenjualan.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransBeli.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransJual.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransJualMember.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\App.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS_MarkupCompile.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS_MarkupCompile.lref
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.exe
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.pdb
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\Project PCS.exe.config
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\Project PCS.exe
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\Project PCS.pdb
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.Shared.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\sapbusinessobjects.wpf.viewer.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\SAPBusinessObjects.WPF.ViewerShared.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\FlashControlV71.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\stdole.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\bin\x64\Debug\ShockwaveFlashObjects.dll
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MainWindow.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterAksesoris.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterAlatMusik.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterCustomer.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterJenis.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterKaryawan.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterMember.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterProdusen.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterPromo.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\MasterSupplier.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Master.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Report.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Menu_Trans.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportMembership.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportPembelian.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\ReportPenjualan.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransBeli.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransJual.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\TransJualMember.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.g.resources
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project_PCS.Properties.Resources.resources
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.GenerateResource.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.CopyComplete

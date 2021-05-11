@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\App.xaml
-14-2018190675
+20-734190138
 
-22-498907134
-15-1075235361
-MainWindow.xaml;MasterAksesoris.xaml;MasterAlatMusik.xaml;MasterCustomer.xaml;MasterJenis.xaml;MasterKaryawan.xaml;MasterMember.xaml;MasterProdusen.xaml;MasterPromo.xaml;MasterSupplier.xaml;Menu.xaml;Menu_Master.xaml;TransBeli.xaml;TransJual.xaml;
+311655658180
+24-78906680
+MainWindow.xaml;MasterAksesoris.xaml;MasterAlatMusik.xaml;MasterCustomer.xaml;MasterJenis.xaml;MasterKaryawan.xaml;MasterMember.xaml;MasterProdusen.xaml;MasterPromo.xaml;MasterSupplier.xaml;Menu.xaml;Menu_Master.xaml;Menu_Report.xaml;Menu_Trans.xaml;ReportMembership.xaml;ReportPembelian.xaml;ReportPenjualan.xaml;TransBeli.xaml;TransJual.xaml;TransJualMember.xaml;
 
-True
+False
 

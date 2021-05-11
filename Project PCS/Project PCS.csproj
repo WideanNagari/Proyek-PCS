@@ -92,6 +92,12 @@
     <Compile Include="Menu_Master.xaml.cs">
       <DependentUpon>Menu_Master.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu_Report.xaml.cs">
+      <DependentUpon>Menu_Report.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Trans.xaml.cs">
+      <DependentUpon>Menu_Trans.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportBeli.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +130,9 @@
     </Compile>
     <Compile Include="TransJual.xaml.cs">
       <DependentUpon>TransJual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TransJualMember.xaml.cs">
+      <DependentUpon>TransJualMember.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +190,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menu_Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu_Trans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ReportMembership.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TransJual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TransJualMember.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

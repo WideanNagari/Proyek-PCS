@@ -10,10 +10,10 @@
         <Label Content="Connection Settings" HorizontalAlignment="Left" Margin="199,21,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="77,115,0,0" VerticalAlignment="Top"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="81,173,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="199,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="199,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="199,118,0,0" TextWrapping="Wrap" Text="basdat" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="199,176,0,0" TextWrapping="Wrap" Text="basdat" VerticalAlignment="Top" Width="176"/>
         <Button Content="Submit" HorizontalAlignment="Left" Margin="199,227,0,0" VerticalAlignment="Top" Width="176" Click="Button_Click"/>
         <Label Content="Data Source" HorizontalAlignment="Left" Margin="67,64,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dataSource" HorizontalAlignment="Left" Height="23" Margin="199,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176"/>
+        <TextBox x:Name="dataSource" HorizontalAlignment="Left" Height="23" Margin="199,67,0,0" TextWrapping="Wrap" Text="orcl" VerticalAlignment="Top" Width="176"/>
     </Grid>
 </Window>
