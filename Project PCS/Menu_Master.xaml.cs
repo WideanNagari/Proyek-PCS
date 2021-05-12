@@ -34,42 +34,38 @@ namespace Project_PCS
             }
         }
 
-        private void Btn_member_Click(object sender, RoutedEventArgs e)
-        {
-            MasterMember mm = new MasterMember(w_menu);
-            this.Hide();
-            mm.ShowDialog();
-            this.Show();
-        }
-
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             w_menu.Show();
         }
 
+        private void Btn_member_Click(object sender, RoutedEventArgs e)
+        {
+            MasterMember mm = new MasterMember(w_menu);
+            this.Close();
+            mm.Show();
+        }
+
         private void Btn_promo_Click(object sender, RoutedEventArgs e)
         {
             MasterPromo mpr = new MasterPromo(w_menu);
-            this.Hide();
-            mpr.ShowDialog();
-            this.Show();
+            this.Close();
+            mpr.Show();
         }
 
         private void Btn_jenis_Click(object sender, RoutedEventArgs e)
         {
             MasterJenis mj = new MasterJenis(w_menu);
-            this.Hide();
-            mj.ShowDialog();
-            this.Show();
+            this.Close();
+            mj.Show();
         }
 
         private void Btn_produsen_Click(object sender, RoutedEventArgs e)
         {
             MasterProdusen mpd = new MasterProdusen(w_menu);
-            this.Hide();
-            mpd.ShowDialog();
-            this.Show();
+            this.Close();
+            mpd.Show();
         }
 
         private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)

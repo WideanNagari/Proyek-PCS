@@ -24,5 +24,6 @@
         <Button x:Name="btnMaster" Content="Master" HorizontalAlignment="Left" Margin="582,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnMaster_Click"/>
         <Button x:Name="btnTransaksi" Content="Transaksi" HorizontalAlignment="Left" Margin="582,182,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnTransaksi_Click"/>
         <Button x:Name="btnReport" Content="Report" HorizontalAlignment="Left" Margin="582,248,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnReport_Click"/>
+        <Button x:Name="trans_member" Content="Transaksi Penjualan Member" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="170" Height="35" Click="Trans_member_Click"/>
     </Grid>
 </Window>

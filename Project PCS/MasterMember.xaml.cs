@@ -33,6 +33,13 @@ namespace Project_PCS
             conn = MainWindow.conn;
             w_utama = wm;
         }
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
         private void loadData()
         {
             ds = new DataTable();

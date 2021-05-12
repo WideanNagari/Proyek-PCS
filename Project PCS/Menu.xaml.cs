@@ -114,12 +114,16 @@ namespace Project_PCS
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
-
+            Menu_Report mr = new Menu_Report(this);
+            this.Hide();
+            mr.Show();
         }
 
         private void BtnTransaksi_Click(object sender, RoutedEventArgs e)
         {
-
+            Menu_Trans mt = new Menu_Trans(this);
+            this.Hide();
+            mt.Show();
         }
 
         private void BtnMaster_Click(object sender, RoutedEventArgs e)
@@ -127,7 +131,6 @@ namespace Project_PCS
             Menu_Master mm = new Menu_Master(this);
             this.Hide();
             mm.Show();
-            this.Show();
         }
 
         private void Reportjual_Click(object sender, RoutedEventArgs e)
@@ -151,6 +154,14 @@ namespace Project_PCS
             ReportMembership r = new ReportMembership();
             this.Hide();
             r.ShowDialog();
+            this.Show();
+        }
+
+        private void Trans_member_Click(object sender, RoutedEventArgs e)
+        {
+            TransJualMember tm = new TransJualMember();
+            this.Hide();
+            tm.ShowDialog();
             this.Show();
         }
     }
