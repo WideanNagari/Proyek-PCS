@@ -66,3 +66,11 @@ C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\ReportPembelian
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\ReportPembelian.baml
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\ReportMembership.g.cs
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\ReportMembership.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu_Report.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu_Trans.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransJualMember.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu_Report.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Menu_Trans.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\TransJualMember.baml
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Nota.g.cs
+C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\obj\Debug\Nota.baml

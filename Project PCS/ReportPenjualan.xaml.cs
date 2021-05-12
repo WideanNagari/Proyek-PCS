@@ -90,6 +90,7 @@ namespace Project_PCS
                 if (!subtotal.Text.Equals("")) nominal = Convert.ToInt32(subtotal.Text);
                 ReportJual rpt = new ReportJual();
                 rpt.SetDatabaseLogon("widean", "219116863", "widean", "");
+                rpt.SetParameterValue("nota", "0");
                 rpt.SetParameterValue("tglAwal", dari.SelectedDate);
                 rpt.SetParameterValue("tglAkhir", sampai.SelectedDate);
                 rpt.SetParameterValue("customer", customer.SelectedValue);

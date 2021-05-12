@@ -92,6 +92,7 @@ namespace Project_PCS
                 if (ractive.IsChecked == true) status = 1;
                 ReportMember rpt = new ReportMember();
                 rpt.SetDatabaseLogon("widean", "219116863", "widean", "");
+                rpt.SetParameterValue("nota", "0");
                 rpt.SetParameterValue("tglAwal", dari.SelectedDate);
                 rpt.SetParameterValue("tglAkhir", sampai.SelectedDate);
                 rpt.SetParameterValue("customer", customer.SelectedValue);

@@ -1,0 +1,27 @@
+﻿<Window xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"  x:Class="Project_PCS.Nota"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_PCS"
+        mc:Ignorable="d"
+        Title="Nota" Height="700" Width="1200" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Nota" x:Name="judul" HorizontalAlignment="Center" Margin="5,0,4.6,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="24" Width="1184" Height="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Viewer:CrystalReportsViewer Name="cReport" HorizontalAlignment="Left" Height="520" Margin="10,0,0,0" VerticalAlignment="Top" Width="1174" Grid.Row="1"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Close" x:Name ="close" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="2" Margin="29,20,0,0" Click="Close_Click"/>
+            <Button Content="Print" x:Name ="print" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="1" Margin="29,20,0,0" Click="Print_Click"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Widean Nagari\Desktop\Project PCS\Project PCS\App.xaml
-172013124317
+21711349952
 
-28-425226147
+32-1485754057
 241304399446
-MainWindow.xaml;MasterAksesoris.xaml;MasterAlatMusik.xaml;MasterCustomer.xaml;MasterJenis.xaml;MasterKaryawan.xaml;MasterMember.xaml;MasterProdusen.xaml;MasterPromo.xaml;MasterSupplier.xaml;Menu.xaml;Menu_Master.xaml;ReportMembership.xaml;ReportPembelian.xaml;ReportPenjualan.xaml;TransBeli.xaml;TransJual.xaml;
+MainWindow.xaml;MasterAksesoris.xaml;MasterAlatMusik.xaml;MasterCustomer.xaml;MasterJenis.xaml;MasterKaryawan.xaml;MasterMember.xaml;MasterProdusen.xaml;MasterPromo.xaml;MasterSupplier.xaml;Menu.xaml;Menu_Master.xaml;Menu_Report.xaml;Menu_Trans.xaml;Nota.xaml;ReportMembership.xaml;ReportPembelian.xaml;ReportPenjualan.xaml;TransBeli.xaml;TransJual.xaml;TransJualMember.xaml;
 
-True
+False
 

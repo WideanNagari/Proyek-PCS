@@ -98,18 +98,16 @@ namespace Project_PCS
 
         private void Transjual_Click(object sender, RoutedEventArgs e)
         {
-            TransJual t = new TransJual();
+            TransJual t = new TransJual(this);
             this.Hide();
             t.ShowDialog();
-            this.Show();
         }
 
         private void Transbeli_Click(object sender, RoutedEventArgs e)
         {
-            TransBeli t = new TransBeli();
+            TransBeli t = new TransBeli(this);
             this.Hide();
             t.ShowDialog();
-            this.Show();
         }
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
@@ -159,10 +157,9 @@ namespace Project_PCS
 
         private void Trans_member_Click(object sender, RoutedEventArgs e)
         {
-            TransJualMember tm = new TransJualMember();
+            TransJualMember tm = new TransJualMember(this);
             this.Hide();
             tm.ShowDialog();
-            this.Show();
         }
     }
 }

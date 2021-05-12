@@ -30,11 +30,13 @@ namespace Project_PCS
         string idMember, namaMember;
         int diskon, promo;
         string idKaryawan;
-        public TransJual()
+        Menu menu;
+        public TransJual(Menu m)
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
+            menu = m;
         }
         private void loadData()
         {
@@ -310,6 +312,15 @@ namespace Project_PCS
                             conn.Close();
                             MessageBox.Show("Penjualan Berhasil!");
                             dt.Rows.Clear();
+
+                            cmd = new OracleCommand("select max(nota_jual) from h_jual", conn);
+                            conn.Open();
+                            string noNota = cmd.ExecuteScalar().ToString();
+                            conn.Close();
+                            Nota n = new Nota("Nota Penjualan", this, noNota);
+                            this.Hide();
+                            n.Show();
+
                             reset();
                         }
                         catch (Exception ex)
@@ -398,6 +409,7 @@ namespace Project_PCS
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            menu.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

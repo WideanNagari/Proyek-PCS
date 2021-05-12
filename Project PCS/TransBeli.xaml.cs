@@ -27,11 +27,13 @@ namespace Project_PCS
         OracleDataAdapter daam, daak, dat, uni;
         OracleCommandBuilder builder;
         string idKaryawan;
-        public TransBeli()
+        Menu menu;
+        public TransBeli(Menu m)
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
+            menu = m;
         }
         private void loadData()
         {
@@ -299,6 +301,15 @@ namespace Project_PCS
                             conn.Close();
                             MessageBox.Show("Pembelian Berhasil!");
                             dt.Rows.Clear();
+
+                            cmd = new OracleCommand("select max(nota_beli) from h_beli", conn);
+                            conn.Open();
+                            string noNota = cmd.ExecuteScalar().ToString();
+                            conn.Close();
+                            Nota n = new Nota("Nota Pembelian", this, noNota);
+                            this.Hide();
+                            n.Show();
+
                             reset();
                         }
                         catch (Exception ex)
@@ -324,6 +335,7 @@ namespace Project_PCS
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            menu.Show();
         }
 
         private void Harga_TextChanged(object sender, TextChangedEventArgs e)

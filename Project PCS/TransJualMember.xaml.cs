@@ -25,11 +25,13 @@ namespace Project_PCS
         DataTable dtMember, dtCustomer;
         OracleDataAdapter daMember, daCustomer;
         string idKaryawan;
-        public TransJualMember()
+        Menu menu;
+        public TransJualMember(Menu menus)
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
+            menu = menus;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -42,6 +44,7 @@ namespace Project_PCS
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            menu.Show();
         }
 
         private void loadTgl()
@@ -77,13 +80,22 @@ namespace Project_PCS
                     trans.Commit();
                     conn.Close();
                     MessageBox.Show("Bayar sukses");
+
+                    cmd = new OracleCommand("select max(nota_jual_member) from penjualan_member where nota_jual_member like '%'||to_char(sysdate,'ddmmyy')||'%'", conn);
+                    conn.Open();
+                    string noNota = cmd.ExecuteScalar().ToString();
+                    conn.Close();
+                    Nota n = new Nota("Nota Penjualan Membership", this, noNota);
+                    this.Hide();
+                    n.Show();
+
                     reset();
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show(ex.ToString());
                     trans.Rollback();
                     conn.Close();
-                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -132,19 +144,22 @@ namespace Project_PCS
 
         private void Cbmember_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string query = "SELECT DISKON_PEMBELIAN FROM MEMBER WHERE ID_MEMBER = '" + cbmember.SelectedValue + "'";
-            OracleCommand cmd = new OracleCommand(query, conn);
-            conn.Open();
-            int diskon = int.Parse(cmd.ExecuteScalar().ToString());
-            ket_diskon.Text = diskon.ToString();
-            conn.Close();
+            if (cbmember.SelectedIndex!=-1)
+            {
+                string query = "SELECT DISKON_PEMBELIAN FROM MEMBER WHERE ID_MEMBER = '" + cbmember.SelectedValue + "'";
+                OracleCommand cmd = new OracleCommand(query, conn);
+                conn.Open();
+                int diskon = int.Parse(cmd.ExecuteScalar().ToString());
+                ket_diskon.Text = diskon.ToString();
+                conn.Close();
 
-            query = "SELECT HARGA_MEMBER FROM MEMBER WHERE ID_MEMBER = '" + cbmember.SelectedValue + "' ";
-            cmd = new OracleCommand(query, conn);
-            conn.Open();
-            int sub = int.Parse(cmd.ExecuteScalar().ToString());
-            subtotal.Content = sub.ToString();
-            conn.Close();
+                query = "SELECT HARGA_MEMBER FROM MEMBER WHERE ID_MEMBER = '" + cbmember.SelectedValue + "' ";
+                cmd = new OracleCommand(query, conn);
+                conn.Open();
+                int sub = int.Parse(cmd.ExecuteScalar().ToString());
+                subtotal.Content = sub.ToString();
+                conn.Close();
+            }
         }
 
         private void DgvCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -172,7 +187,7 @@ namespace Project_PCS
             cbmember.ItemsSource = dtMember.DefaultView;
             cbmember.DisplayMemberPath = dtMember.Columns["KET"].ToString();
             cbmember.SelectedValuePath = "ID_MEMBER";
-            cbmember.SelectedIndex = 0;
+            cbmember.SelectedIndex = -1;
         }
         
         private void reset()
@@ -180,7 +195,7 @@ namespace Project_PCS
             dgvCustomer.SelectedIndex = -1;
             rnama.Foreground = Brushes.Black;
             rnotelp.Foreground = Brushes.Black;
-            cbmember.SelectedIndex = 0;
+            cbmember.SelectedIndex = -1;
             rnama.IsChecked = false;
             rnotelp.IsChecked = false;
             ket_diskon.Text = "";

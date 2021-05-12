@@ -98,6 +98,9 @@
     <Compile Include="Menu_Trans.xaml.cs">
       <DependentUpon>Menu_Trans.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Nota.xaml.cs">
+      <DependentUpon>Nota.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportBeli.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu_Trans.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Nota.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
