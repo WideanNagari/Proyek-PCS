@@ -60,7 +60,7 @@
             <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="700,10.2,0,0" Width="70" Height="20" Grid.Column="0" Grid.Row="1" FontSize="12" Click="Resets_Click" Grid.RowSpan="2"/>
         </Grid>
         <Grid Background="#3B4D61"
-            MouseDown="Grid_MouseDown" Margin="0,0,0,12.6" Grid.ColumnSpan="3">
+            Margin="0,0,0,12.6" Grid.ColumnSpan="3">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -275,8 +275,7 @@
                 FontWeight="Medium"
                 Margin="0,0,10,0"
                 Grid.Column="8" 
-                x:Name="btn_jenis" 
-                Click="Btn_jenis_Click">
+                x:Name="btn_jenis">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>

@@ -55,7 +55,7 @@
         </Grid>
         <Grid Background="#3B4D61" 
             Grid.ColumnSpan="3"
-            MouseDown="Grid_MouseDown" Margin="0,0,0,12.6">
+            Margin="0,0,0,12.6">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -241,8 +241,7 @@
                 FontWeight="Medium"
                 Margin="0,0,10,0"
                 Grid.Column="7"
-                x:Name="btn_produsen"
-                Click="Btn_produsen_Click">
+                x:Name="btn_produsen">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -386,8 +385,7 @@
                 </Button.Template>
             </Button>
             <Grid Background="#3B4D61" 
-                Grid.ColumnSpan="14"
-                MouseDown="Grid_MouseDown">
+                Grid.ColumnSpan="14">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -573,8 +571,7 @@
                     FontWeight="Medium"
                     Margin="0,0,10,0"
                     Grid.Column="7"
-                    x:Name="btn_produsen1"
-                    Click="Btn_produsen_Click">
+                    x:Name="btn_produsen1">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
