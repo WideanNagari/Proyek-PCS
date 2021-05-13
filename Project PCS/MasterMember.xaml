@@ -20,6 +20,10 @@
             <RowDefinition Height="1.7*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Border
+            Background="#3B4D61"
+            Margin="0,17,0,31"
+            CornerRadius="10" Grid.Column="1" Grid.Row="4"/>
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,0.2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="4*"/>
@@ -28,16 +32,20 @@
         </Grid>
         <Grid Grid.ColumnSpan="3" Margin="0,35,0,0.2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="65*"/>
-                <ColumnDefinition Width="334*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="299*"/>
                 <ColumnDefinition Width="101*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="69.6,6,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="42"/>
-            <RadioButton x:Name="rharga" Content="Harga" HorizontalAlignment="Left" Margin="261.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rharga_Checked" Height="14" Width="50"/>
-            <RadioButton x:Name="rjenis" Content="Jenis" HorizontalAlignment="Left" Margin="116.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rjenis_Checked" Height="14" Width="44"/>
-            <RadioButton x:Name="rpotongan" Content="Diskon" HorizontalAlignment="Left" Margin="467.6,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rpotongan_Checked" Height="14" Width="52"/>
-            <ComboBox x:Name="potongan" HorizontalAlignment="Left" Margin="532.6,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22"/>
-            <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="316.6,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22"/>
+            <Border
+                Background="#3B4D61"
+                Margin="199,0,201,-40"
+                CornerRadius="10" Grid.ColumnSpan="3"/>
+            <Label Content="Filter :" HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Top" Margin="10,5,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="42"/>
+            <RadioButton x:Name="rharga" Content="Harga" Foreground="White" HorizontalAlignment="Left" Margin="170,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rharga_Checked" Height="14" Width="50"/>
+            <RadioButton x:Name="rjenis" Content="Jenis" Foreground="White" HorizontalAlignment="Left" Margin="69.8,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rjenis_Checked" Height="14" Width="44"/>
+            <RadioButton x:Name="rpotongan" Content="Diskon" Foreground="White" HorizontalAlignment="Left" Margin="388,12,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="11" Checked="Rpotongan_Checked" Height="14" Width="52"/>
+            <ComboBox x:Name="potongan" HorizontalAlignment="Left" Margin="455,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="235,8,0,0" VerticalAlignment="Top" Width="135" Grid.Row="0" Grid.Column="1" Height="22"/>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="3" Margin="0,43.8,0,0.2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
@@ -45,9 +53,32 @@
                 <ColumnDefinition Width="300*"/>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="62"/>
-            <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="115,15,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" Grid.Column="1" TextChanged="Keyword_TextChanged"/>
-            <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="466,13,0,0" Width="134" Height="22" Grid.Column="1" Grid.Row="0" FontSize="12" Click="Cari_Click"/>
+            <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Margin="10,10,0,0" Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="62"/>
+            <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="100,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" Grid.Column="1" TextChanged="Keyword_TextChanged"/>
+            <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,12,0,0" Width="134" Height="22" Grid.Column="1" Grid.Row="0" FontSize="12" Click="Cari_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#3B4D61"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
         <DataGrid x:Name="dgvMember" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="600" Margin="0,43.8,0,0" ColumnWidth="*" Grid.Row="2" CanUserAddRows="False" SelectionChanged="DgvMember_SelectionChanged" Grid.Column="1" Grid.RowSpan="2"/>
 
@@ -66,19 +97,111 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
-            <Label Content="ID Member :" HorizontalAlignment="Left" Margin="21,0,0,25" Grid.Row="0" Grid.Column="1" FontSize="12" Grid.RowSpan="2"/>
-            <Label Content="Jenis Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="12" Margin="6,0,0,0"/>
-            <Label Content="Harga Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" FontSize="12"/>
-            <Label Content="Diskon (%) :" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" FontSize="12" Margin="24,0,0,0"/>
-            <TextBox x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" Grid.Column="1"/>
-            <TextBox x:Name="jenis" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="1" Grid.Column="1"/>
-            <TextBox x:Name="nominal" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="2" Grid.Column="1"/>
-            <TextBox x:Name="diskon" HorizontalAlignment="Left" Height="18"  Margin="115,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="3" Grid.Column="1"/>
+            <Label Content="ID Member :" HorizontalAlignment="Left" Margin="31,0,0,25" Foreground="White" Grid.Row="1" Grid.Column="1" FontSize="12" Grid.RowSpan="2"/>
+            <Label Content="Jenis Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="2" Grid.Column="1" FontSize="12" Margin="18,0,0,0"/>
+            <Label Content="Harga Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="3" Grid.Column="1" FontSize="12" Margin="10,0,0,0"/>
+            <Label Content="Diskon (%) :" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" Grid.Row="4" Grid.Column="1" FontSize="12" Margin="33,0,0,0"/>
+            <TextBox x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="120,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="1" Grid.Column="1"/>
+            <TextBox x:Name="jenis" HorizontalAlignment="Left" Height="18"  Margin="120,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="nominal" HorizontalAlignment="Left" Height="18"  Margin="120,8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="3" Grid.Column="1"/>
+            <TextBox x:Name="diskon" HorizontalAlignment="Left" Height="18"  Margin="120,6,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="4" Grid.Column="1"/>
 
-            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,0,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Insert_Click"/>
-            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Margin="200,0,0,5" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Update_Click"/>
-            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" Margin="285,0,0,5" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Delete_Click"/>
-            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="370,0,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="5" FontSize="12" Click="Resets_Click"/>
+            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="490,3,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="1" FontSize="12" Click="Insert_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#3B4D61"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Margin="490,3,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="2" FontSize="12" Click="Update_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#3B4D61"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" Margin="490,3,0,2" Width="70" Height="20" Grid.Column="1" Grid.Row="3" FontSize="12" Click="Delete_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#3B4D61"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="490,3,0,0" Width="70" Height="20" Grid.Column="1" Grid.Row="4" FontSize="12" Click="Resets_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#3B4D61"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
         <Grid Background="#3B4D61"
             Margin="0,0,0,10.2" Grid.ColumnSpan="3">
@@ -412,5 +535,44 @@
             </Button>
 
         </Grid>
+        <Border
+            Background="#3B4D61"
+            Margin="90,139.8,-15,2"
+            CornerRadius="20" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="53.233"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
+        <Border
+            Background="#6B7B8C"
+            Margin="58,79.8,-65,62"
+            CornerRadius="20" Grid.Row="4" Grid.Column="2" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="52.082"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
+        <Border
+            Background="#EF9D10"
+            Margin="140,51.8,-50,90"
+            CornerRadius="20" Grid.Column="2" Grid.Row="4" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="51.268"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+        </Border>
     </Grid>
 </Window>
