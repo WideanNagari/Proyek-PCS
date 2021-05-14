@@ -98,11 +98,7 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_Karyawan as \"ID\", nama_Karyawan as \"Nama Karyawan\", " +
+            da = new OracleDataAdapter("select id_Karyawan as \"ID\", nama_Karyawan as \"Nama Karyawan\", " +
                 "(case jk_karyawan" +
                 "   when 'M' then 'Laki-Laki'" +
                 "   when 'F' then 'Perempuan'" +
@@ -110,17 +106,13 @@ namespace Project_PCS
                 "NoTelp_karyawan as \"No Telepon\", alamat_karyawan as \"Alamat\", to_char(DOB_karyawan,'DD-MM-YYYY') as \"DOB\"" +
                 ", to_char(Tgl_Masuk,'DD-MM-YYYY') as \"Tanggal Masuk\" " +
                 ", status_karyawan as \"Status\" " +
-                "from karyawan order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+                "from karyawan order by 1",conn);
             da.Fill(ds);
             dgvKaryawan.ItemsSource = ds.DefaultView;
             conn.Close();
 
             conn.Open();
-            cmd = new OracleCommand("select password, id_Karyawan from karyawan order by 2", conn);
+            OracleCommand cmd = new OracleCommand("select password, id_Karyawan from karyawan order by 2", conn);
             OracleDataReader reader = cmd.ExecuteReader();
             arrPass = new List<Pass>();
             while (reader.Read())
@@ -132,7 +124,7 @@ namespace Project_PCS
                 });
             }
             conn.Close();
-
+            kolom();
         }
 
         private string katabaru(string kata)
@@ -282,11 +274,7 @@ namespace Project_PCS
                 try
                 {
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_Karyawan as \"ID\", nama_Karyawan as \"Nama Karyawan\", " +
+                    da = new OracleDataAdapter("select id_Karyawan as \"ID\", nama_Karyawan as \"Nama Karyawan\", " +
                         "(case jk_karyawan" +
                         "   when 'M' then 'Laki-Laki'" +
                         "   when 'F' then 'Perempuan'" +
@@ -295,14 +283,11 @@ namespace Project_PCS
                         ", to_char(Tgl_Masuk,'DD-MM-YYYY') as \"Tanggal Masuk\" " +
                         ", status_karyawan as \"Status\" " +
                         "from karyawan where " + where +
-                        " order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        " order by 1",conn);
                     da.Fill(ds);
                     dgvKaryawan.ItemsSource = ds.DefaultView;
                     conn.Close();
+                    kolom();
                 }
                 catch (Exception ex)
                 {
@@ -535,6 +520,21 @@ namespace Project_PCS
             MasterCustomer mk = new MasterCustomer(w_utama);
             this.Close();
             mk.Show();
+        }
+        private void kolom()
+        {
+            dgvKaryawan.Columns[0].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[2].Width = new DataGridLength(0.8, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[3].Width = new DataGridLength(0.9, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[4].Width = new DataGridLength(0.8, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[5].Width = new DataGridLength(0.7, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[6].Width = new DataGridLength(0.9, DataGridLengthUnitType.Star);
+            dgvKaryawan.Columns[7].Width = new DataGridLength(0.4, DataGridLengthUnitType.Star);
+        }
+        private void DgvKaryawan_Loaded(object sender, RoutedEventArgs e)
+        {
+            kolom();
         }
     }
 }

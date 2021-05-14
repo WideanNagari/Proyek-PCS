@@ -48,12 +48,8 @@ namespace Project_PCS
             builder = new OracleCommandBuilder(daam);
             dam = new DataTable();
             daam.Fill(dam);
-            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-            Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-            newC.Binding = bind;
             dgvMusik.ItemsSource = dam.DefaultView;
-            dgvMusik.Columns.Insert(5, newC);
-            dgvMusik.Columns.RemoveAt(6);
+            kolom();
 
             daak = new OracleDataAdapter("select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
                 "stok as \"Stok\", harga as \"Harga\", keterangan as \"Keterangan\"  " +
@@ -61,12 +57,8 @@ namespace Project_PCS
             builder = new OracleCommandBuilder(daak);
             dak = new DataTable();
             daak.Fill(dak);
-            DataGridTextColumn newC2 = new DataGridTextColumn() { Header = "Harga" };
-            Binding bind2 = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-            newC2.Binding = bind2;
             dgvAksesoris.ItemsSource = dak.DefaultView;
-            dgvAksesoris.Columns.Insert(3, newC2);
-            dgvAksesoris.Columns.RemoveAt(4);
+            kolom2();
 
             dgvTrans.Columns.Clear();
             dat = new OracleDataAdapter("select '' as \"ID\", '' as \"Nama Barang\", " +
@@ -75,6 +67,7 @@ namespace Project_PCS
             dt = new DataTable();
             dat.Fill(dt);
             dgvTrans.ItemsSource = dt.DefaultView;
+            kolom3();
         }
 
         private void reset()
@@ -189,7 +182,7 @@ namespace Project_PCS
                     dr[0] = dam.Rows[dgvMusik.SelectedIndex][0].ToString();
                     dr[1] = dam.Rows[dgvMusik.SelectedIndex][1].ToString();
                     dr[2] = Convert.ToInt32(qty.Text)+qtyy;
-                    dr[3] = String.Format("Rp. {0:N0}", dam.Rows[dgvMusik.SelectedIndex][5].ToString());
+                    dr[3] = String.Format("Rp. {0:N0}", Convert.ToInt32(dam.Rows[dgvMusik.SelectedIndex][5].ToString()));
                     dr[4] = "Alat Musik";
                     if (pos!=-1) dt.Rows[pos][2] = Convert.ToInt32(qty.Text) + qtyy;
                     else dt.Rows.Add(dr);
@@ -223,7 +216,7 @@ namespace Project_PCS
                     dr[0] = dak.Rows[dgvAksesoris.SelectedIndex][0].ToString();
                     dr[1] = dak.Rows[dgvAksesoris.SelectedIndex][1].ToString();
                     dr[2] = Convert.ToInt32(qty2.Text) + qtyy;
-                    dr[3] = String.Format("Rp. {0:N0}", dak.Rows[dgvAksesoris.SelectedIndex][3].ToString());
+                    dr[3] = String.Format("Rp. {0:N0}", Convert.ToInt32(dak.Rows[dgvAksesoris.SelectedIndex][3].ToString()));
                     dr[4] = "Aksesoris";
                     if (pos != -1) dt.Rows[pos][2] = Convert.ToInt32(qty2.Text) + qtyy;
                     else dt.Rows.Add(dr);
@@ -262,6 +255,7 @@ namespace Project_PCS
                     dak = new DataTable();
                     daak.Fill(dak);
                     dgvAksesoris.ItemsSource = dak.DefaultView;
+                    kolom2();
                 }
                 catch (Exception ex)
                 {
@@ -337,6 +331,44 @@ namespace Project_PCS
             else MessageBox.Show("Keranjang Belanja Kosong!");
         }
 
+        private void DgvAksesoris_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void kolom()
+        {
+            dgvMusik.Columns[5].ClipboardContentBinding.StringFormat = "Rp. {0:N0}";
+            dgvMusik.Columns[0].Width = new DataGridLength(0.4, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[1].Width = new DataGridLength(1.5, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[2].Width = new DataGridLength(0.7, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[3].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[4].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[5].Width = new DataGridLength(0.8, DataGridLengthUnitType.Star);
+        }
+        private void kolom2()
+        {
+            dgvAksesoris.Columns[3].ClipboardContentBinding.StringFormat = "Rp. {0:N0}";
+            dgvAksesoris.Columns[0].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[1].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[2].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[4].Width = new DataGridLength(1.5, DataGridLengthUnitType.Star);
+        }
+        private void kolom3()
+        {
+            dgvTrans.Columns[0].Width = new DataGridLength(0.7, DataGridLengthUnitType.Star);
+            dgvTrans.Columns[1].Width = new DataGridLength(1.4, DataGridLengthUnitType.Star);
+            dgvTrans.Columns[2].Width = new DataGridLength(0.8, DataGridLengthUnitType.Star);
+            dgvTrans.Columns[3].Width = new DataGridLength(1.2, DataGridLengthUnitType.Star);
+            dgvTrans.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        private void DgvMusik_Loaded(object sender, RoutedEventArgs e) { kolom(); }
+
+        private void DgvAksesoris_Loaded(object sender, RoutedEventArgs e) { kolom2(); }
+        
+        private void DgvTrans_Loaded(object sender, RoutedEventArgs e) { kolom3(); }
+
         private void Kode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (kode.SelectedIndex!=-1)
@@ -404,6 +436,7 @@ namespace Project_PCS
             dt.Rows.Clear();
             jumlah.Content = "0";
             subtotal.Content = "0";
+            kolom3();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -474,11 +507,12 @@ namespace Project_PCS
                 daam = new OracleDataAdapter("select id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
                    "p.nama_produsen as \"Produsen\", a.stok as \"Stok\", a.harga as \"Harga\"  " +
                    "from alat_musik a, jenis_alat_musik j, produsen p " +
-                   "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and a.stok>0 and " + where +
+                   "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and a.stok>0 " + where +
                    " order by 1", conn);
                 dam = new DataTable();
                 daam.Fill(dam);
                 dgvMusik.ItemsSource = dam.DefaultView;
+                kolom();
             }
             catch (Exception ex)
             {
@@ -515,6 +549,7 @@ namespace Project_PCS
             keywords.Text = "";
             jenis.SelectedIndex = 0;
             produsen.SelectedIndex = 0;
+            kolom();
         }
 
         private void ResetA_Click(object sender, RoutedEventArgs e)
@@ -531,6 +566,7 @@ namespace Project_PCS
             rnama.IsChecked = false;
             rketerangan.IsChecked = false;
             keyword.Text = "";
+            kolom2();
         }
 
     }

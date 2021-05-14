@@ -56,29 +56,14 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-
-            dgvMusik.Columns.Clear();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
+            da = new OracleDataAdapter("select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
                 "p.nama_produsen as \"Produsen\", a.stok as \"Stok\", a.harga as \"Harga\"  " +
                 "from alat_musik a, jenis_alat_musik j, produsen p " +
                 "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen " +
-                "order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+                "order by 1",conn);
             da.Fill(ds);
-            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-            Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-            newC.Binding = bind;
             dgvMusik.ItemsSource = ds.DefaultView;
-            dgvMusik.Columns.Insert(5, newC);
-            dgvMusik.Columns.RemoveAt(6);
-            conn.Close();
+            kolom();
         }
 
         private void Rnama_Checked(object sender, RoutedEventArgs e)
@@ -420,29 +405,14 @@ namespace Project_PCS
                 try
                 {
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-
-                    dgvMusik.Columns.Clear();
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
+                    da = new OracleDataAdapter("select a.id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
                         "p.nama_produsen as \"Produsen\", a.stok as \"Stok\", a.harga as \"Harga\"  " +
                         "from alat_musik a, jenis_alat_musik j, produsen p " +
                         "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and " + where +
-                        "order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        "order by 1",conn);
                     da.Fill(ds);
-                    DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-                    Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-                    newC.Binding = bind;
                     dgvMusik.ItemsSource = ds.DefaultView;
-                    dgvMusik.Columns.Insert(5, newC);
-                    dgvMusik.Columns.RemoveAt(6);
-                    conn.Close();
+                    kolom();
                 }
                 catch (Exception ex)
                 {
@@ -578,6 +548,17 @@ namespace Project_PCS
 
             caricari = 0;
         }
+        private void kolom()
+        {
+            dgvMusik.Columns[5].ClipboardContentBinding.StringFormat = "Rp. {0:N0}";
+            dgvMusik.Columns[0].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[1].Width = new DataGridLength(2.5, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[4].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvMusik.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        private void DgvMusik_Loaded(object sender, RoutedEventArgs e) { kolom(); }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -628,7 +609,6 @@ namespace Project_PCS
             this.Close();
             ma.Show();
         }
-
 
         private void Btn_customer_Click(object sender, RoutedEventArgs e)
         {

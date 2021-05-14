@@ -43,16 +43,9 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
+            da = new OracleDataAdapter("select id_member as \"ID\", jenis_member as \"Jenis Member\", harga_member as \"Harga Member\", diskon_pembelian||'%' as \"Diskon\" " +
+                "from member order by 1",conn);
             dgvMember.Columns.Clear();
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_member as \"ID\", jenis_member as \"Jenis Member\", harga_member as \"Harga Member\", diskon_pembelian||'%' as \"Diskon\" " +
-                "from member order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
             da.Fill(ds);
             DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
             Binding bind = new Binding("Harga Member") { StringFormat = "Rp. {0:N0}" };
@@ -285,17 +278,9 @@ namespace Project_PCS
                     }
 
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-                    dgvMember.Columns.Clear();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_member as \"ID\", jenis_member as \"Jenis Member\", harga_member as \"Harga Member\", diskon_pembelian||'%' as \"Diskon\" " +
+                    da = new OracleDataAdapter("select id_member as \"ID\", jenis_member as \"Jenis Member\", harga_member as \"Harga Member\", diskon_pembelian||'%' as \"Diskon\" " +
                         "from member where " + where +
-                        "order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        "order by 1",conn);
                     da.Fill(ds);
                     DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
                     Binding bind = new Binding("Harga Member") { StringFormat = "Rp. {0:N0}" };

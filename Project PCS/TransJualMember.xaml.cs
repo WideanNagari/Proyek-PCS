@@ -112,27 +112,29 @@ namespace Project_PCS
             {
                 rnama.Foreground = Brushes.Blue;
                 rnotelp.Foreground = Brushes.Black;
-                string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"NAMA\", " +
-                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'MALE\' ELSE \'FEMALE\' END AS \"JENIS KELAMIN\", " +
-                "ALAMAT_CUSTOMER AS ALAMAT,  NOTELP_CUSTOMER AS \"NOMER TELP\" " +
+                string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"Nama\", " +
+                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'Laki-Laki\' ELSE \'Perempuan\' END AS \"Jenis Kelamin\", " +
+                "ALAMAT_CUSTOMER AS \"Alamat\",  NOTELP_CUSTOMER AS \"Nomor Telepon\" " +
                 "FROM CUSTOMER WHERE UPPER(NAMA_CUSTOMER) like UPPER(\'%"+key+"%\') ORDER BY ID_CUSTOMER";
                 daCustomer = new OracleDataAdapter(query, conn);
                 dtCustomer = new DataTable();
                 daCustomer.Fill(dtCustomer);
                 dgvCustomer.ItemsSource = dtCustomer.DefaultView;
+                kolom();
             } else if(rnotelp.IsChecked==true)
             {
                 rnotelp.Foreground = Brushes.Blue;
                 rnama.Foreground = Brushes.Black;
-                string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"NAMA\", " +
-                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'MALE\' ELSE \'FEMALE\' END AS \"JENIS KELAMIN\", " +
-                "ALAMAT_CUSTOMER AS ALAMAT,  NOTELP_CUSTOMER AS \"NOMER TELP\" " +
+                string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"Nama\", " +
+                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'Laki-Laki\' ELSE \'Perempuan\' END AS \"Jenis Kelamin\", " +
+                "ALAMAT_CUSTOMER AS \"Alamat\",  NOTELP_CUSTOMER AS \"Nomor Telepon\" " +
                 "FROM CUSTOMER WHERE NOTELP_CUSTOMER like \'%" + key + "%\' ORDER BY ID_CUSTOMER";
                 daCustomer = new OracleDataAdapter(query, conn);
                 dtCustomer = new DataTable();
                 daCustomer.Fill(dtCustomer);
                 dgvCustomer.ItemsSource = dtCustomer.DefaultView;
-            } else if(keyword.Text=="")
+                kolom();
+            } else if(keyword.Text.Equals(""))
             {
                 reset();
                 loadData();
@@ -169,13 +171,23 @@ namespace Project_PCS
                 customer.Content = dtCustomer.Rows[dgvCustomer.SelectedIndex][1].ToString();                
             }
         }
+        private void kolom()
+        {
+            dgvCustomer.Columns[0].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[3].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+        private void DgvCustomer_Loaded(object sender, RoutedEventArgs e) { kolom(); }
 
         private void loadData()
         {
-            string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"NAMA\", " +
-                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'MALE\' ELSE \'FEMALE\' END AS \"JENIS KELAMIN\", " +
-                "ALAMAT_CUSTOMER AS ALAMAT,  NOTELP_CUSTOMER AS \"NOMER TELP\" " +
+            string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"Nama\", " +
+                "CASE WHEN JK_CUSTOMER = \'M\' THEN \'Laki-Laki\' ELSE \'Perempuan\' END AS \"Jenis Kelamin\", " +
+                "ALAMAT_CUSTOMER AS \"Alamat\",  NOTELP_CUSTOMER AS \"Nomor Telepon\" " +
                 "FROM CUSTOMER ORDER BY ID_CUSTOMER";
+
             daCustomer = new OracleDataAdapter(query, conn);
             dtCustomer = new DataTable();
             daCustomer.Fill(dtCustomer);
@@ -188,6 +200,7 @@ namespace Project_PCS
             cbmember.DisplayMemberPath = dtMember.Columns["KET"].ToString();
             cbmember.SelectedValuePath = "ID_MEMBER";
             cbmember.SelectedIndex = -1;
+            kolom();
         }
         
         private void reset()

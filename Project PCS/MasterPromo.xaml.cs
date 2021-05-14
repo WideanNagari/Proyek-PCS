@@ -45,18 +45,10 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
+            da = new OracleDataAdapter("select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
+                "from promo order by 1",conn);
 
             dgvPromo.Columns.Clear();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
-                "from promo order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
             da.Fill(ds);
             DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
             Binding bind = new Binding("Besar Potongan") { StringFormat = "Rp. {0:N0}" };
@@ -136,19 +128,11 @@ namespace Project_PCS
                     }
 
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
+                    da = new OracleDataAdapter("select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
+                        "from promo where " + where +
+                        " order by 1",conn);
 
                     dgvPromo.Columns.Clear();
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select kode_promo as \"Kode Promo\", nama_promo as \"Nama Promo\", besar_potongan as \"Besar Potongan\" " +
-                        "from promo where " + where +
-                        " order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
                     da.Fill(ds);
                     DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
                     Binding bind = new Binding("Besar Potongan") { StringFormat = "Rp. {0:N0}" };
