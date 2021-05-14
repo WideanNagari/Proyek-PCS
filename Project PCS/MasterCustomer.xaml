@@ -417,7 +417,8 @@
                 <RowDefinition Height="0.8*"/>
                 <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
-            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvCustomer"
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" 
+                      x:Name="dgvCustomer"
                       HorizontalAlignment="Left" 
                       Height="455" 
                       VerticalAlignment="Top" 
@@ -427,7 +428,7 @@
                       SelectionChanged="DgvCustomer_SelectionChanged" Grid.RowSpan="3" Loaded="DgvCustomer_Loaded"/>
 
             <Border Grid.Row="0"
-                Background="#D9DDDC"
+                Background="Wheat"
                 Margin="-324,10,673,215"
                 CornerRadius="15"/>
             <Grid Margin="10,28,-10,227">
@@ -441,6 +442,7 @@
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-325,-15,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
                 <Label Name="label_nama" Content="Nama:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-326,5,0,0" Grid.Row="1" Grid.Column="0" FontSize="14" RenderTransformOrigin="0.3,0.586"/>
                 <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-326,7,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" Grid.RowSpan="2"/>
                 <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="-255,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215" Grid.Row="1"/>
@@ -512,8 +514,8 @@
             </Grid.ColumnDefinitions>
             <Label Foreground="White" Content="Data Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,3,0,0" Grid.Row="4" Grid.Column="0" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold"/>
 
-            <Label Foreground="White" Content="ID Customer :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="27,5,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Nama Customer :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
+            <Label Foreground="White" Content="ID :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,7,0,0" Grid.Row="5" Grid.Column="0" FontSize="14" RenderTransformOrigin="2.111,0.207"/>
+            <Label Foreground="White" Content="Nama :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,5,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
             <Label Foreground="White" Content="Jenis Kelamin :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,5,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
             <Label Foreground="White" Content="No. Telepon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,5,0,0" Grid.Row="8" Grid.Column="0" FontSize="14"/>
             <Label Foreground="White" Content="Alamat :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,5,0,0" Grid.Row="9" Grid.Column="0" FontSize="14"/>

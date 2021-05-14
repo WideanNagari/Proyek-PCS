@@ -8,7 +8,61 @@
         Title="MasterAlatMusik" Height="600" Width="1000" 
         Loaded="Window_Loaded" WindowStyle="None"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8"
+                    Padding="2">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="RowStyleWithAlternation" TargetType="DataGridRow">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="#3B4D61"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="ContextMenu" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFD0D0E0"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ef9d10"/>
+                    <Setter Property="Foreground" Value="#3B4D61"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Validation.HasError" Value="True" >
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Red" ShadowDepth="0" BlurRadius="20" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="Red" />
+                    <Setter Property="Foreground" Value="Blue" />
+                    <Setter Property="FontSize" Value="12" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -353,13 +407,17 @@
             </Button>
 
         </Grid>
-        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4">
+        <Grid  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0.4,0.4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="dgvMusik" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" SelectionChanged="DgvMusik_SelectionChanged" Loaded="DgvMusik_Loaded"/>
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvMusik" HorizontalAlignment="Left" Height="400" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" SelectionChanged="DgvMusik_SelectionChanged" Loaded="DgvMusik_Loaded"/>
 
+            <Border Grid.Row="0"
+                Background="Wheat"
+                Margin="10,10,10,0"
+                CornerRadius="10"/>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -374,32 +432,55 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
+                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16" Grid.RowSpan="2"/>
                 <Label Content="Filter Berdasarkan:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="14"/>
                 <Label Content="Jenis Alat Musik:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
                 <Label Content="Produsen:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
                 <Label Content="Keyword:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
                 <ComboBox x:Name="jenis" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="315" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
                 <ComboBox x:Name="produsen" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Width="315" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
-                <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="315" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextChanged="Keyword_TextChanged"/>
-                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,7,0,0" Width="175" Height="75" Grid.Column="3" Grid.Row="2" FontSize="14" FontWeight="Bold" Grid.RowSpan="3" Click="Cari_Click"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="10,3,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="315" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" TextChanged="Keyword_TextChanged"/>
+                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Width="167" Height="75" Grid.Column="3" Grid.Row="2" FontSize="14" FontWeight="Bold" Grid.RowSpan="3" Click="Cari_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
-                <RadioButton x:Name="rnama" Content="Nama Alat Musik" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="12" Checked="Rnama_Checked"/>
+                <RadioButton x:Name="rnama" Content="Nama Alat Musik" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="12" Checked="Rnama_Checked"/>
                 <Grid Grid.Column="2" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton x:Name="rstok" Content="Stok" HorizontalAlignment="Left" Margin="20,7,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="12" Checked="Rstok_Checked"/>
-                    <ComboBox x:Name="stok" HorizontalAlignment="Left" Margin="7,3,0,0" VerticalAlignment="Top" Width="117" Grid.Row="0" Grid.Column="1"/>
+                    <RadioButton x:Name="rstok" Content="Stok" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="12" Checked="Rstok_Checked" Height="13"/>
+                    <ComboBox x:Name="stok" HorizontalAlignment="Left" Margin="54,6,0,0" VerticalAlignment="Top" Width="117" Grid.Row="0" Grid.ColumnSpan="2"/>
                 </Grid>
                 <Grid Grid.Column="3" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton x:Name="rharga" Content="Harga" HorizontalAlignment="Left" Margin="15,7,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="12" Checked="Rharga_Checked"/>
-                    <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="7,3,0,0" VerticalAlignment="Top" Width="120" Grid.Row="0" Grid.Column="1"/>
+                    <RadioButton x:Name="rharga" Content="Harga" HorizontalAlignment="Left" Margin="-12,7,0,0" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" FontSize="12" Checked="Rharga_Checked"/>
+                    <ComboBox x:Name="harga" HorizontalAlignment="Left" Margin="44,7,0,0" VerticalAlignment="Top" Width="120" Grid.Row="0" Grid.ColumnSpan="2"/>
                 </Grid>
             </Grid>
         </Grid>
@@ -416,6 +497,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
+
+            <Border Grid.Row="1"
+                Background="#3B4D61"
+                Margin="10,0,10,0"
+                CornerRadius="10" Grid.RowSpan="2"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -434,20 +520,43 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Image Name="Images" Stretch="Uniform" Height="180" Width="200" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
-                <Label Content="ID : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
-                <Label Content="Nama : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
-                <Label Content="Jenis : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,0,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
-                <Label Content="Produsen : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
-                <Label Content="Stok : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,0,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
-                <Label Content="Harga : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,0,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
-                <Button Content="Upload Image" Margin="0,6.6,1.2,3.8" Grid.Row="8" Grid.Column="0" FontSize="12" Click="Button_Click" RenderTransformOrigin="0.502,0.5"/>
+                <Label Foreground="White" Content="ID : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Nama : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Jenis : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="37,0,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Produsen : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Stok : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,0,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Harga : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,0,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
+                <Button Content="Upload Image" Margin="20,7,1,0" Grid.Row="8" Grid.Column="0" FontSize="12" Click="Button_Click" RenderTransformOrigin="0.502,0.5">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#B80F0A"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <ComboBox x:Name="produsen2" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="218" Height="22" Grid.Row="5" Grid.Column="1"/>
                 <ComboBox x:Name="jenis2" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="218" Height="22" Grid.Row="4" Grid.Column="1"/>
-                <TextBox x:Name="id2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="2" Grid.Column="1"/>
-                <TextBox x:Name="nama2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="3" Grid.Column="1"/>
-                <TextBox x:Name="stok2" HorizontalAlignment="Left" Margin="9.8,7.2,0,3.6" TextWrapping="Wrap" Text="" Width="218" Grid.Row="6" Grid.Column="1" TextChanged="Stok2_TextChanged"/>
-                <TextBox x:Name="harga2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="7" Grid.Column="1" TextChanged="Harga2_TextChanged"/>
-                <TextBox x:Name="source" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="8" Grid.Column="1"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="2" Grid.Column="1"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="3" Grid.Column="1"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="stok2" HorizontalAlignment="Left" Margin="9.8,7.2,0,3.6" TextWrapping="Wrap" Text="" Width="218" Grid.Row="6" Grid.Column="1" TextChanged="Stok2_TextChanged"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="harga2" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="7" Grid.Column="1" TextChanged="Harga2_TextChanged"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="source" HorizontalAlignment="Left" Height="22"  Margin="10,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Grid.Row="8" Grid.Column="1"/>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
@@ -455,15 +564,107 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="320" Height="27" Grid.Column="1" Grid.Row="0" FontSize="16" Click="Insert_Click"/>
-                <Button Content="Reset All" x:Name ="resets" HorizontalAlignment="Left" Width="320" Grid.Row="2" FontSize="16" Click="Reset_Click" Margin="0,0.4,0,2.2"/>
+                <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="301" Height="27" Grid.Row="0" FontSize="16" Click="Insert_Click" Margin="19,-7,0,0">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Reset All" x:Name ="resets" HorizontalAlignment="Left" Width="301" Grid.Row="1" FontSize="16" Click="Reset_Click" Margin="19,22,0,10" Grid.RowSpan="2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#3B4D61"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Width="155" Grid.Column="0" Grid.Row="0" FontSize="16" Click="Update_Click" Margin="0,0,0,1.8"/>
-                    <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="27" Grid.Column="1" Grid.Row="0" FontSize="16" Click="Delete_Click"/>
+                    <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" Width="136" Grid.Column="0" Grid.Row="0" FontSize="16" Click="Update_Click" Margin="19,-7,0,9">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                <Setter Property="Background" Value="#ef9d10"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#005254"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="27" Grid.Column="1" Grid.Row="0" FontSize="16" Click="Delete_Click" Margin="10,-7,0,0">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                                <Setter Property="Background" Value="#ef9d10"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>

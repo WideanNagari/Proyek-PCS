@@ -7,6 +7,38 @@
         mc:Ignorable="d"
         Title="MasterJenis" Height="600" Width="1000" Loaded="Window_Loaded" WindowStyle="None"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="RowStyleWithAlternation" TargetType="DataGridRow">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="#3B4D61"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="ContextMenu" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFD0D0E0"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ef9d10"/>
+                    <Setter Property="Foreground" Value="#3B4D61"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Validation.HasError" Value="True" >
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Red" ShadowDepth="0" BlurRadius="20" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="Red" />
+                    <Setter Property="Foreground" Value="Blue" />
+                    <Setter Property="FontSize" Value="12" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
@@ -71,7 +103,7 @@
                 </Button.Style>
             </Button>
         </Grid>
-        <DataGrid x:Name="dgvJenis" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="600" Margin="200,35,0,0" ColumnWidth="*" Grid.Row="2" CanUserAddRows="False" SelectionChanged="DgvProdusen_SelectionChanged" Grid.ColumnSpan="2"/>
+        <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvJenis" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="600" Margin="200,35,0,0" ColumnWidth="*" Grid.Row="2" CanUserAddRows="False" SelectionChanged="DgvProdusen_SelectionChanged" Grid.ColumnSpan="2"/>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="0,375,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
