@@ -207,12 +207,14 @@ namespace Project_PCS
             rP.IsChecked = false;
             keyword.Text = "";
             keyword.Visibility = Visibility.Visible;
+            label_nama.Visibility = Visibility.Visible;
         }
 
         private void Rjk_Checked(object sender, RoutedEventArgs e)
         {
             canvas.Visibility = Visibility.Visible;
             keyword.Visibility = Visibility.Hidden;
+            label_nama.Visibility = Visibility.Hidden;
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)

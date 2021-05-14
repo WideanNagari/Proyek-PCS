@@ -64,40 +64,47 @@ namespace Project_PCS
 
         private void Beli_Click(object sender, RoutedEventArgs e)
         {
-            conn.Open();
-            using (OracleTransaction trans = conn.BeginTransaction())
+            if(customer.Content.ToString()!="" && cbmember.SelectedIndex!=-1 && subtotal.Content.ToString()!="0")
             {
-                try
+                conn.Open();
+                using (OracleTransaction trans = conn.BeginTransaction())
                 {
-                    int total = int.Parse(subtotal.Content.ToString());
-                    string nota = "";
-                    string id_customer = dtCustomer.Rows[dgvCustomer.SelectedIndex][0].ToString();
+                    try
+                    {
+                        int total = int.Parse(subtotal.Content.ToString());
+                        string nota = "";
+                        string id_customer = dtCustomer.Rows[dgvCustomer.SelectedIndex][0].ToString();
 
-                    OracleCommand cmd = new OracleCommand($"INSERT INTO PENJUALAN_MEMBER VALUES(" +
-                        $"'{nota}', SYSDATE, '{idKaryawan}', '{id_customer}', '{cbmember.SelectedValue}', '{total}', 1)", conn);
-                    cmd.ExecuteNonQuery();
+                        OracleCommand cmd = new OracleCommand($"INSERT INTO PENJUALAN_MEMBER VALUES(" +
+                            $"'{nota}', SYSDATE, '{idKaryawan}', '{id_customer}', '{cbmember.SelectedValue}', '{total}', 1)", conn);
+                        cmd.ExecuteNonQuery();
 
-                    trans.Commit();
-                    conn.Close();
-                    MessageBox.Show("Bayar sukses");
+                        trans.Commit();
+                        conn.Close();
+                        MessageBox.Show("Bayar sukses");
 
-                    cmd = new OracleCommand("select max(nota_jual_member) from penjualan_member where nota_jual_member like '%'||to_char(sysdate,'ddmmyy')||'%'", conn);
-                    conn.Open();
-                    string noNota = cmd.ExecuteScalar().ToString();
-                    conn.Close();
-                    Nota n = new Nota("Nota Penjualan Membership", this, noNota);
-                    this.Hide();
-                    n.Show();
+                        cmd = new OracleCommand("select max(nota_jual_member) from penjualan_member where nota_jual_member like '%'||to_char(sysdate,'ddmmyy')||'%'", conn);
+                        conn.Open();
+                        string noNota = cmd.ExecuteScalar().ToString();
+                        conn.Close();
+                        Nota n = new Nota("Nota Penjualan Membership", this, noNota);
+                        this.Hide();
+                        n.Show();
 
-                    reset();
+                        reset();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        trans.Rollback();
+                        conn.Close();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    trans.Rollback();
-                    conn.Close();
-                }
+            } else
+            {
+                MessageBox.Show("Form mohon diisi terlebih dahulu");
             }
+            
         }
 
         private void Hapus_Click(object sender, RoutedEventArgs e)

@@ -185,3 +185,13 @@ C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Pr
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.GenerateResource.cache
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Project PCS.csproj.CopyComplete
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Report.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Trans.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Nota.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransJualMember.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Report.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Menu_Trans.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Nota.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransJualMember.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Nota.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Nota.baml
