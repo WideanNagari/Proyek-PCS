@@ -38,24 +38,17 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_Customer as \"ID\", nama_Customer as \"Nama Customer\", " +
+            da = new OracleDataAdapter("select id_Customer as \"ID\", nama_Customer as \"Nama Customer\", " +
                 "(case jk_Customer" +
                 "   when 'M' then 'Laki-Laki'" +
                 "   when 'F' then 'Perempuan'" +
                 "end) as \"Jenis Kelamin\", " +
                 "NoTelp_customer as \"No Telepon\", alamat_customer as \"Alamat\" " +
-                "from customer order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+                "from customer order by 1",conn);
             da.Fill(ds);
             dgvCustomer.ItemsSource = ds.DefaultView;
             conn.Close();
+            kolom();
         }
 
         private void reset()
@@ -161,26 +154,18 @@ namespace Project_PCS
                     }
 
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_Customer as \"ID\", nama_Customer as \"Nama Customer\", " +
+                    da = new OracleDataAdapter("select id_Customer as \"ID\", nama_Customer as \"Nama Customer\", " +
                         "(case jk_Customer" +
                         "   when 'M' then 'Laki-Laki'" +
                         "   when 'F' then 'Perempuan'" +
                         "end) as \"Jenis Kelamin\", " +
                         "NoTelp_customer as \"No Telepon\", alamat_customer as \"Alamat\" " +
-                        "from customer where " +where+
-                        " order by 1";
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        "from customer where " + where +
+                        " order by 1",conn);
                     da.Fill(ds);
                     dgvCustomer.ItemsSource = ds.DefaultView;
                     conn.Close();
+                    kolom();
                     caricari = 1;
                 }
                 catch (Exception ex)
@@ -419,5 +404,14 @@ namespace Project_PCS
             this.Close();
             mma.Show();
         }
+        private void kolom()
+        {
+            dgvCustomer.Columns[0].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[2].Width = new DataGridLength(0.7, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[3].Width = new DataGridLength(0.8, DataGridLengthUnitType.Star);
+            dgvCustomer.Columns[4].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+        }
+        private void DgvCustomer_Loaded(object sender, RoutedEventArgs e) { kolom(); }
     }
 }

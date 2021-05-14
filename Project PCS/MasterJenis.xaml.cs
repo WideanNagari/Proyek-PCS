@@ -42,15 +42,7 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_jenis as \"ID\", nama_jenis as \"Nama Jenis\" from jenis_alat_musik order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+            da = new OracleDataAdapter("select id_jenis as \"ID\", nama_jenis as \"Nama Jenis\" from jenis_alat_musik order by 1",conn);
             da.Fill(ds);
             dgvJenis.ItemsSource = ds.DefaultView;
             conn.Close();
@@ -100,18 +92,10 @@ namespace Project_PCS
             try
             {
                 ds = new DataTable();
-                OracleCommand cmd = new OracleCommand();
-                da = new OracleDataAdapter();
-
-                cmd.Connection = conn;
-                cmd.CommandText = "select id_jenis as \"ID\", nama_jenis as \"Nama Jenis\" " +
+                da = new OracleDataAdapter("select id_jenis as \"ID\", nama_jenis as \"Nama Jenis\" " +
                     "from jenis_alat_musik " +
                     "where upper(nama_jenis) like '%" + keyword.Text.ToUpper() + "%' " +
-                    "order by 1";
-                conn.Close();
-                conn.Open();
-                cmd.ExecuteReader();
-                da.SelectCommand = cmd;
+                    "order by 1",conn);
                 da.Fill(ds);
                 dgvJenis.ItemsSource = ds.DefaultView;
                 conn.Close();

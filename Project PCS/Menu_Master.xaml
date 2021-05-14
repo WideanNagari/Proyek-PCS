@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Menu_Master" Height="500" Width="900"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>

@@ -20,7 +20,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="dgvMusik" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" SelectionChanged="DgvMusik_SelectionChanged"/>
+            <DataGrid x:Name="dgvMusik" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" SelectionChanged="DgvMusik_SelectionChanged" Loaded="DgvMusik_Loaded"/>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.6*"/>
@@ -53,7 +53,7 @@
                 <Button Content="Add" x:Name ="addA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="27" Grid.Row="0" Grid.Column="4" FontSize="16" Margin="10,3,0,0" Click="AddA_Click"/>
                 <Button Content="Reset" x:Name ="resetA" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="27" Grid.Row="0" Grid.Column="5" FontSize="16" Margin="0,3,0,0" Click="ResetA_Click"/>
             </Grid>
-            <DataGrid x:Name="dgvAksesoris" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="4" CanUserAddRows="False" SelectionChanged="DgvAksesoris_SelectionChanged"/>
+            <DataGrid x:Name="dgvAksesoris" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="4" CanUserAddRows="False" SelectionChanged="DgvAksesoris_SelectionChanged" Loaded="DgvAksesoris_Loaded"/>
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -117,7 +117,7 @@
             </Grid.RowDefinitions>
             <Button Content="Back" x:Name ="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="27" Grid.Row="0" FontSize="16" Margin="310,7,0,0" Click="Back_Click"/>
             <Button Content="Beli" x:Name ="beli" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="27" Grid.Row="7" FontSize="16" Margin="10,7,0,0" Click="Beli_Click"/>
-            <DataGrid x:Name="dgvTrans" HorizontalAlignment="Left" Height="390" VerticalAlignment="Top" Width="400" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="2" CanUserAddRows="False"/>
+            <DataGrid x:Name="dgvTrans" HorizontalAlignment="Left" Height="390" VerticalAlignment="Top" Width="395" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="2" CanUserAddRows="False" Loaded="DgvTrans_Loaded"/>
             <Label Content="Keranjang Belanja" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0" FontSize="16"/>
 
             <Grid Grid.Row="3">
@@ -126,7 +126,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Content="Hapus" x:Name ="hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Height="27" Grid.Row="0" Grid.Column="0" FontSize="16" Margin="10,7,0,0" Click="Hapus_Click"/>
-                <Button Content="Bersihkan" x:Name ="clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="190" Height="27" Grid.Row="0" Grid.Column="1" FontSize="16" Margin="10,7,0,0" Click="Clear_Click"/>
+                <Button Content="Bersihkan" x:Name ="clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Height="27" Grid.Row="0" Grid.Column="1" FontSize="16" Margin="10,7,0,0" Click="Clear_Click"/>
             </Grid>
             <Grid Grid.Row="5">
                 <Grid.RowDefinitions>

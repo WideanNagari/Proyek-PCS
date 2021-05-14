@@ -37,20 +37,13 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_Supplier as \"ID\", nama_Supplier as \"Nama Supplier\", " +
+            da = new OracleDataAdapter("select id_Supplier as \"ID\", nama_Supplier as \"Nama Supplier\", " +
                 "cp_supplier as \"Contact Person\", pn_supplier as \"No Telepon\", alamat_supplier as \"Alamat\" " +
-                "from supplier order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+                "from supplier order by 1",conn);
             da.Fill(ds);
             dgvSupplier.ItemsSource = ds.DefaultView;
             conn.Close();
+            kolom();
         }
 
         private void reset()
@@ -256,21 +249,14 @@ namespace Project_PCS
                 try
                 {
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_Supplier as \"ID\", nama_Supplier as \"Nama Supplier\", " +
+                    da = new OracleDataAdapter("select id_Supplier as \"ID\", nama_Supplier as \"Nama Supplier\", " +
                         "cp_supplier as \"Contact Person\", pn_supplier as \"No Telepon\", alamat_supplier as \"Alamat\" " +
-                        "from supplier where " +where+
-                        " order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        "from supplier where " + where +
+                        " order by 1",conn);
                     da.Fill(ds);
                     dgvSupplier.ItemsSource = ds.DefaultView;
                     conn.Close();
+                    kolom();
                 }
                 catch (Exception ex)
                 {
@@ -373,5 +359,15 @@ namespace Project_PCS
             this.Close();
             mma.Show();
         }
+        private void kolom()
+        {
+            dgvSupplier.Columns[0].Width = new DataGridLength(0.6, DataGridLengthUnitType.Star);
+            dgvSupplier.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvSupplier.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvSupplier.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvSupplier.Columns[4].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+        }
+
+        private void DgvSupplier_Loaded(object sender, RoutedEventArgs e) { kolom(); }
     }
 }

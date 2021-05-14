@@ -27,7 +27,6 @@ namespace Project_PCS
         DataTable ds;
         OracleDataAdapter da;
         List<string> listx;
-        int inserts;
         string newPath;
         int caricari;
 
@@ -43,25 +42,12 @@ namespace Project_PCS
         private void loadData()
         {
             ds = new DataTable();
-            OracleCommand cmd = new OracleCommand();
-            da = new OracleDataAdapter();
-            dgvAksesoris.Columns.Clear();
-            cmd.Connection = conn;
-            cmd.CommandText = "select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
+            da = new OracleDataAdapter("select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
                 "stok as \"Stok\", harga as \"Harga\", keterangan as \"Keterangan\"  " +
-                "from aksesoris order by 1";
-            conn.Close();
-            conn.Open();
-            cmd.ExecuteReader();
-            da.SelectCommand = cmd;
+                "from aksesoris order by 1", conn);
             da.Fill(ds);
-            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-            Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-            newC.Binding = bind;
             dgvAksesoris.ItemsSource = ds.DefaultView;
-            dgvAksesoris.Columns.Insert(3, newC);
-            dgvAksesoris.Columns.RemoveAt(4);
-            conn.Close();
+            kolom();
         }
         private void reset()
         {
@@ -89,8 +75,7 @@ namespace Project_PCS
             id2.IsReadOnly = true;
             source.IsReadOnly = true;
             Images.Source = null;
-
-            inserts = 1;
+            
             stok.SelectedIndex = -1;
             harga.SelectedIndex = -1;
         }
@@ -228,7 +213,6 @@ namespace Project_PCS
         {
             if (dgvAksesoris.SelectedIndex != -1)
             {
-                inserts = 0;
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = "select Nama_File from aksesoris where id_aksesoris = :id";
@@ -436,26 +420,13 @@ namespace Project_PCS
                 try
                 {
                     ds = new DataTable();
-                    OracleCommand cmd = new OracleCommand();
-                    da = new OracleDataAdapter();
-                    dgvAksesoris.Columns.Clear();
-                    cmd.Connection = conn;
-                    cmd.CommandText = "select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
+                    da = new OracleDataAdapter("select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
                         "stok as \"Stok\", harga as \"Harga\", keterangan as \"Keterangan\"  " +
                         "from aksesoris where " + where +
-                        " order by 1";
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteReader();
-                    da.SelectCommand = cmd;
+                        " order by 1",conn);
                     da.Fill(ds);
-                    DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-                    Binding bind = new Binding("Harga") { StringFormat = "Rp. {0:N0}" };
-                    newC.Binding = bind;
                     dgvAksesoris.ItemsSource = ds.DefaultView;
-                    dgvAksesoris.Columns.Insert(3, newC);
-                    dgvAksesoris.Columns.RemoveAt(4);
-                    conn.Close();
+                    kolom();
                     caricari = 1;
                 }
                 catch (Exception ex)
@@ -544,5 +515,17 @@ namespace Project_PCS
             this.Close();
             mma.Show();
         }
+
+        private void kolom()
+        {
+            dgvAksesoris.Columns[3].ClipboardContentBinding.StringFormat = "Rp. {0:N0}";
+            dgvAksesoris.Columns[0].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[1].Width = new DataGridLength(2.5, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[2].Width = new DataGridLength(0.5, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvAksesoris.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+
+        private void DgvAksesoris_Loaded(object sender, RoutedEventArgs e) { kolom(); }
     }
 }
