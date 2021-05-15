@@ -5,14 +5,215 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="ReportMembership" Height="700" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="ReportMembership" Height="700" Width="1200" 
+        Loaded="Window_Loaded" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8"
+                    Padding="2">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
+        <Grid Background="#3B4D61" 
+              Grid.ColumnSpan="2"
+              MouseDown="Grid_MouseDown">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="REPORT"
+                    Grid.Column="1"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium"
+                    Name="btn_report"
+                    Click="Btn_report_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Penjualan"
+                    Foreground="White"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="2"
+                    Name="btn_report_penjualan"
+                    Click="Btn_report_penjualan_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Pembelian"
+                        FontSize="10"
+                    Foreground="White"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="3"
+                    Name="btn_report_pembelian"
+                    Click="Btn_report_pembelian_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Membership"
+                        FontSize="10"
+                    Foreground="White"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="4"
+                    Name="btn_report_member">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Log Out"
+                        Foreground="White"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="12"
+                    Grid.ColumnSpan="2"
+                    Name="LogOut"
+                    Click="LogOut_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="75" Height="15"
+                                    CornerRadius="8"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -42,11 +243,34 @@
             <ComboBox x:Name="subs" HorizontalAlignment="Left" Margin="210,5,0,0" VerticalAlignment="Top" Width="100" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"/>
             <RadioButton x:Name="ractive" Content="Aktif" HorizontalAlignment="Left" Margin="5,7,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" FontSize="14"/>
             <RadioButton x:Name="rnon" Content="Non-Aktif" HorizontalAlignment="Left" Margin="120,7,0,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="3" FontSize="14"/>
-            <TextBox x:Name="subtotal" HorizontalAlignment="Left" Height="22"  Margin="3,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" TextChanged="Subtotal_TextChanged"/>
-            <Button x:Name="tampil" Content="Tampilkan" HorizontalAlignment="Left" Margin="5,6,0,0" VerticalAlignment="Top" Width="305" Height="25" Grid.Row="3" Grid.Column="3" Grid.RowSpan="3" Click="Tampil_Click"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="subtotal" HorizontalAlignment="Left" Height="22"  Margin="3,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" TextChanged="Subtotal_TextChanged"/>
+            <Button x:Name="tampil" Content="Tampilkan" HorizontalAlignment="Left" Margin="5,6,0,0" VerticalAlignment="Top" Width="305" Height="25" Grid.Row="3" Grid.Column="3" Grid.RowSpan="3" Click="Tampil_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005254"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="1100,0,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="Button_Click"/>
-        <Label Content="Filter" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="16"/>
-        <Viewer:CrystalReportsViewer Name="cReport" HorizontalAlignment="Left" Height="490" Margin="10,0,0,0" VerticalAlignment="Top" Width="1174" Grid.Row="2"/>
+        <Label Content="Filter" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" FontWeight="Bold" FontSize="16"/>
+        <Viewer:CrystalReportsViewer Name="cReport" HorizontalAlignment="Left" Height="490" Margin="10,0,0,0" VerticalAlignment="Top" Width="1174" Grid.Row="3"/>
     </Grid>
 </Window>

@@ -30,9 +30,43 @@ namespace Project_PCS
             w_menu = wm;
         }
 
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_menu.Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_report_penjualan_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPenjualan rj = new ReportPenjualan(w_menu);
+            this.Close();
+            rj.Show();
+        }
+
+        private void Btn_report_pembelian_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPembelian rb = new ReportPembelian(w_menu);
+            this.Close();
+            rb.Show();
+        }
+
+        private void Btn_report_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Report mr = new Menu_Report(w_menu);
+            this.Close();
+            mr.Show();
+        }
+
         DataTable dtcustomer, dtkaryawan, dtmember;
         List<string> listx;
-        private void Button_Click(object sender, RoutedEventArgs e) { this.Close(); w_menu.Show(); }
         private string katabaru(string kata)
         {
             string kata2 = "";

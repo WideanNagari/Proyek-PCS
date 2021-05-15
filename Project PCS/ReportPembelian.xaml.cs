@@ -29,9 +29,44 @@ namespace Project_PCS
             conn = MainWindow.conn;
             w_menu = wm;
         }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_menu.Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_report_penjualan_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPenjualan rj = new ReportPenjualan(w_menu);
+            this.Close();
+            rj.Show();
+        }
+
+        private void Btn_report_member_Click(object sender, RoutedEventArgs e)
+        {
+            ReportMembership rb = new ReportMembership(w_menu);
+            this.Close();
+            rb.Show();
+        }
+
+        private void Btn_report_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Report mr = new Menu_Report(w_menu);
+            this.Close();
+            mr.Show();
+        }
+
         DataTable dtsupplier, dtkaryawan;
         List<string> listx;
-        private void Button_Click(object sender, RoutedEventArgs e) { this.Close(); w_menu.Show(); }
         private string katabaru(string kata)
         {
             string kata2 = "";
@@ -101,6 +136,7 @@ namespace Project_PCS
         }
 
         OracleDataAdapter da;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cReport.Owner = Window.GetWindow(this);
