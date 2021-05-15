@@ -26,7 +26,39 @@ namespace Project_PCS
             w_menu = wm;
         }
 
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_menu.Show();
+        }
 
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
+        private void Btn_report_penjualan_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPenjualan rj = new ReportPenjualan(w_menu);
+            this.Close();
+            rj.Show();
+        }
+
+        private void Btn_report_pembelian_Click(object sender, RoutedEventArgs e)
+        {
+            ReportPembelian rb = new ReportPembelian(w_menu);
+            this.Close();
+            rb.Show();
+        }
+
+        private void Btn_report_member_Click(object sender, RoutedEventArgs e)
+        {
+            ReportMembership rm = new ReportMembership(w_menu);
+            this.Close();
+            rm.Show();
+        }
     }
 }

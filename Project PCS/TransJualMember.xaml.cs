@@ -25,13 +25,13 @@ namespace Project_PCS
         DataTable dtMember, dtCustomer;
         OracleDataAdapter daMember, daCustomer;
         string idKaryawan;
-        Menu menu;
+        Menu w_menu;
         public TransJualMember(Menu menus)
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
-            menu = menus;
+            w_menu = menus;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,10 +41,39 @@ namespace Project_PCS
             reset();
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            menu.Show();
+            w_menu.Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_trans_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Trans mt = new Menu_Trans(w_menu);
+            this.Close();
+            mt.Show();
+        }
+
+        private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
+        {
+            TransJual tj = new TransJual(w_menu);
+            this.Close();
+            tj.Show();
+        }
+
+        private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
+        {
+            TransBeli tb = new TransBeli(w_menu);
+            this.Close();
+            tb.Show();
         }
 
         private void loadTgl()
@@ -187,6 +216,7 @@ namespace Project_PCS
             dgvCustomer.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
         private void DgvCustomer_Loaded(object sender, RoutedEventArgs e) { kolom(); }
+
 
         private void loadData()
         {

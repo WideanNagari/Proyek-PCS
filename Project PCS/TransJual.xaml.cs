@@ -30,14 +30,51 @@ namespace Project_PCS
         string idMember, namaMember;
         int diskon, promo;
         string idKaryawan;
-        Menu menu;
+        Menu w_menu;
         public TransJual(Menu m)
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
-            menu = m;
+           w_menu = m;
         }
+
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_menu.Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_trans_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Trans mt = new Menu_Trans(w_menu);
+            this.Close();
+            mt.Show();
+        }
+
+        private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
+        {
+            TransJualMember tjm = new TransJualMember(w_menu);
+            this.Close();
+            tjm.Show();
+        }
+
+        private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
+        {
+            TransBeli tb = new TransBeli(w_menu);
+            this.Close();
+            tb.Show();
+        }
+
+
         private void loadData()
         {
             daam = new OracleDataAdapter("select id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
@@ -437,12 +474,6 @@ namespace Project_PCS
             jumlah.Content = "0";
             subtotal.Content = "0";
             kolom3();
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            menu.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

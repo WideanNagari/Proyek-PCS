@@ -26,6 +26,39 @@ namespace Project_PCS
             w_menu = wm;
         }
 
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            w_menu.Show();
+        }
 
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
+        {
+            TransJualMember tjm = new TransJualMember(w_menu);
+            this.Close();
+            tjm.Show();
+        }
+
+        private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
+        {
+            TransBeli tb = new TransBeli(w_menu);
+            this.Close();
+            tb.Show();
+        }
+
+        private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
+        {
+            TransJual tj = new TransJual(w_menu);
+            this.Close();
+            tj.Show();
+        }
     }
 }

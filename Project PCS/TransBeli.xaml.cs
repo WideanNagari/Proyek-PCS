@@ -35,6 +35,41 @@ namespace Project_PCS
             idKaryawan = "KAR001";
             menu = m;
         }
+        private void LogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            menu.Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+
+        private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
+        {
+            TransJualMember tjm = new TransJualMember(menu);
+            this.Close();
+            tjm.Show();
+        }
+
+        private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
+        {
+            TransJual tj = new TransJual(menu);
+            this.Close();
+            tj.Show();
+        }
+
+        private void Btn_trans_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Trans mt = new Menu_Trans(menu);
+            this.Close();
+            mt.Show();
+        }
+
         private void loadData()
         {
             dgvMusik.Columns.Clear();
@@ -383,6 +418,8 @@ namespace Project_PCS
         private void DgvAksesoris_Loaded(object sender, RoutedEventArgs e) { kolom2(); }
 
         private void DgvTrans_Loaded(object sender, RoutedEventArgs e) { kolom3(); }
+
+
 
         private void DgvAksesoris_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

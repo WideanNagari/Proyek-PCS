@@ -24,7 +24,7 @@ namespace Project_PCS
         OracleConnection conn;
         DataTable ds;
         OracleDataAdapter da;
-        int caricari, inserts;
+        int caricari;
         List<string> listx;
         Menu w_utama;
         public MasterMember(Menu wm)
@@ -81,7 +81,7 @@ namespace Project_PCS
             keyword.Text = "";
 
             id.IsReadOnly = false;
-            inserts = 1;
+            //inserts = 1;
 
             getId();
         }
@@ -303,7 +303,7 @@ namespace Project_PCS
         {
             if (dgvMember.SelectedIndex != -1)
             {
-                inserts = 0;
+                //inserts = 0;
                 insert.IsEnabled = false;
                 update.IsEnabled = true;
                 delete.IsEnabled = true;

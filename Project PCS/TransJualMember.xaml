@@ -6,32 +6,335 @@
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
         Title="TransJualMember" Height="450" 
-        Width="1100" Loaded="Window_Loaded">
+        Width="1100" Loaded="Window_Loaded"
+        WindowStyle="None"
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8"
+                    Padding="2">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="RowStyleWithAlternation" TargetType="DataGridRow">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Background" Value="#3B4D61"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="ContextMenu" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FFD0D0E0"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ef9d10"/>
+                    <Setter Property="Foreground" Value="#3B4D61"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Validation.HasError" Value="True" >
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="Red" ShadowDepth="0" BlurRadius="20" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="Red" />
+                    <Setter Property="Foreground" Value="Blue" />
+                    <Setter Property="FontSize" Value="12" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <DataGrid x:Name="dgvCustomer" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="640" Margin="10,127,0,0" ColumnWidth="*" Grid.Column="0" CanUserAddRows="False" SelectionChanged="DgvCustomer_SelectionChanged" Loaded="DgvCustomer_Loaded"/>
-        <Label Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16" Grid.ColumnSpan="3"/>
-        <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,76,0,0" FontSize="14" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
-        <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="103,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350"/>
-        <Button Content="Cari" x:Name="cari2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Margin="500,48,0,0" Click="Cari2_Click"/>
-        <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,43,0,0" Grid.Column="0" FontSize="14"/>
-        <RadioButton x:Name="rnama" Content="Nama Customer" HorizontalAlignment="Left" Margin="253,51,0,0" VerticalAlignment="Top" Grid.Row="0" FontSize="12"/>
-        <RadioButton x:Name="rnotelp" Content="Nomer Telepon" HorizontalAlignment="Left" Margin="103,51,0,0" VerticalAlignment="Top" Grid.Row="0" FontSize="12"/>
-        <Button Content="Back" x:Name ="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Height="27" Grid.Row="0" FontSize="16" Margin="958,11,0,0" Click="Back_Click"/>
-        <Button Content="Beli" x:Name ="beli" HorizontalAlignment="Left" VerticalAlignment="Top" Width="315" Height="24" FontSize="16" Margin="669,307,0,0" Click="Beli_Click"/>
-        <Button Content="Hapus" x:Name ="hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="315" Height="26" FontSize="16" Margin="669,353,0,0" Click="Hapus_Click"/>
-        <Label Content="Total Belanja :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="669,240,0,0"  FontSize="14" FontWeight="Bold"/>
-        <Label Content="Karyawan :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="762,79,0,0"  FontSize="14"/>
-        <Label Content="Customer :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="669,121,0,0"  FontSize="14"/>
-        <Label Content="Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="676,155,0,0" FontSize="14"/>
-        <Label Content="Rp." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="786,242,0,0"  FontSize="20" FontWeight="Bold"/>
-        <Label Content="0" x:Name="subtotal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="824,242,0,0"  FontSize="20" FontWeight="Bold" Width="160"/>
-        <Label Content="abc" x:Name="namaKar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="851,79,0,0"  FontSize="14" Width="207"/>
-        <Label Content="Tanggal :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="770,51,0,0"  FontSize="14"/>
-        <Label Content="Customer -" x:Name="customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="770,121,0,0"  FontSize="14" Width="205" Height="30"/>
-        <Label Content="SYSDATE -" x:Name="tgl_hari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="851,50,0,0" FontSize="14" Width="204" Height="29"/>
-        <ComboBox x:Name="cbmember" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="770,156,0,0"  FontSize="14" Width="274" Height="30" SelectionChanged="Cbmember_SelectionChanged"/>
-        <Label Content="DISKON: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="681,207,0,0"  FontSize="14" Width="77" Height="30"/>
-        <TextBox x:Name="ket_diskon" IsReadOnly="True" IsEnabled="False" HorizontalAlignment="Left" Height="23"  Margin="770,212,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
-        <Label Content="%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="808,207,0,0"  FontSize="14" Width="50" Height="30"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#3B4D61" 
+              Grid.ColumnSpan="2"
+              MouseDown="Grid_MouseDown">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="TRANSAKSI"
+                       Grid.Column="1"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium" Margin="0,0,10,0"
+                    Name="btn_trans" 
+                    Click="Btn_trans_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Beli"
+                    Foreground="White"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="2"
+                    Name="btn_trans_beli" Click="Btn_trans_beli_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Jual"
+                        FontSize="10"
+                    Foreground="White"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="3"
+                    Name="btn_trans_jual" Click="Btn_trans_jual_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#3B4D61"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Jual Member"
+                        FontSize="10"
+                    Foreground="White"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="4"
+                    Name="btn_jual_member">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#ef9d10"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Content="Log Out"
+                        Foreground="White"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="12"
+                    Grid.ColumnSpan="2"
+                    Name="LogOut"
+                    Click="LogOut_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="75" Height="15"
+                                    CornerRadius="8"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="dgvCustomer" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="640" Margin="10,127,0,0" ColumnWidth="*" Grid.Column="0" CanUserAddRows="False" SelectionChanged="DgvCustomer_SelectionChanged" Loaded="DgvCustomer_Loaded"/>
+            <Border
+                Background="Wheat"
+                Margin="14,15,450,309"
+                CornerRadius="15"/>
+            <Label Content="Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,15,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
+            <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,75,0,0" FontSize="14"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="103,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350"/>
+            <Button Content="Search" x:Name="cari2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" FontSize="16" Margin="478,45,0,0" Click="Cari2_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005254"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,45,0,0" Grid.Column="0" FontSize="14"/>
+            <RadioButton x:Name="rnama" Content="Nama Customer" HorizontalAlignment="Left" Margin="253,51,0,0" VerticalAlignment="Top" Grid.Row="0" FontSize="12"/>
+            <RadioButton x:Name="rnotelp" Content="Nomer Telepon" HorizontalAlignment="Left" Margin="103,51,0,0" VerticalAlignment="Top" Grid.Row="0" FontSize="12"/>
+            <Border
+                Background="Wheat"
+                Margin="751,45,42,309"
+                CornerRadius="25"/>
+            <Border Grid.Column="0"
+                Background="#3B4D61"
+                Margin="669,121,42,146"
+                CornerRadius="10"/>
+            <Button Content="Beli" x:Name ="beli" HorizontalAlignment="Left" VerticalAlignment="Top" Width="363" Height="27" FontSize="16" Margin="681,307,0,0" Click="Beli_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005254"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Reset" x:Name ="hapus" HorizontalAlignment="Left" VerticalAlignment="Top" Width="365" Height="26" FontSize="16" Margin="679,353,0,0" Click="Hapus_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label Foreground="White" Content="Total Belanja :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="681,232,0,0"  FontSize="14" FontWeight="Bold"/>
+            <Label Content="Karyawan :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="762,79,0,0"  FontSize="14"/>
+            <Label Foreground="White" Content="Customer :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="681,126,0,0"  FontSize="14"/>
+            <Label Foreground="White" Content="Member :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="689,155,0,0" FontSize="14"/>
+            <Label Foreground="White" Content="Rp." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="788,234,0,0"  FontSize="20" FontWeight="Bold"/>
+            <Label Foreground="White" Content="0" x:Name="subtotal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="834,234,0,0"  FontSize="20" FontWeight="Bold" Width="160"/>
+            <Label Content="abc" x:Name="namaKar" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="851,79,0,0"  FontSize="14" Width="207"/>
+            <Label Content="Tanggal :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="770,51,0,0"  FontSize="14"/>
+            <Label Foreground="White" Content="Customer -" x:Name="customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="779,127,0,0"  FontSize="14" Width="205" Height="30"/>
+            <Label Content="SYSDATE -" x:Name="tgl_hari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="851,50,0,0" FontSize="14" Width="204" Height="29"/>
+            <ComboBox x:Name="cbmember" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="779,156,0,0"  FontSize="14" Width="265" Height="30" SelectionChanged="Cbmember_SelectionChanged"/>
+            <Label Foreground="White" Content="DISKON: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="695,197,0,0"  FontSize="14" Width="77" Height="30"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="ket_diskon" IsReadOnly="True" IsEnabled="False" HorizontalAlignment="Left" Height="23"  Margin="776,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
+            <Label Foreground="White" Content="%" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="814,197,0,0"  FontSize="14" Width="50" Height="30"/>
+        </Grid>
     </Grid>
 </Window>

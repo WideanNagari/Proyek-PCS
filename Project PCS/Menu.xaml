@@ -7,23 +7,8 @@
         mc:Ignorable="d"
         Title="Menu" Height="460" Width="800">
     <Grid>
-        <Button x:Name="alat_musik" Content="Master Alat Musik" HorizontalAlignment="Left" Margin="39,22,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Alat_musik_Click"/>
-        <Button x:Name="produsen" Content="Master Produsen" HorizontalAlignment="Left" Margin="39,72,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Produsen_Click"/>
-        <Button x:Name="jenis" Content="Master Jenis Alat Musik" HorizontalAlignment="Left" Margin="39,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Jenis_Click"/>
-        <Button x:Name="promo" Content="Master Promo" HorizontalAlignment="Left" Margin="39,170,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Promo_Click"/>
-        <Button x:Name="customer" Content="Master Customer" HorizontalAlignment="Left" Margin="39,220,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Customer_Click"/>
-        <Button x:Name="karyawan" Content="Master Karyawan" HorizontalAlignment="Left" Margin="39,271,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Karyawan_Click"/>
-        <Button x:Name="supplier" Content="Master Supplier" HorizontalAlignment="Left" Margin="39,323,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Supplier_Click"/>
-        <Button x:Name="member" Content="Master Member" HorizontalAlignment="Left" Margin="200,23,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Member_Click"/>
-        <Button x:Name="aksesoris" Content="Master Aksesoris" HorizontalAlignment="Left" Margin="200,73,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Aksesoris_Click"/>
-        <Button x:Name="transjual" Content="Transaksi Penjualan" HorizontalAlignment="Left" Margin="200,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transjual_Click"/>
-        <Button x:Name="transbeli" Content="Transaksi Pembelian" HorizontalAlignment="Left" Margin="200,170,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Transbeli_Click"/>
-        <Button x:Name="reportjual" Content="Report Penjualan" HorizontalAlignment="Left" Margin="200,220,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Reportjual_Click"/>
-        <Button x:Name="reportbeli" Content="Report Pembelian" HorizontalAlignment="Left" Margin="200,270,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Reportbeli_Click"/>
-        <Button x:Name="reportmember" Content="Report Membership" HorizontalAlignment="Left" Margin="200,323,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="Reportmember_Click"/>
-        <Button x:Name="btnMaster" Content="Master" HorizontalAlignment="Left" Margin="582,120,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnMaster_Click"/>
-        <Button x:Name="btnTransaksi" Content="Transaksi" HorizontalAlignment="Left" Margin="582,182,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnTransaksi_Click"/>
-        <Button x:Name="btnReport" Content="Report" HorizontalAlignment="Left" Margin="582,248,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnReport_Click"/>
-        <Button x:Name="trans_member" Content="Transaksi Penjualan Member" HorizontalAlignment="Left" Margin="361,120,0,0" VerticalAlignment="Top" Width="170" Height="35" Click="Trans_member_Click"/>
+        <Button x:Name="btnMaster" Content="Master" HorizontalAlignment="Left" Margin="100,194,0,0" VerticalAlignment="Top" Width="140" Height="35" Click="BtnMaster_Click"/>
+        <Button x:Name="btnTransaksi" Content="Transaksi" HorizontalAlignment="Left" Margin="330,194,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnTransaksi_Click"/>
+        <Button x:Name="btnReport" Content="Report" HorizontalAlignment="Left" Margin="579,194,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnReport_Click"/>
     </Grid>
 </Window>

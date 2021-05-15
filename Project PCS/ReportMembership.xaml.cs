@@ -21,16 +21,18 @@ namespace Project_PCS
     /// </summary>
     public partial class ReportMembership : Window
     {
+        Menu w_menu;
         OracleConnection conn;
-        public ReportMembership()
+        public ReportMembership(Menu wm)
         {
             InitializeComponent();
             conn = MainWindow.conn;
+            w_menu = wm;
         }
 
         DataTable dtcustomer, dtkaryawan, dtmember;
         List<string> listx;
-        private void Button_Click(object sender, RoutedEventArgs e) { this.Close(); }
+        private void Button_Click(object sender, RoutedEventArgs e) { this.Close(); w_menu.Show(); }
         private string katabaru(string kata)
         {
             string kata2 = "";
