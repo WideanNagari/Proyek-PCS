@@ -44,5 +44,15 @@ namespace Project_PCS
             this.Hide();
             mm.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //report
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //master
+        }
     }
 }

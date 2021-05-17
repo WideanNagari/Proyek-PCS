@@ -6,9 +6,129 @@
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
         Title="Menu" Height="460" Width="800">
-    <Grid>
-        <Button x:Name="btnMaster" Content="Master" HorizontalAlignment="Left" Margin="100,194,0,0" VerticalAlignment="Top" Width="140" Height="35" Click="BtnMaster_Click"/>
-        <Button x:Name="btnTransaksi" Content="Transaksi" HorizontalAlignment="Left" Margin="330,194,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnTransaksi_Click"/>
-        <Button x:Name="btnReport" Content="Report" HorizontalAlignment="Left" Margin="579,194,0,0" VerticalAlignment="Top" Width="139" Height="35" Click="BtnReport_Click"/>
+    <Grid RenderTransformOrigin="0.494,0.565">
+        <Grid x:Name="gridMenu" HorizontalAlignment="Left" Height="300" Margin="132,87,0,0" VerticalAlignment="Top" Width="299">
+
+            <Button Click="Button_Click_1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Path Fill="#FF3B4D61" >
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="150,0">
+                                            <ArcSegment IsLargeArc="True"
+                            Size="50, 50"
+                            Point="150, 300"
+                            SweepDirection="Counterclockwise" />
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                            <TextBlock Margin="10,120,170,128" FontSize="34" TextAlignment="Center" HorizontalAlignment="Center" Foreground="White" Width="123" FontFamily="Fonts/#Dosis">Master</TextBlock>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Path Fill="#FF6B7B8C" >
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="150,0">
+                                            <ArcSegment IsLargeArc="True"
+                            Size="50, 50"
+                            Point="150, 300"
+                            SweepDirection="Clockwise" />
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                            <TextBlock Margin="160,120,10,83.8" FontSize="34" TextAlignment="Center" HorizontalAlignment="Center" Foreground="White" Width="126" FontFamily="Fonts/#Dosis">Report</TextBlock>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Grid.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF3B4D61" Offset="1"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF3B4D61" Offset="0.979"/>
+                </RadialGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <StackPanel Margin="247,244,-303.4,-593.6" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="46.059"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Border Width="700"
+                Height="35"
+                Background="#EF9D10"
+                Margin="150,0,0,0"
+                CornerRadius="20"/>
+
+            <Border Width="700"
+                Height="35"
+                Background="#6B7B8C"
+                Margin="0,15,0,0"
+                CornerRadius="20"/>
+
+            <Border Width="700"
+                Height="35"
+                Background="#3B4D61"
+                Margin="75,15,0,0"
+                CornerRadius="20"/>
+        </StackPanel>
+        <StackPanel Margin="-96,-249,39.6,498.4" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="46.059"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Border Width="700"
+                Height="35"
+                Background="#EF9D10"
+                Margin="150,0,0,0"
+                CornerRadius="20"/>
+
+            <Border Width="700"
+                Height="35"
+                Background="#6B7B8C"
+                Margin="0,15,0,0"
+                CornerRadius="20"/>
+
+            <Border Width="700"
+                Height="35"
+                Background="#3B4D61"
+                Margin="75,15,0,0"
+                CornerRadius="20"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+            Margin="32,10,340.6,360.4">
+            <Image Width="60" Height="60"
+                Source="Images/music.png"
+                RenderOptions.BitmapScalingMode="Fant"/>
+            <TextBlock Text="ADMIN"
+                FontSize="40"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                FontFamily="Fonts/#Dosis"
+                Margin="30,0,30,0"/>
+            <Image Width="60" Height="60"
+                Source="Images/music.png"
+                RenderOptions.BitmapScalingMode="Fant"/>
+
+        </StackPanel>
     </Grid>
 </Window>
