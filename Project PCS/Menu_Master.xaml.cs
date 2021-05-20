@@ -19,11 +19,9 @@ namespace Project_PCS
     /// </summary>
     public partial class Menu_Master : Window
     {
-        Menu w_menu;
-        public Menu_Master(Menu wm)
+        public Menu_Master()
         {
             InitializeComponent();
-            w_menu = wm;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -37,68 +35,69 @@ namespace Project_PCS
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Menu m = new Menu();
+            m.Show();
         }
 
         private void Btn_member_Click(object sender, RoutedEventArgs e)
         {
-            MasterMember mm = new MasterMember(w_menu);
+            MasterMember mm = new MasterMember();
             this.Close();
             mm.Show();
         }
 
         private void Btn_promo_Click(object sender, RoutedEventArgs e)
         {
-            MasterPromo mpr = new MasterPromo(w_menu);
+            MasterPromo mpr = new MasterPromo();
             this.Close();
             mpr.Show();
         }
 
         private void Btn_jenis_Click(object sender, RoutedEventArgs e)
         {
-            MasterJenis mj = new MasterJenis(w_menu);
+            MasterJenis mj = new MasterJenis();
             this.Close();
             mj.Show();
         }
 
         private void Btn_produsen_Click(object sender, RoutedEventArgs e)
         {
-            MasterProdusen mpd = new MasterProdusen(w_menu);
+            MasterProdusen mpd = new MasterProdusen();
             this.Close();
             mpd.Show();
         }
 
         private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
         {
-            MasterAksesoris ma = new MasterAksesoris(w_menu);
+            MasterAksesoris ma = new MasterAksesoris();
             this.Close();
             ma.Show();
         }
 
         private void Btn_alat_musik_Click(object sender, RoutedEventArgs e)
         {
-            MasterAlatMusik mam = new MasterAlatMusik(w_menu);
+            MasterAlatMusik mam = new MasterAlatMusik();
             this.Close();
             mam.Show();
         }
 
         private void Btn_karyawan_Click(object sender, RoutedEventArgs e)
         {
-            MasterKaryawan mk = new MasterKaryawan(w_menu);
+            MasterKaryawan mk = new MasterKaryawan();
             this.Close();
             mk.Show();
         }
 
         private void Btn_supplier_Click(object sender, RoutedEventArgs e)
         {
-            MasterSupplier ms = new MasterSupplier(w_menu);
+            MasterSupplier ms = new MasterSupplier();
             this.Close();
             ms.Show();
         }
 
         private void Btn_customer_Click(object sender, RoutedEventArgs e)
         {
-            MasterCustomer mc = new MasterCustomer(w_menu);
+            MasterCustomer mc = new MasterCustomer();
             this.Close();
             mc.Show();
         }

@@ -42,6 +42,8 @@
             FontSize="14"
             FontWeight="Medium"
             Margin="100,322,108,126.6"
+            Name="btn_login"
+                Click="Btn_login_Click"
             >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

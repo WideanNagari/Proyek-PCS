@@ -31,12 +31,12 @@ namespace Project_PCS
             mr.Show();
         }
 
-        private void BtnTransaksi_Click(object sender, RoutedEventArgs e)
-        {
-            Menu_Trans mt = new Menu_Trans(this);
-            this.Hide();
-            mt.Show();
-        }
+        //private void BtnTransaksi_Click(object sender, RoutedEventArgs e)
+        //{
+            //Menu_Trans mt = new Menu_Trans(this);
+            //this.Hide();
+            //mt.Show();
+        //}
 
         private void BtnMaster_Click(object sender, RoutedEventArgs e)
         {
@@ -45,14 +45,11 @@ namespace Project_PCS
             mm.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            //report
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //master
+            this.Close();
+            Login log = new Login();
+            log.Show();
         }
     }
 }

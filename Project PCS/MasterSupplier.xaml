@@ -375,7 +375,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Content="Log Out"
+            <Button Content="Back"
                         Foreground="White"
                         FontSize="10"
                         FontWeight="Medium"

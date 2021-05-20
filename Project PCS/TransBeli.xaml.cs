@@ -27,18 +27,17 @@ namespace Project_PCS
         OracleDataAdapter daam, daak, dat, uni;
         OracleCommandBuilder builder;
         string idKaryawan;
-        Menu menu;
-        public TransBeli(Menu m)
+        public TransBeli()
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
-            menu = m;
         }
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            menu.Show();
+            Menu_Trans log = new Menu_Trans();
+            log.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -51,21 +50,21 @@ namespace Project_PCS
 
         private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
         {
-            TransJualMember tjm = new TransJualMember(menu);
+            TransJualMember tjm = new TransJualMember();
             this.Close();
             tjm.Show();
         }
 
         private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
         {
-            TransJual tj = new TransJual(menu);
+            TransJual tj = new TransJual();
             this.Close();
             tj.Show();
         }
 
         private void Btn_trans_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Trans mt = new Menu_Trans(menu);
+            Menu_Trans mt = new Menu_Trans();
             this.Close();
             mt.Show();
         }
@@ -360,12 +359,6 @@ namespace Project_PCS
             dt.Rows.Clear();
             subtotal.Content = "0";
             kolom3();
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            menu.Show();
         }
 
         private void Harga_TextChanged(object sender, TextChangedEventArgs e)

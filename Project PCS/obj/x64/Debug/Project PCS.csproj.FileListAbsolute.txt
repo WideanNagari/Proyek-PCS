@@ -195,3 +195,7 @@ C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\TransJualMember.baml
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Nota.g.cs
 C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek\Clone_Proyek\Project PCS\obj\x64\Debug\Nota.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Login.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\WelcomeScreen.g.cs
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\Login.baml
+C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\WelcomeScreen.baml

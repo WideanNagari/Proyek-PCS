@@ -30,19 +30,18 @@ namespace Project_PCS
         string idMember, namaMember;
         int diskon, promo;
         string idKaryawan;
-        Menu w_menu;
-        public TransJual(Menu m)
+        public TransJual()
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
-           w_menu = m;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Menu_Trans log = new Menu_Trans();
+            log.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -55,21 +54,21 @@ namespace Project_PCS
 
         private void Btn_trans_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Trans mt = new Menu_Trans(w_menu);
+            Menu_Trans mt = new Menu_Trans();
             this.Close();
             mt.Show();
         }
 
         private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
         {
-            TransJualMember tjm = new TransJualMember(w_menu);
+            TransJualMember tjm = new TransJualMember();
             this.Close();
             tjm.Show();
         }
 
         private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
         {
-            TransBeli tb = new TransBeli(w_menu);
+            TransBeli tb = new TransBeli();
             this.Close();
             tb.Show();
         }

@@ -21,19 +21,18 @@ namespace Project_PCS
     /// </summary>
     public partial class ReportPenjualan : Window
     {
-        Menu w_menu;
         OracleConnection conn;
-        public ReportPenjualan(Menu wm)
+        public ReportPenjualan()
         {
             InitializeComponent();
             conn = MainWindow.conn;
-            w_menu = wm;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Menu_Report mr = new Menu_Report();
+            mr.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -46,29 +45,28 @@ namespace Project_PCS
 
         private void Btn_report_pembelian_Click(object sender, RoutedEventArgs e)
         {
-            ReportPembelian rb = new ReportPembelian(w_menu);
+            ReportPembelian rb = new ReportPembelian();
             this.Close();
             rb.Show();
         }
 
         private void Btn_report_member_Click(object sender, RoutedEventArgs e)
         {
-            ReportMembership rj = new ReportMembership(w_menu);
+            ReportMembership rj = new ReportMembership();
             this.Close();
             rj.Show();
         }
 
         private void Btn_report_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Report mr = new Menu_Report(w_menu);
+            Menu_Report mr = new Menu_Report();
             this.Close();
             mr.Show();
         }
 
         List<string> listx;
         DataTable dtcustomer, dtkaryawan, dtpromo;
-
-        private void Button_Click(object sender, RoutedEventArgs e) { this.Close(); w_menu.Show(); }
+        
         private string katabaru(string kata)
         {
             string kata2 = "";

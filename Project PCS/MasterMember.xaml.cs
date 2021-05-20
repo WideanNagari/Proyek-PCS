@@ -26,12 +26,10 @@ namespace Project_PCS
         OracleDataAdapter da;
         int caricari;
         List<string> listx;
-        Menu w_utama;
-        public MasterMember(Menu wm)
+        public MasterMember()
         {
             InitializeComponent();
             conn = MainWindow.conn;
-            w_utama = wm;
         }
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -353,56 +351,56 @@ namespace Project_PCS
 
         private void Btn_customer_Click(object sender, RoutedEventArgs e)
         {
-            MasterCustomer mc = new MasterCustomer(w_utama);
+            MasterCustomer mc = new MasterCustomer();
             this.Close();
             mc.Show();
         }
 
         private void Btn_supplier_Click(object sender, RoutedEventArgs e)
         {
-            MasterSupplier ms = new MasterSupplier(w_utama);
+            MasterSupplier ms = new MasterSupplier();
             this.Close();
             ms.Show();
         }
 
         private void Btn_karyawan_Click(object sender, RoutedEventArgs e)
         {
-            MasterKaryawan mk = new MasterKaryawan(w_utama);
+            MasterKaryawan mk = new MasterKaryawan();
             this.Close();
             mk.Show();
         }
 
         private void Btn_alat_musik_Click(object sender, RoutedEventArgs e)
         {
-            MasterAlatMusik mam = new MasterAlatMusik(w_utama);
+            MasterAlatMusik mam = new MasterAlatMusik();
             this.Close();
             mam.Show();
         }
 
         private void Btn_aksesoris_Click(object sender, RoutedEventArgs e)
         {
-            MasterAksesoris ma = new MasterAksesoris(w_utama);
+            MasterAksesoris ma = new MasterAksesoris();
             this.Close();
             ma.Show();
         }
 
         private void Btn_produsen_Click(object sender, RoutedEventArgs e)
         {
-            MasterProdusen mps = new MasterProdusen(w_utama);
+            MasterProdusen mps = new MasterProdusen();
             this.Close();
             mps.Show();
         }
 
         private void Btn_jenis_Click(object sender, RoutedEventArgs e)
         {
-            MasterJenis mj = new MasterJenis(w_utama);
+            MasterJenis mj = new MasterJenis();
             this.Close();
             mj.Show();
         }
 
         private void Btn_promo_Click(object sender, RoutedEventArgs e)
         {
-            MasterPromo mpr = new MasterPromo(w_utama);
+            MasterPromo mpr = new MasterPromo();
             this.Close();
             mpr.Show();
         }
@@ -410,20 +408,15 @@ namespace Project_PCS
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_utama.Show();
+            Menu_Master mm = new Menu_Master();
+            mm.Show();
         }
 
         private void Btn_master_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Master mma = new Menu_Master(w_utama);
+            Menu_Master mma = new Menu_Master();
             this.Close();
             mma.Show();
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            w_utama.Show();
         }
     }
 }

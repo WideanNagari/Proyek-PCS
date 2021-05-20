@@ -21,19 +21,18 @@ namespace Project_PCS
     /// </summary>
     public partial class ReportPembelian : Window
     {
-        Menu w_menu;
         OracleConnection conn;
-        public ReportPembelian(Menu wm)
+        public ReportPembelian()
         {
             InitializeComponent();
             conn = MainWindow.conn;
-            w_menu = wm;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Menu_Report mr = new Menu_Report();
+            mr.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -46,21 +45,21 @@ namespace Project_PCS
 
         private void Btn_report_penjualan_Click(object sender, RoutedEventArgs e)
         {
-            ReportPenjualan rj = new ReportPenjualan(w_menu);
+            ReportPenjualan rj = new ReportPenjualan();
             this.Close();
             rj.Show();
         }
 
         private void Btn_report_member_Click(object sender, RoutedEventArgs e)
         {
-            ReportMembership rb = new ReportMembership(w_menu);
+            ReportMembership rb = new ReportMembership();
             this.Close();
             rb.Show();
         }
 
         private void Btn_report_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Report mr = new Menu_Report(w_menu);
+            Menu_Report mr = new Menu_Report();
             this.Close();
             mr.Show();
         }

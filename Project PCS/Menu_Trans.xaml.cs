@@ -19,17 +19,16 @@ namespace Project_PCS
     /// </summary>
     public partial class Menu_Trans : Window
     {
-        Menu w_menu;
-        public Menu_Trans(Menu wm)
+        public Menu_Trans()
         {
             InitializeComponent();
-            w_menu = wm;
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Login log = new Login();
+            log.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -42,21 +41,21 @@ namespace Project_PCS
 
         private void Btn_jual_member_Click(object sender, RoutedEventArgs e)
         {
-            TransJualMember tjm = new TransJualMember(w_menu);
+            TransJualMember tjm = new TransJualMember();
             this.Close();
             tjm.Show();
         }
 
         private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
         {
-            TransBeli tb = new TransBeli(w_menu);
+            TransBeli tb = new TransBeli();
             this.Close();
             tb.Show();
         }
 
         private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
         {
-            TransJual tj = new TransJual(w_menu);
+            TransJual tj = new TransJual();
             this.Close();
             tj.Show();
         }

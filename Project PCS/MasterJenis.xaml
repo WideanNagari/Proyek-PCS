@@ -8,6 +8,30 @@
         Title="MasterJenis" Height="600" Width="1000" Loaded="Window_Loaded" WindowStyle="None"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8"
+                    Padding="2">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="#D9DDDC"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
         <Style x:Key="RowStyleWithAlternation" TargetType="DataGridRow">
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="Background" Value="#3B4D61"/>
@@ -73,7 +97,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Nama Jenis :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0" 
                    Grid.Column="1" FontSize="12" Height="26" Width="77" Foreground="White"/>
-            <TextBox x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="100,30,0,0" 
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="18"  Margin="100,30,0,0" 
                      TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" 
                      Grid.Row="0" Grid.Column="1" BorderThickness="0"/>
             <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" 
@@ -122,10 +146,10 @@
                    Grid.Row="0" Grid.Column="1" FontSize="12" Height="26" Width="56" Foreground="White"/>
             <Label Content="Nama Jenis :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1.2,2.2,0,0" 
                    Grid.Row="1" Grid.Column="1" FontSize="12" Height="26" Width="77" Foreground="White"/>
-            <TextBox x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="100,8,0,0" TextWrapping="Wrap" 
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id" HorizontalAlignment="Left" Height="18"  Margin="100,8,0,0" TextWrapping="Wrap" 
                      Text="" VerticalAlignment="Top" Width="325" Grid.Row="0" TextChanged="Id_TextChanged" 
                      Grid.Column="1" BorderThickness="0"/>
-            <TextBox x:Name="nama" HorizontalAlignment="Left" Height="18"  Margin="100,11.2,0,0" 
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama" HorizontalAlignment="Left" Height="18"  Margin="100,11.2,0,0" 
                      TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325" Grid.Row="1" 
                      Grid.Column="1" Grid.RowSpan="2" BorderThickness="0"/>
 
@@ -535,7 +559,7 @@
                 </Button.Template>
             </Button>
 
-            <Button Content="Log Out"
+            <Button Content="Back"
                 Foreground="White"
                 FontSize="10"
                 FontWeight="Medium"

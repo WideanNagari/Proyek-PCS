@@ -27,6 +27,11 @@ namespace Project_PCS
             
         }
 
-        
+        private void Btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            Menu mn = new Menu();
+            this.Close();
+            mn.Show();
+        }
     }
 }

@@ -5,23 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Nota" Height="700" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Nota" Height="700" Width="1200" 
+        Loaded="Window_Loaded" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-        <Label Content="Nota" x:Name="judul" HorizontalAlignment="Center" Margin="5,0,4.6,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" FontWeight="Bold" FontSize="24" Width="1184" Height="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Viewer:CrystalReportsViewer Name="cReport" HorizontalAlignment="Left" Height="520" Margin="10,0,0,0" VerticalAlignment="Top" Width="1174" Grid.Row="1"/>
-        <Grid Grid.Row="2">
+        <Grid Background="#3B4D61" 
+              Grid.ColumnSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="NOTA"
+                       Grid.Column="1"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium"/>
+        </Grid>
+
+        <Label Content="Nota" x:Name="judul" HorizontalAlignment="Center" Margin="5,0,4.6,0" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" FontWeight="Bold" FontSize="24" Width="1184" Height="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Viewer:CrystalReportsViewer Name="cReport" HorizontalAlignment="Left" Height="520" Margin="10,0,0,0" VerticalAlignment="Top" Width="1174" Grid.Row="2"/>
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Close" x:Name ="close" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="2" Margin="29,20,0,0" Click="Close_Click"/>
-            <Button Content="Print" x:Name ="print" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="1" Margin="29,20,0,0" Click="Print_Click"/>
+            <Button Content="Close" x:Name ="close" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="2" Margin="29,20,0,0" Click="Close_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Content="Print" x:Name ="print" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="50" FontSize="20" Grid.Column="1" Margin="29,20,0,0" Click="Print_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005254"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
     </Grid>
 </Window>

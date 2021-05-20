@@ -5,11 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_PCS"
         mc:Ignorable="d"
-        Title="Menu" Height="460" Width="800">
+        Title="Menu" Height="460" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Grid RenderTransformOrigin="0.494,0.565">
-        <Grid x:Name="gridMenu" HorizontalAlignment="Left" Height="300" Margin="132,87,0,0" VerticalAlignment="Top" Width="299">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Background="#3B4D61" 
+              Grid.ColumnSpan="2">
 
-            <Button Click="Button_Click_1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="MENU ADMIN"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#Dosis"
+                       FontWeight="Medium"/>
+
+            <Button Content="Log Out"
+                        Foreground="White"
+                        FontSize="10"
+                        FontWeight="Medium"
+                        Margin="0,0,10,0"
+                    Grid.Column="12"
+                    Grid.ColumnSpan="2"
+                    Name="LogOut"
+                    Click="LogOut_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                        <Setter Property="Background" Value="#ef9d10"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="75" Height="15"
+                                    CornerRadius="8"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+
+
+        <Grid Grid.Row="1" x:Name="gridMenu" HorizontalAlignment="Left" Height="300" Margin="132,87,0,0" VerticalAlignment="Top" Width="299">
+
+            <Button Click="BtnMaster_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
@@ -30,7 +101,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button Click="Button_Click">
+            <Button Click="BtnReport_Click">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
@@ -60,61 +131,7 @@
                 </RadialGradientBrush>
             </Grid.Background>
         </Grid>
-        <StackPanel Margin="247,244,-303.4,-593.6" RenderTransformOrigin="0.5,0.5">
-            <StackPanel.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="46.059"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </StackPanel.RenderTransform>
-            <Border Width="700"
-                Height="35"
-                Background="#EF9D10"
-                Margin="150,0,0,0"
-                CornerRadius="20"/>
-
-            <Border Width="700"
-                Height="35"
-                Background="#6B7B8C"
-                Margin="0,15,0,0"
-                CornerRadius="20"/>
-
-            <Border Width="700"
-                Height="35"
-                Background="#3B4D61"
-                Margin="75,15,0,0"
-                CornerRadius="20"/>
-        </StackPanel>
-        <StackPanel Margin="-96,-249,39.6,498.4" RenderTransformOrigin="0.5,0.5">
-            <StackPanel.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="46.059"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </StackPanel.RenderTransform>
-            <Border Width="700"
-                Height="35"
-                Background="#EF9D10"
-                Margin="150,0,0,0"
-                CornerRadius="20"/>
-
-            <Border Width="700"
-                Height="35"
-                Background="#6B7B8C"
-                Margin="0,15,0,0"
-                CornerRadius="20"/>
-
-            <Border Width="700"
-                Height="35"
-                Background="#3B4D61"
-                Margin="75,15,0,0"
-                CornerRadius="20"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal"
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
             Margin="32,10,340.6,360.4">
             <Image Width="60" Height="60"
                 Source="Images/music.png"
@@ -130,5 +147,58 @@
                 RenderOptions.BitmapScalingMode="Fant"/>
 
         </StackPanel>
+        <Grid 
+              Grid.RowSpan="2"
+              Margin="533,-400,-983,120"
+              Panel.ZIndex="-1">
+
+            <Grid.RenderTransform>
+                <RotateTransform Angle="50"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="-350,250,-255,-250">
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#6B7B8C"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#3B4D61"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#EF9D10"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#EF9D10"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#6B7B8C"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+
+                    <Border Width="700"
+                            Height="35"
+                            Background="#3B4D61"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>

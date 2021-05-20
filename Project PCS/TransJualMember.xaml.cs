@@ -25,13 +25,11 @@ namespace Project_PCS
         DataTable dtMember, dtCustomer;
         OracleDataAdapter daMember, daCustomer;
         string idKaryawan;
-        Menu w_menu;
-        public TransJualMember(Menu menus)
+        public TransJualMember()
         {
             InitializeComponent();
             conn = MainWindow.conn;
             idKaryawan = "KAR001";
-            w_menu = menus;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -44,7 +42,8 @@ namespace Project_PCS
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            w_menu.Show();
+            Menu_Trans log = new Menu_Trans();
+            log.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -57,21 +56,21 @@ namespace Project_PCS
 
         private void Btn_trans_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Trans mt = new Menu_Trans(w_menu);
+            Menu_Trans mt = new Menu_Trans();
             this.Close();
             mt.Show();
         }
 
         private void Btn_trans_jual_Click(object sender, RoutedEventArgs e)
         {
-            TransJual tj = new TransJual(w_menu);
+            TransJual tj = new TransJual();
             this.Close();
             tj.Show();
         }
 
         private void Btn_trans_beli_Click(object sender, RoutedEventArgs e)
         {
-            TransBeli tb = new TransBeli(w_menu);
+            TransBeli tb = new TransBeli();
             this.Close();
             tb.Show();
         }
