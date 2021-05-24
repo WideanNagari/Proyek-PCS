@@ -31,12 +31,13 @@ namespace Project_PCS
         {
             InitializeComponent();
             conn = MainWindow.conn;
-            idKaryawan = "KAR001";
+            idKaryawan = Menu_Trans.idKar;
+            namaKar.Content = Menu_Trans.namaKar;
         }
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             Menu_Trans log = new Menu_Trans();
+            this.Close();
             log.Show();
         }
 

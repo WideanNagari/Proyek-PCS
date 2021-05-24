@@ -119,36 +119,45 @@ namespace Project_PCS
             else if (id.Text.Length<3) MessageBox.Show("ID Jenis Harus 3 Huruf!");
             else
             {
-                bool sukses = true;
-                for (int i = 0; i < 3; i++)
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    if (!nama.Text.ToUpper().Contains(id.Text[i])) sukses = false;
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                if (sukses)
+                if (ada) MessageBox.Show("Nama Jenis Alat Musik Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    try
+                    bool sukses = true;
+                    for (int i = 0; i < 3; i++)
                     {
-                        OracleCommand cmd = new OracleCommand();
-                        conn.Close();
-                        cmd = new OracleCommand("insert into jenis_alat_musik values (:id,:nama)", conn);
-                        cmd.Parameters.Add(":id", id.Text);
-                        cmd.Parameters.Add(":nama", nama.Text);
+                        if (!nama.Text.ToUpper().Contains(id.Text[i])) sukses = false;
+                    }
+                    if (sukses)
+                    {
+                        try
+                        {
+                            OracleCommand cmd = new OracleCommand();
+                            conn.Close();
+                            cmd = new OracleCommand("insert into jenis_alat_musik values (:id,:nama)", conn);
+                            cmd.Parameters.Add(":id", id.Text);
+                            cmd.Parameters.Add(":nama", nama.Text);
 
-                        conn.Close();
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
-                        loadData();
-                        reset();
-                        MessageBox.Show("Jenis Alat Musik Baru Berhasil Ditambahkan!");
+                            conn.Close();
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            loadData();
+                            reset();
+                            MessageBox.Show("Jenis Alat Musik Baru Berhasil Ditambahkan!");
+                        }
+                        catch (Exception ex)
+                        {
+                            conn.Close();
+                            MessageBox.Show(ex.Message.ToString());
+                        }
                     }
-                    catch (Exception ex)
-                    {
-                        conn.Close();
-                        MessageBox.Show(ex.Message.ToString());
-                    }
+                    else MessageBox.Show("Semua Huruf ID Jenis Harus Ada Di Nama Jenis!");
                 }
-                else MessageBox.Show("Semua Huruf ID Jenis Harus Ada Di Nama Jenis!");
             }
         }
 
@@ -160,26 +169,43 @@ namespace Project_PCS
             }
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update jenis_alat_musik set nama_jenis = :nama where id_jenis = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Jenis Alat Musik Berhasil diUpdate!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Jenis Alat Musik Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    bool sukses = true;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        if (!nama.Text.ToUpper().Contains(id.Text[i])) sukses = false;
+                    }
+                    if (sukses)
+                    {
+                        try
+                        {
+                            OracleCommand cmd = new OracleCommand();
+                            conn.Close();
+                            cmd = new OracleCommand("update jenis_alat_musik set nama_jenis = :nama where id_jenis = :id", conn);
+                            cmd.Parameters.Add(":nama", nama.Text);
+                            cmd.Parameters.Add(":id", id.Text);
+
+                            conn.Close();
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            loadData();
+                            reset();
+                            MessageBox.Show("Jenis Alat Musik Berhasil diUpdate!");
+                        }
+                        catch (Exception ex)
+                        {
+                            conn.Close();
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                    } else MessageBox.Show("Semua Huruf ID Jenis Harus Ada Di Nama Jenis!");
                 }
             }
         }

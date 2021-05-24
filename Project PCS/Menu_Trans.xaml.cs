@@ -19,16 +19,24 @@ namespace Project_PCS
     /// </summary>
     public partial class Menu_Trans : Window
     {
+        public static string namaKar, idKar;
         public Menu_Trans()
         {
             InitializeComponent();
         }
 
+        public Menu_Trans(string nama, string id)
+        {
+            InitializeComponent();
+            namaKar = nama;
+            idKar = id;
+        }
+
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            Login log = new Login();
-            log.Show();
+            MainWindow m = new MainWindow();
+            m.Show();
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)

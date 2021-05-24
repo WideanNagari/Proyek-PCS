@@ -294,11 +294,11 @@
                         Foreground="White"
                         FontSize="10"
                         FontWeight="Medium"
-                        Margin="0,0,10,0"
+                        Margin="0,0,10,-0.2"
                     Grid.Column="12"
                     Grid.ColumnSpan="2"
                     Name="LogOut"
-                    Click="LogOut_Click">
+                    Click="LogOut_Click" Height="25" VerticalAlignment="Top" RenderTransformOrigin="0.501,0.5">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>

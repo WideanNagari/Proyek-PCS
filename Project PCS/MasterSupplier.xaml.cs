@@ -143,29 +143,38 @@ namespace Project_PCS
             else if (alamat.Text.Equals("")) MessageBox.Show("Mohon Isi Field Alamat Supplier!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into supplier values (:id,initcap(:nama),initcap(:cp),:no,:alamat)", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":cp", cp.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Supplier Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Supplier Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into supplier values (:id,initcap(:nama),initcap(:cp),:no,:alamat)", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":cp", cp.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Supplier Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
@@ -178,30 +187,39 @@ namespace Project_PCS
             else if (alamat.Text.Equals("")) MessageBox.Show("Mohon Isi Field Alamat Supplier!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update supplier set nama_supplier = initcap(:nama), cp_supplier = :jk, alamat_supplier = :alamat, " +
-                        "pn_supplier = :no where id_supplier = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":cp", cp.Text);
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Data Customer Berhasil diUpdate!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Supplier Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("update supplier set nama_supplier = initcap(:nama), cp_supplier = :jk, alamat_supplier = :alamat, " +
+                            "pn_supplier = :no where id_supplier = :id", conn);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":cp", cp.Text);
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+                        cmd.Parameters.Add(":id", id.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Data Customer Berhasil diUpdate!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }

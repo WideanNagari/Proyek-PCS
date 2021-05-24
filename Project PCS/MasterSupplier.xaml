@@ -67,8 +67,8 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -412,76 +412,13 @@
         </Grid>
 
         <Grid Grid.Column="1"  Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="0.8*"/>
-                <RowDefinition Height="0.3*"/>
-            </Grid.RowDefinitions>
-            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvSupplier" HorizontalAlignment="Left" Height="410" VerticalAlignment="Top" Width="635" Margin="16,31,0,0" ColumnWidth="*" Grid.Row="0" CanUserAddRows="False" SelectionChanged="DgvSupplier_SelectionChanged" Grid.RowSpan="2" Loaded="DgvSupplier_Loaded"/>
-
-            <Border Grid.Row="0"
-                Background="Wheat"
-                Margin="-324,10,673,215"
-                CornerRadius="15"/>
-            <Grid Margin="10,10,-10,246">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-329,18,0,0" Grid.Row="1" Grid.Column="0" FontSize="14"/>
-                <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-310,20,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" Grid.RowSpan="2"/>
-                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="-250,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Grid.Row="1" Grid.ColumnSpan="2"/>
-                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-310,54,0,-19" Width="268" Height="26" Grid.Row="1" FontSize="14" Click="Cari_Click">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                            <Setter Property="Background" Value="#ef9d10"/>
-                            <Setter Property="Foreground" Value="White"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#005254"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-310,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
-
-                <Canvas Grid.ColumnSpan="3" Margin="0,0,132.4,1.4" Grid.Column="1">
-                    <RadioButton x:Name="rnama" Content="Nama Supplier" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="14" Canvas.Left="-393" Canvas.Top="30"/>
-                    <RadioButton x:Name="rcp" Content="Contact Person" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2" FontSize="14" Canvas.Left="-278" Canvas.Top="30"/>
-                </Canvas>
-            </Grid>
-
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4.5*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvSupplier" HorizontalAlignment="Left" Height="410" VerticalAlignment="Top" Width="635" Margin="16,31,0,0" ColumnWidth="*" Grid.Row="0" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="DgvSupplier_SelectionChanged" Grid.RowSpan="2" Loaded="DgvSupplier_Loaded"/>
         </Grid>
-        <Border Grid.Column="0" Grid.Row="1"
-                Background="#3B4D61"
-                Margin="10,136,3,99"
-                CornerRadius="10"/>
-        <Grid Grid.Column="0"  Grid.Row="2">
+
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="4*"/>
                 <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -489,9 +426,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.5*"/>
@@ -500,21 +436,27 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="1.7*"/>
             </Grid.ColumnDefinitions>
-            <Label Foreground="White" Content="Data Supplier" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,3,0,0" Grid.Row="4" Grid.Column="0" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold"/>
 
-            <Label Foreground="White" Content="ID Supplier :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,5,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Nama Supplier :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,5,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Contact Person :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,5,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="No. Telepon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,5,0,0" Grid.Row="8" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Alamat :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,5,0,0" Grid.Row="9" Grid.Column="0" FontSize="14"/>
+            <Border Grid.Column="0" Grid.Row="3"
+                    Grid.ColumnSpan="2" Grid.RowSpan="7"
+                Background="#3B4D61"
+                Margin="10,0,3,0"
+                CornerRadius="10"/>
+            <Label Foreground="White" Content="Data Supplier" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,3,0,0" Grid.Row="3" Grid.Column="0" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold"/>
+            
+            <Label Foreground="White" Content="ID Supplier :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,5,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
+            <Label Foreground="White" Content="Nama Supplier :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,5,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
+            <Label Foreground="White" Content="Contact Person :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,5,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
+            <Label Foreground="White" Content="No. Telepon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,5,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
+            <Label Foreground="White" Content="Alamat :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,5,0,0" Grid.Row="8" Grid.Column="0" FontSize="14"/>
 
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="5" Grid.Column="1"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama" HorizontalAlignment="Left"  Margin="4.6,9,0,9" TextWrapping="Wrap" Text="" Width="190" Grid.Row="6" Grid.Column="1" />
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="cp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="7" Grid.Column="1"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="notelp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="8" Grid.Column="1" TextChanged="Notelp_TextChanged"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="alamat" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="9" Grid.Column="1"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="4" Grid.Column="1"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama" HorizontalAlignment="Left"  Margin="4.8,7.8,0,6.4" TextWrapping="Wrap" Text="" Width="190" Grid.Row="5" Grid.Column="1" />
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="cp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="6" Grid.Column="1"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="notelp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="7" Grid.Column="1" TextChanged="Notelp_TextChanged"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="alamat" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="8" Grid.Column="1"/>
 
-            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="10,12,0,0" Grid.Row="10" FontSize="16" Click="Insert_Click" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="20,0,0,0" Grid.Row="11" FontSize="16" Click="Insert_Click" Grid.ColumnSpan="2">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -538,7 +480,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="10,13,0,0" Grid.Row="11" FontSize="16" Click="Update_Click" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="20,0,0,0" Grid.Row="12" FontSize="16" Click="Update_Click" Grid.ColumnSpan="2">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -562,7 +504,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="60,13,0,0" Grid.Column="1" Grid.Row="11" FontSize="16" Click="Delete_Click" Grid.RowSpan="2">
+            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="50,0,0,0" Grid.Column="1" Grid.Row="11" FontSize="16" Click="Delete_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -586,7 +528,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="60,12,0,0" Grid.Column="1" Grid.Row="10" FontSize="16" Click="Resets_Click" Grid.RowSpan="2">
+            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Width="145" Height="30" Margin="50,0,0,0" Grid.Column="1" Grid.Row="12" FontSize="16" Click="Resets_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -610,6 +552,59 @@
                     </Style>
                 </Button.Style>
             </Button>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Grid.Column="0"
+                    Grid.RowSpan="4" Grid.ColumnSpan="4"
+                    Background="Wheat"
+                    Margin="10,0,3,0"
+                    CornerRadius="15"/>
+
+                <Label Content="Keyword :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="14" Grid.RowSpan="2"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="83,4.8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Grid.Row="2" Grid.ColumnSpan="3"/>
+                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="38,34.8,0,0" Width="268" Height="26" Grid.Row="2" Grid.ColumnSpan="3" FontSize="14" Click="Cari_Click" Grid.RowSpan="2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16" Grid.ColumnSpan="4" Width="321"/>
+
+                <Canvas Grid.ColumnSpan="2" Margin="0,0,0,0" Grid.Column="1" Grid.Row="1">
+                    <RadioButton x:Name="rnama" Content="Nama Supplier" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="14" Canvas.Left="0" Canvas.Top="7"/>
+                    <RadioButton x:Name="rcp" Content="Contact Person" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2" FontSize="14" Canvas.Left="120" Canvas.Top="7"/>
+                </Canvas>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

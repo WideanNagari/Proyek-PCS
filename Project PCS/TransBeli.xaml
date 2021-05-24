@@ -357,7 +357,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.2*"/>
             </Grid.RowDefinitions>
-            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvMusik" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" SelectionChanged="DgvMusik_SelectionChanged" Loaded="DgvMusik_Loaded"/>
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvMusik" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="1" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="DgvMusik_SelectionChanged" Loaded="DgvMusik_Loaded"/>
             <Border Grid.Column="0" Grid.Row="2"
                 Background="#3B4D61"
                 Margin="10,-10,30,0"
@@ -490,7 +490,7 @@
                     </Button.Style>
                 </Button>
             </Grid>
-            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvAksesoris" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="4" CanUserAddRows="False" SelectionChanged="DgvAksesoris_SelectionChanged" Loaded="DgvAksesoris_Loaded"/>
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvAksesoris" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" Width="640" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="4" CanUserAddRows="False" IsReadOnly="True" SelectionChanged="DgvAksesoris_SelectionChanged" Loaded="DgvAksesoris_Loaded"/>
             <Border Grid.Row="0" 
                     Background="Wheat"
                     Margin="10,5,25,0"
@@ -630,7 +630,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvTrans" HorizontalAlignment="Left" Height="390" VerticalAlignment="Top" Width="395" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="2" CanUserAddRows="False" Loaded="DgvTrans_Loaded"/>
+            <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" x:Name="dgvTrans" HorizontalAlignment="Left" Height="390" VerticalAlignment="Top" Width="395" Margin="10" ColumnWidth="*" Grid.Column="0" Grid.Row="2" CanUserAddRows="False" IsReadOnly="True" Loaded="DgvTrans_Loaded"/>
             <Label Content="Keranjang Belanja" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0" FontSize="16"/>
 
             <Grid Grid.Row="3">

@@ -169,68 +169,77 @@ namespace Project_PCS
             else if (nominal.Text.Equals(""))  MessageBox.Show("Mohon Isi Field Potongan!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into promo values (:id,initcap(:nama),:potongan)", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":potongan", Convert.ToInt32(nominal.Text));
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Promo Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Promo Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into promo values (:id,initcap(:nama),:potongan)", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":potongan", Convert.ToInt32(nominal.Text));
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Promo Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (id.Text.Equals(""))
-            {
-                MessageBox.Show("Mohon Isi Field Kode Promo!");
-            }
-            else if (nama.Text.Equals(""))
-            {
-                MessageBox.Show("Mohon Isi Field Nama Promo!");
-            }
-            else if (nominal.Text.Equals(""))
-            {
-                MessageBox.Show("Mohon Isi Field Potongan!");
-            }
+            if (id.Text.Equals("")) MessageBox.Show("Mohon Isi Field Kode Promo!");
+            else if (nama.Text.Equals("")) MessageBox.Show("Mohon Isi Field Nama Promo!");
+            else if (nominal.Text.Equals("")) MessageBox.Show("Mohon Isi Field Potongan!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update promo set nama_promo = :nama, besar_potongan = :besar where kode_promo = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":besar", nominal.Text);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Promo Berhasil diUpdate!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Promo Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("update promo set nama_promo = :nama, besar_potongan = :besar where kode_promo = :id", conn);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":besar", nominal.Text);
+                        cmd.Parameters.Add(":id", id.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Promo Berhasil diUpdate!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }

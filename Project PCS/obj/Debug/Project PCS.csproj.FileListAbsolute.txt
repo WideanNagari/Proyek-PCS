@@ -150,3 +150,82 @@ D:\PROJEK PCS\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csproj.CoreCompileInp
 D:\PROJEK PCS\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csproj.CopyComplete
 D:\PROJEK PCS\Proyek-PCS\Project PCS\obj\Debug\Project PCS.exe
 D:\PROJEK PCS\Proyek-PCS\Project PCS\obj\Debug\Project PCS.pdb
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csprojAssemblyReference.cache
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MainWindow.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterAksesoris.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterAlatMusik.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterCustomer.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterJenis.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterKaryawan.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterMember.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterProdusen.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterPromo.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterSupplier.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Master.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Report.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Trans.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Nota.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportMembership.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportPembelian.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportPenjualan.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransBeli.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransJual.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransJualMember.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\WelcomeScreen.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\App.g.cs
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS_MarkupCompile.cache
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS_MarkupCompile.lref
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.exe
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.pdb
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\Project PCS.exe.config
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\Project PCS.exe
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\Project PCS.pdb
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\sapbusinessobjects.wpf.viewer.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\SAPBusinessObjects.WPF.ViewerShared.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\FlashControlV71.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\stdole.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MainWindow.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterAksesoris.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterAlatMusik.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterCustomer.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterJenis.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterKaryawan.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterMember.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterProdusen.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterPromo.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\MasterSupplier.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Master.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Report.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Menu_Trans.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Nota.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportMembership.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportPembelian.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\ReportPenjualan.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransBeli.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransJual.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\TransJualMember.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\WelcomeScreen.baml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.g.resources
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project_PCS.Properties.Resources.resources
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csproj.GenerateResource.cache
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csproj.CoreCompileInputs.cache
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\Debug\Project PCS.csproj.CopyComplete
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\bin\Debug\Oracle.DataAccess.dll

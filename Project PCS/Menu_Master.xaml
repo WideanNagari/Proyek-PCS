@@ -492,7 +492,7 @@
                         Foreground="White"
                         FontSize="14"
                         FontWeight="Medium"
-                        Margin="-470,0,10,0"
+                        Margin="-480,0,10,0"
                         Name="btn_member1"
                     Click="Btn_member_Click">
                     <Button.Style>
@@ -554,7 +554,7 @@
                         Foreground="White"
                         FontSize="14"
                         FontWeight="Medium"
-                        Margin="-800,0,10,-200"
+                        Margin="-800,0,10,-210"
                         Name="btn_alat_musik1"
                     Click="Btn_alat_musik_Click">
                     <Button.Style>
@@ -585,7 +585,7 @@
                         Foreground="White"
                         FontSize="14"
                         FontWeight="Medium"
-                        Margin="-470,0,10,-200"
+                        Margin="-480,0,10,-210"
                         Name="btn_jenis1" 
                     Click="Btn_jenis_Click">
                     <Button.Style>
@@ -616,7 +616,7 @@
                         Foreground="White"
                         FontSize="14"
                         FontWeight="Medium"
-                        Margin="-160,0,10,-200"
+                        Margin="-160,0,10,-210"
                         Name="btn_aksesoris1" 
                     Click="Btn_aksesoris_Click">
                     <Button.Style>

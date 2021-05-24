@@ -44,8 +44,8 @@ namespace Project_PCS
         public WelcomeScreen()
         {
             InitializeComponent();
-            DataContext = this;            
-            bgwork.DoWork += (s, e) => 
+            DataContext = this;
+            bgwork.DoWork += (s, e) =>
             {
                 for (int i = 0; i < 30; i++)
                 {
@@ -54,14 +54,14 @@ namespace Project_PCS
                 }
                 Application.Current.Dispatcher.Invoke((Action)delegate
                 {
-                    Login l = new Login();
+                    MainWindow m = new MainWindow();
                     this.Close();
-                    l.ShowDialog();
-                    
+                    m.ShowDialog();
+
                 });
-               
+
             };
-            
+
 
             bgwork.RunWorkerAsync();
 

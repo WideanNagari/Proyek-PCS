@@ -222,62 +222,71 @@ namespace Project_PCS
             }
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    string[] file, ext;
-                    string filename = "", ext2 = "";
-                    if (!source.Text.Equals(""))
+                    if (row[1].ToString().ToUpper().Equals(nama2.Text.ToUpper())) ada = true;
+                }
+                if (ada) MessageBox.Show("Nama Alat Musik Sudah Ada! Masukkan Nama Lain.");
+                else
+                {
+                    try
                     {
-                        file = source.Text.Split('\\');
-                        filename = file[file.Length - 1];
-                        ext = filename.Split('.');
-                        ext2 = "."+ext[1];
-                    }
+                        string[] file, ext;
+                        string filename = "", ext2 = "";
+                        if (!source.Text.Equals(""))
+                        {
+                            file = source.Text.Split('\\');
+                            filename = file[file.Length - 1];
+                            ext = filename.Split('.');
+                            ext2 = "." + ext[1];
+                        }
 
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into alat_musik values (:id,:nama,:idjenis,:idprodusen,:stok,:harga,:source)", conn);
-                    cmd.Parameters.Add(":id", "");
-                    cmd.Parameters.Add(":nama", nama2.Text);
-                    cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
-                    cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
-                    cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
-                    cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
-                    cmd.Parameters.Add(":source", "");
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-
-                    if (!source.Text.Equals(""))
-                    {
-                        cmd = new OracleCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandText = "select id_alat_musik from alat_musik where nama_alat_musik = initcap('"+ nama2.Text + "')";
+                        OracleCommand cmd = new OracleCommand();
                         conn.Close();
-                        conn.Open();
-                        string newName = cmd.ExecuteScalar().ToString();
-                        conn.Close();
-                        File.Copy(source.Text, System.IO.Path.Combine(newPath, newName+ext2), true);
+                        cmd = new OracleCommand("insert into alat_musik values (:id,:nama,:idjenis,:idprodusen,:stok,:harga,:source)", conn);
+                        cmd.Parameters.Add(":id", "");
+                        cmd.Parameters.Add(":nama", nama2.Text);
+                        cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
+                        cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
+                        cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
+                        cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
+                        cmd.Parameters.Add(":source", "");
 
-                        cmd = new OracleCommand();
-                        cmd.Connection = conn;
-                        cmd.CommandText = "update alat_musik set nama_file = '"+newName+ext2+ "' where id_alat_musik = '" + newName + "'";
                         conn.Close();
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
-                    }
 
-                    loadData();
-                    reset();
-                    MessageBox.Show("Alat Musik Baru Berhasil Ditambahkan!");
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                        if (!source.Text.Equals(""))
+                        {
+                            cmd = new OracleCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = "select id_alat_musik from alat_musik where nama_alat_musik = initcap('" + nama2.Text + "')";
+                            conn.Close();
+                            conn.Open();
+                            string newName = cmd.ExecuteScalar().ToString();
+                            conn.Close();
+                            File.Copy(source.Text, System.IO.Path.Combine(newPath, newName + ext2), true);
+
+                            cmd = new OracleCommand();
+                            cmd.Connection = conn;
+                            cmd.CommandText = "update alat_musik set nama_file = '" + newName + ext2 + "' where id_alat_musik = '" + newName + "'";
+                            conn.Close();
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+
+                        loadData();
+                        reset();
+                        MessageBox.Show("Alat Musik Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
@@ -290,57 +299,66 @@ namespace Project_PCS
             }
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    if (!source.Text.Equals(""))
-                    {
-                        string[] file = source.Text.Split('\\');
-                        string filename = file[file.Length - 1];
-                        string[] ext = filename.Split('.');
-                        string ext2 = "." + ext[1];
-                        
-                        string newName = id2.Text;
-                        File.Copy(source.Text, System.IO.Path.Combine(newPath, newName + ext2), true);
-
-                        conn.Close();
-                        cmd = new OracleCommand("Update alat_musik set nama_alat_musik = :nama, id_jenis = :idjenis, " +
-                            "id_produsen = :idprodusen, stok = :stok, harga = :harga, nama_file = :source" +
-                            " where id_alat_musik = :id", conn);
-                        cmd.Parameters.Add(":nama", nama2.Text);
-                        cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
-                        cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
-                        cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
-                        cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
-                        cmd.Parameters.Add(":source", newName+ext2);
-                        cmd.Parameters.Add("id", id2.Text);
-                    }
-                    else
-                    {
-                        conn.Close();
-                        cmd = new OracleCommand("Update alat_musik set nama_alat_musik = :nama, id_jenis = :idjenis, " +
-                            "id_produsen = :idprodusen, stok = :stok, harga = :harga" +
-                            " where id_alat_musik = :id", conn);
-                        cmd.Parameters.Add(":nama", nama2.Text);
-                        cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
-                        cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
-                        cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
-                        cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
-                        cmd.Parameters.Add("id", id2.Text);
-                    }
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Update Berhasil!");
+                    if (row[1].ToString().ToUpper().Equals(nama2.Text.ToUpper()) && !row[0].Equals(id2.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Alat Musik Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        if (!source.Text.Equals(""))
+                        {
+                            string[] file = source.Text.Split('\\');
+                            string filename = file[file.Length - 1];
+                            string[] ext = filename.Split('.');
+                            string ext2 = "." + ext[1];
+
+                            string newName = id2.Text;
+                            File.Copy(source.Text, System.IO.Path.Combine(newPath, newName + ext2), true);
+
+                            conn.Close();
+                            cmd = new OracleCommand("Update alat_musik set nama_alat_musik = :nama, id_jenis = :idjenis, " +
+                                "id_produsen = :idprodusen, stok = :stok, harga = :harga, nama_file = :source" +
+                                " where id_alat_musik = :id", conn);
+                            cmd.Parameters.Add(":nama", nama2.Text);
+                            cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
+                            cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
+                            cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
+                            cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
+                            cmd.Parameters.Add(":source", newName + ext2);
+                            cmd.Parameters.Add("id", id2.Text);
+                        }
+                        else
+                        {
+                            conn.Close();
+                            cmd = new OracleCommand("Update alat_musik set nama_alat_musik = :nama, id_jenis = :idjenis, " +
+                                "id_produsen = :idprodusen, stok = :stok, harga = :harga" +
+                                " where id_alat_musik = :id", conn);
+                            cmd.Parameters.Add(":nama", nama2.Text);
+                            cmd.Parameters.Add(":idjenis", jenis2.SelectedValue.ToString());
+                            cmd.Parameters.Add(":idprodusen", produsen2.SelectedValue.ToString());
+                            cmd.Parameters.Add(":stok", Convert.ToInt32(stok2.Text));
+                            cmd.Parameters.Add(":harga", Convert.ToInt32(harga2.Text));
+                            cmd.Parameters.Add("id", id2.Text);
+                        }
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Update Berhasil!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }

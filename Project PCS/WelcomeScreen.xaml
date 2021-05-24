@@ -10,27 +10,37 @@
         <ImageBrush ImageSource="Background.png"/>
     </Window.Background>
     <Grid>
-        <StackPanel Orientation="Horizontal"
-            Margin="230,32,212.6,321">
-            <Image Width="60"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Image Width="60" Height="50"
                 Source="Images/music.png"
-                RenderOptions.BitmapScalingMode="Fant" Margin="0,0,0,-18"/>
+                RenderOptions.BitmapScalingMode="Fant" Margin="0,0,0,-30" Grid.Column="1"/>
             <TextBlock Text="MUSELLA"
                 FontSize="40"
                 FontWeight="Bold"
+                TextAlignment="Center"
                 VerticalAlignment="Center"
                 FontFamily="Fonts/#Dosis"
-                Margin="30,5,30,0" Foreground="White" Height="55"/>
-            <Image Width="60"
+                Margin="0,0,0,0" Foreground="White" Height="55" Grid.Column="2"/>
+            <Image Width="60" Height="50"
                 Source="Images/music.png"
-                RenderOptions.BitmapScalingMode="Fant" Margin="0,0,0,-18"/>
-
-        </StackPanel>
-        <ProgressBar Name="pb1" HorizontalAlignment="Left" Height="35" Margin="36,332,0,0" VerticalAlignment="Top" Width="724" Minimum="0" Maximum="30" Foreground="#FFEF9D10" Value="{Binding WorkerState}">
+                RenderOptions.BitmapScalingMode="Fant" Margin="0,0,0,-30" Grid.Column="3"/>
+        </Grid>
+        <ProgressBar Name="pb1" HorizontalAlignment="Left" Height="35" Margin="36,2,0,0" VerticalAlignment="Top" Width="724" Minimum="0" Maximum="30" Foreground="#FFEF9D10" Grid.Row="2" Value="{Binding WorkerState}">
             <ProgressBar.Background>
                 <ImageBrush/>
             </ProgressBar.Background>
         </ProgressBar>
-
     </Grid>
 </Window>

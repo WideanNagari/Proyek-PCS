@@ -26,7 +26,7 @@ namespace Project_PCS
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Report mr = new Menu_Report(this);
+            Menu_Report mr = new Menu_Report();
             this.Hide();
             mr.Show();
         }
@@ -40,16 +40,16 @@ namespace Project_PCS
 
         private void BtnMaster_Click(object sender, RoutedEventArgs e)
         {
-            Menu_Master mm = new Menu_Master(this);
+            Menu_Master mm = new Menu_Master();
             this.Hide();
             mm.Show();
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow m = new MainWindow();
+            m.Show();
             this.Close();
-            Login log = new Login();
-            log.Show();
         }
     }
 }

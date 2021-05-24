@@ -147,26 +147,35 @@ namespace Project_PCS
             }
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into produsen values (:id,initcap(:nama))", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":nama", nama.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Produsen Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Produsen Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into produsen values (:id,initcap(:nama))", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":nama", nama.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Produsen Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
@@ -179,26 +188,35 @@ namespace Project_PCS
             }
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update produsen set nama_produsen = :nama where id_produsen = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Produsen Berhasil diUpdate!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Produsen Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("update produsen set nama_produsen = :nama where id_produsen = :id", conn);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":id", id.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Produsen Berhasil diUpdate!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }

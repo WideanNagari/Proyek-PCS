@@ -45,13 +45,8 @@ namespace Project_PCS
                 "from member order by 1",conn);
             dgvMember.Columns.Clear();
             da.Fill(ds);
-            DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-            Binding bind = new Binding("Harga Member") { StringFormat = "Rp. {0:N0}" };
-            newC.Binding = bind;
             dgvMember.ItemsSource = ds.DefaultView;
-            dgvMember.Columns.Insert(2, newC);
-            dgvMember.Columns.RemoveAt(3);
-            conn.Close();
+            kolom();
         }
 
         private void reset()
@@ -156,71 +151,93 @@ namespace Project_PCS
 
         private void Insert_Click(object sender, RoutedEventArgs e)
         {
-            if (id.Text.Equals("")) MessageBox.Show("Mohon Isi Field Kode Promo!");
-            else if (jenis.Text.Equals("")) MessageBox.Show("Mohon Isi Field Nama Promo!");
-            else if (nominal.Text.Equals("")) MessageBox.Show("Mohon Isi Field Harga Promo!");
+            if (id.Text.Equals("")) MessageBox.Show("Mohon Isi Field Kode Member!");
+            else if (jenis.Text.Equals("")) MessageBox.Show("Mohon Isi Field Nama Member!");
+            else if (nominal.Text.Equals("")) MessageBox.Show("Mohon Isi Field Harga Member!");
             else if (diskon.Text.Equals("")) MessageBox.Show("Mohon Isi Field Diskon!");
             else if (Convert.ToInt32(diskon.Text)>=100) MessageBox.Show("Diskon tidak bisa >= 100% !");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into member values (:id,initcap(:jenis),:harga,:potongan)", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":jenis", jenis.Text);
-                    cmd.Parameters.Add(":harga", Convert.ToInt32(nominal.Text));
-                    cmd.Parameters.Add(":potongan", Convert.ToInt32(diskon.Text));
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Member Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(jenis.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Member Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into member values (:id,initcap(:jenis),:harga,:potongan)", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":jenis", jenis.Text);
+                        cmd.Parameters.Add(":harga", Convert.ToInt32(nominal.Text));
+                        cmd.Parameters.Add(":potongan", Convert.ToInt32(diskon.Text));
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Member Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            if (id.Text.Equals("")) MessageBox.Show("Mohon Isi Field Kode Promo!");
-            else if (jenis.Text.Equals("")) MessageBox.Show("Mohon Isi Field Nama Promo!");
-            else if (nominal.Text.Equals("")) MessageBox.Show("Mohon Isi Field Harga Promo!");
+            if (id.Text.Equals("")) MessageBox.Show("Mohon Isi Field Kode Member!");
+            else if (jenis.Text.Equals("")) MessageBox.Show("Mohon Isi Field Nama Member!");
+            else if (nominal.Text.Equals("")) MessageBox.Show("Mohon Isi Field Harga Member!");
             else if (diskon.Text.Equals("")) MessageBox.Show("Mohon Isi Field Diskon!");
-            else if (Convert.ToInt32(diskon.Text) >= 100) MessageBox.Show("Diskon tidak bisa >= 100% !");
             else
             {
-                try
+                string[] x = diskon.Text.Split('%');
+                if (Convert.ToInt32(x[0]) >= 100) MessageBox.Show("Diskon tidak bisa >= 100% !");
+                else
                 {
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update member set jenis_member = initcap(:jenis), harga_member = :harga, " +
-                        "diskon_pembelian = :potongan where id_member = :id", conn);
-                    cmd.Parameters.Add(":jenis", jenis.Text);
-                    cmd.Parameters.Add(":harga", Convert.ToInt32(nominal.Text));
-                    cmd.Parameters.Add(":potongan", Convert.ToInt32(diskon.Text));
-                    cmd.Parameters.Add(":id", id.Text);
+                    bool ada = false;
+                    foreach (DataRow row in ds.Rows)
+                    {
+                        if (row[1].ToString().ToUpper().Equals(jenis.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
+                    }
+                    if (ada) MessageBox.Show("Nama Member Sudah Ada! Masukkan Nama Lain.");
+                    else
+                    {
+                        try
+                        {
+                            OracleCommand cmd = new OracleCommand();
+                            conn.Close();
+                            cmd = new OracleCommand("update member set jenis_member = initcap(:jenis), harga_member = :harga, " +
+                                "diskon_pembelian = :potongan where id_member = :id", conn);
+                            cmd.Parameters.Add(":jenis", jenis.Text);
+                            cmd.Parameters.Add(":harga", Convert.ToInt32(nominal.Text));
+                            cmd.Parameters.Add(":potongan", Convert.ToInt32(x[0]));
+                            cmd.Parameters.Add(":id", id.Text);
 
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Member Berhasil DiUpdate!");
-                }
-                catch (Exception ex)
-                {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                            conn.Close();
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                            loadData();
+                            reset();
+                            MessageBox.Show("Member Berhasil DiUpdate!");
+                        }
+                        catch (Exception ex)
+                        {
+                            conn.Close();
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                    }
                 }
             }
         }
@@ -280,15 +297,10 @@ namespace Project_PCS
                         "from member where " + where +
                         "order by 1",conn);
                     da.Fill(ds);
-                    DataGridTextColumn newC = new DataGridTextColumn() { Header = "Harga" };
-                    Binding bind = new Binding("Harga Member") { StringFormat = "Rp. {0:N0}" };
-                    newC.Binding = bind;
                     dgvMember.ItemsSource = ds.DefaultView;
-                    dgvMember.Columns.Insert(2, newC);
-                    dgvMember.Columns.RemoveAt(3);
-                    conn.Close();
 
                     caricari = 1;
+                    kolom();
                 }
                 catch (Exception ex)
                 {
@@ -348,7 +360,14 @@ namespace Project_PCS
                 keyword.SelectionStart = keyword.Text.Length;
             }
         }
-
+        private void kolom()
+        {
+            dgvMember.Columns[2].ClipboardContentBinding.StringFormat = "Rp. {0:N0}";
+            dgvMember.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            dgvMember.Columns[1].Width = new DataGridLength(2, DataGridLengthUnitType.Star);
+            dgvMember.Columns[2].Width = new DataGridLength(1.5, DataGridLengthUnitType.Star);
+            dgvMember.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
         private void Btn_customer_Click(object sender, RoutedEventArgs e)
         {
             MasterCustomer mc = new MasterCustomer();
@@ -417,6 +436,22 @@ namespace Project_PCS
             Menu_Master mma = new Menu_Master();
             this.Close();
             mma.Show();
+        }
+
+        private void DgvMember_Loaded(object sender, RoutedEventArgs e) { kolom(); }
+
+        private void Nominal_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string kata2 = katabaru(nominal.Text);
+            nominal.Text = kata2;
+            nominal.SelectionStart = nominal.Text.Length;
+        }
+
+        private void Diskon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string kata2 = katabaru(diskon.Text);
+            diskon.Text = kata2;
+            diskon.SelectionStart = diskon.Text.Length;
         }
     }
 }

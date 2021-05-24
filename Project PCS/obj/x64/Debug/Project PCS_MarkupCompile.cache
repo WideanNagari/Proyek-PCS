@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\obj\x64\Debug\
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\obj\x64\Debug\
 Project_PCS
 none
 false
 DEBUG;TRACE
-C:\Users\User\Documents\Sems4\2. Pemograman Client Server\Proyek-PCS\Project PCS\App.xaml
+C:\Users\Widean Nagari\Desktop\Proyek-PCS\Project PCS\App.xaml
 231284958270
 
-30-1716380739
-24-78906680
+34-954912317
+241304399446
 Login.xaml;MainWindow.xaml;MasterAksesoris.xaml;MasterAlatMusik.xaml;MasterCustomer.xaml;MasterJenis.xaml;MasterKaryawan.xaml;MasterMember.xaml;MasterProdusen.xaml;MasterPromo.xaml;MasterSupplier.xaml;Menu.xaml;Menu_Master.xaml;Menu_Report.xaml;Menu_Trans.xaml;Nota.xaml;ReportMembership.xaml;ReportPembelian.xaml;ReportPenjualan.xaml;TransBeli.xaml;TransJual.xaml;TransJualMember.xaml;WelcomeScreen.xaml;
 
-False
+True
 

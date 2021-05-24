@@ -23,33 +23,63 @@ namespace Project_PCS
     {
         public static OracleConnection conn;
         public static String source, userId, pass;
+
         public MainWindow()
         {
             InitializeComponent();
         }
-        
-        //ImageViewer1.Source = new BitmapImage(new Uri(@"Images/KH001.jpg", UriKind.Relative));
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            source = dataSource.Text;
-            userId = username.Text;
-            pass = password.Text;
-            
+            App.Current.Shutdown();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            source = "widean";
+            userId = "widean";
+            pass = "219116863";
             try
             {
-                conn = new OracleConnection("Data Source = "+source+"; User ID = "+userId+"; password = "+pass);
-                //conn = new OracleConnection("Data Source = widean; User ID = widean; password = 219116863");
-                conn.Open();
-                conn.Close();
-                Menu menu = new Menu();
-                this.Hide();
-                menu.ShowDialog();
-                this.Close();
+                conn = new OracleConnection("Data Source = " + source + "; User ID = " + userId + "; password = " + pass);
+                conn.Open(); conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Btn_login_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtId.Text.Equals("") || password.Password.ToString().Equals("")) MessageBox.Show("Mohon isi ID dan Password dengan lengkap!");
+            else if (txtId.Text.ToUpper().Equals("ADMIN") && password.Password.ToString().ToUpper().Equals("ADMIN"))
+            {
+                Menu m = new Menu();
+                this.Close();
+                m.Show();
+            }
+            else {
+                try
+                {
+                    OracleCommand cmd = new OracleCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "select Nama_Karyawan from Karyawan where id_karyawan = :id and password = :pass";
+                    cmd.Parameters.Add(":id", txtId.Text.ToUpper());
+                    cmd.Parameters.Add(":pass", password.Password.ToString());
+                    conn.Close();
+                    conn.Open();
+                    string nama = cmd.ExecuteScalar().ToString();
+                    conn.Close();
+
+                    Menu_Trans mt = new Menu_Trans(nama,txtId.Text.ToUpper());
+                    this.Close();
+                    mt.Show();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Data tidak valid! mohon isi ID dan Password dengan sesuai!");
+                }
             }
         }
     }

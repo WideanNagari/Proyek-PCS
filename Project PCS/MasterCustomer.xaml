@@ -67,8 +67,8 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -77,7 +77,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Background="#3B4D61" 
-              Grid.ColumnSpan="2"
+              Grid.ColumnSpan="2" Grid.Row="0"
               MouseDown="Grid_MouseDown">
 
             <Grid.ColumnDefinitions>
@@ -409,15 +409,9 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="0.8*"/>
-                <RowDefinition Height="0.3*"/>
-            </Grid.RowDefinitions>
             <DataGrid RowStyle="{StaticResource RowStyleWithAlternation}" 
                       x:Name="dgvCustomer"
                       HorizontalAlignment="Left" 
@@ -426,28 +420,46 @@
                       Width="635" Margin="10,10,0,0" 
                       ColumnWidth="*" Grid.Row="0" 
                       CanUserAddRows="False" 
+                      IsReadOnly="True"
                       SelectionChanged="DgvCustomer_SelectionChanged" Grid.RowSpan="3" Loaded="DgvCustomer_Loaded"/>
+        </Grid>
 
-            <Border Grid.Row="0"
-                Background="Wheat"
-                Margin="-324,10,673,215"
-                CornerRadius="15"/>
-            <Grid Margin="10,28,-10,227">
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.1*" />
+                <RowDefinition Height="0.4*" />
+                <RowDefinition Height="0.1*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.2*" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-325,-15,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" FontSize="16"/>
-                <Label Name="label_nama" Content="Nama:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-326,5,0,0" Grid.Row="1" Grid.Column="0" FontSize="14" RenderTransformOrigin="0.3,0.586"/>
-                <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-326,7,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" Grid.RowSpan="2"/>
-                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="-255,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215" Grid.Row="1"/>
-                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-315,39,0,0" Width="289" Height="22" Grid.Row="1" FontSize="14" Click="Cari_Click">
+
+                <Border Grid.Column="0"
+                    Grid.RowSpan="6" Grid.ColumnSpan="3"
+                    Background="Wheat"
+                    Margin="3,6,9.6,0.2"
+                    CornerRadius="15"/>
+
+                <Label Content="Filter" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="10,0.6,-0.4,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0" FontSize="16" Width="324" Grid.ColumnSpan="3"/>
+                <Label Name="label_nama" Content="Nama :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,0,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
+                <Label Content="Filter :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="17,0,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="keyword" HorizontalAlignment="Left" Height="22"  Margin="0,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Button Content="Search" x:Name ="cari" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,5,0,0" Width="289" Height="22" Grid.Row="4" Grid.ColumnSpan="3" FontSize="14" Click="Cari_Click">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
@@ -471,160 +483,159 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Canvas x:Name="canvas" Grid.ColumnSpan="2" Margin="-67,10,0,-9" Grid.Row="1">
-                    <RadioButton x:Name="rL" Content="Laki-Laki" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14" Canvas.Left="-201" Canvas.Top="2"/>
-                    <RadioButton x:Name="rP" Content="Perempuan" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" FontSize="14" Canvas.Left="-99" Width="90" Canvas.Top="2"/>
+                <Canvas x:Name="canvas" Grid.ColumnSpan="2" Margin="0.6,2.4,9.6,1.2" Grid.Row="3" Grid.Column="1">
+                    <RadioButton x:Name="rL" Content="Laki-Laki" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14" Canvas.Top="6"/>
+                    <RadioButton x:Name="rP" Content="Perempuan" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" FontSize="14" Canvas.Left="136" Width="90" Canvas.Top="6"/>
                 </Canvas>
-                <Canvas Grid.ColumnSpan="3" Margin="0,0,132.4,1.4" Grid.Column="1">
-                    <RadioButton x:Name="rnama" Content="Nama Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1" FontSize="14" Checked="Rnama_Checked" Canvas.Left="-403" Canvas.Top="15"/>
-                    <RadioButton x:Name="rjk" Content="Jenis Kelamin" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="2" FontSize="14" Checked="Rjk_Checked" Canvas.Left="-273" Canvas.Top="15"/>
+                <Canvas Grid.ColumnSpan="2" Margin="0.6,0,18.6,1.6" Grid.Row="2" Grid.Column="1">
+                    <RadioButton x:Name="rnama" Content="Nama Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" FontSize="14" Checked="Rnama_Checked" Canvas.Top="6" />
+                    <RadioButton x:Name="rjk" Content="Jenis Kelamin" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" FontSize="14" Checked="Rjk_Checked" Canvas.Left="136" Canvas.Top="6"/>
                 </Canvas>
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.2*" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4.5*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.7*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Background="#3B4D61"
+                    Margin="10,0,3,0"
+                    CornerRadius="10" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="7"/>
+
+                <Label Foreground="White" Content="Data Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,3,0,0" Grid.Row="0" Grid.Column="0" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold"/>
+                <Label Foreground="White" Content="ID :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,7,0,0" Grid.Row="1" Grid.Column="0" FontSize="14" RenderTransformOrigin="2.111,0.207"/>
+                <Label Foreground="White" Content="Nama :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,5,0,0" Grid.Row="2" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Jenis Kelamin :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,5,0,0" Grid.Row="3" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="No. Telepon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,5,0,0" Grid.Row="4" Grid.Column="0" FontSize="14"/>
+                <Label Foreground="White" Content="Alamat :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,5,0,0" Grid.Row="5" Grid.Column="0" FontSize="14"/>
+
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="1" Grid.Column="1"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="2" Grid.Column="1"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="notelp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="4" Grid.Column="1" TextChanged="Notelp_TextChanged"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="alamat" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="5" Grid.Column="1"/>
+
+                <RadioButton Foreground="White" x:Name="rlaki" Content="Laki-Laki" HorizontalAlignment="Left" Margin="5,14,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" FontSize="12"/>
+                <RadioButton Foreground="White" x:Name="rperempuan" Content="Perempuan" HorizontalAlignment="Left" Margin="80,14,0,0" VerticalAlignment="Top" Grid.Row="3" Grid.Column="1" FontSize="12"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
+                <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Height="30" Margin="20,0,0,0" Grid.Row="0" Grid.Column="0" FontSize="16" Click="Insert_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Height="30" Margin="20,0,0,0" Grid.Row="1" Grid.Column="0" FontSize="16" Click="Update_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#005254"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="139" Height="30" Margin="15,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="16" Click="Delete_Click" Grid.RowSpan="2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Width="139" Height="30" Margin="15,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Click="Resets_Click" Grid.RowSpan="2">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
+                            <Setter Property="Background" Value="#ef9d10"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#3B4D61"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
             </Grid>
-        </Grid>
-
-        <Border Grid.Column="0" Grid.Row="1"
-                Background="#3B4D61"
-                Margin="10,136,3,99"
-                CornerRadius="10"/>
-        <Grid Grid.Column="0" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.7*"/>
-            </Grid.ColumnDefinitions>
-            <Label Foreground="White" Content="Data Customer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="110,3,0,0" Grid.Row="4" Grid.Column="0" FontSize="16" Grid.ColumnSpan="2" FontWeight="Bold"/>
-
-            <Label Foreground="White" Content="ID :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="90,7,0,0" Grid.Row="5" Grid.Column="0" FontSize="14" RenderTransformOrigin="2.111,0.207"/>
-            <Label Foreground="White" Content="Nama :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,5,0,0" Grid.Row="6" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Jenis Kelamin :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,5,0,0" Grid.Row="7" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="No. Telepon :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,5,0,0" Grid.Row="8" Grid.Column="0" FontSize="14"/>
-            <Label Foreground="White" Content="Alamat :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="62,5,0,0" Grid.Row="9" Grid.Column="0" FontSize="14"/>
-
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="id" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="5" Grid.Column="1"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="nama" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="6" Grid.Column="1"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="notelp" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="8" Grid.Column="1" TextChanged="Notelp_TextChanged"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="alamat" HorizontalAlignment="Left" Height="22"  Margin="5,9,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190" Grid.Row="9" Grid.Column="1"/>
-
-            <RadioButton Foreground="White" x:Name="rlaki" Content="Laki-Laki" HorizontalAlignment="Left" Margin="5,14,0,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" FontSize="12"/>
-            <RadioButton Foreground="White" x:Name="rperempuan" Content="Perempuan" HorizontalAlignment="Left" Margin="80,14,0,0" VerticalAlignment="Top" Grid.Row="7" Grid.Column="1" FontSize="12"/>
-
-            <Button Content="Insert" x:Name ="insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Height="30" Margin="10,29,0,0" Grid.Row="10" FontSize="16" Click="Insert_Click" Grid.ColumnSpan="2" Grid.RowSpan="2">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                        <Setter Property="Background" Value="#ef9d10"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#005254"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Content="Update" x:Name ="update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="134" Height="30" Margin="10,33,0,0" Grid.Row="11" FontSize="16" Click="Update_Click" Grid.ColumnSpan="2" Grid.RowSpan="2">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                        <Setter Property="Background" Value="#ef9d10"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#005254"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Content="Delete" x:Name ="delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="139" Height="30" Margin="56,33,0,0" Grid.Column="1" Grid.Row="11" FontSize="16" Click="Delete_Click" Grid.RowSpan="2">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                        <Setter Property="Background" Value="#ef9d10"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Red"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-            <Button Content="Reset" x:Name ="resets" HorizontalAlignment="Left" VerticalAlignment="Top" Width="139" Height="30" Margin="56,29,0,0" Grid.Column="1" Grid.Row="10" FontSize="16" Click="Resets_Click" Grid.RowSpan="2">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Dosis"/>
-                        <Setter Property="Background" Value="#ef9d10"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Button}">
-                                    <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderThickness="1">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#3B4D61"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
         </Grid>
     </Grid>
 </Window>

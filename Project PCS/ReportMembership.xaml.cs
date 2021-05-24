@@ -30,8 +30,8 @@ namespace Project_PCS
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             Menu_Report mr = new Menu_Report();
+            this.Close();
             mr.Show();
         }
 
@@ -126,7 +126,7 @@ namespace Project_PCS
                 if (!subtotal.Text.Equals("")) nominal = Convert.ToInt32(subtotal.Text);
                 if (ractive.IsChecked == true) status = 1;
                 ReportMember rpt = new ReportMember();
-                rpt.SetDatabaseLogon("widean", "219116863", "widean", "");
+                rpt.SetDatabaseLogon(MainWindow.source, MainWindow.pass, MainWindow.userId, "");
                 rpt.SetParameterValue("nota", "0");
                 rpt.SetParameterValue("tglAwal", dari.SelectedDate);
                 rpt.SetParameterValue("tglAkhir", sampai.SelectedDate);

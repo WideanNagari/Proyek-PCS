@@ -210,31 +210,40 @@ namespace Project_PCS
             else if (notelp.Text.Length!=12 && !notelp.Text.Equals("")) MessageBox.Show("Nomor Telepon Customer harus 12 digit!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    string jk = "M";
-                    if (rperempuan.IsChecked == true) jk = "F";
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into customer values (:id,initcap(:nama),:jk,:alamat,:no)", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":jk", jk);
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Customer Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Customer Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        string jk = "M";
+                        if (rperempuan.IsChecked == true) jk = "F";
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into customer values (:id,initcap(:nama),:jk,:alamat,:no)", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":jk", jk);
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Customer Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
@@ -246,32 +255,41 @@ namespace Project_PCS
             else if (notelp.Text.Length != 12 && !notelp.Text.Equals("")) MessageBox.Show("Nomor Telepon Customer harus 12 digit!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    string jk = "M";
-                    if (rperempuan.IsChecked == true) jk = "F";
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("update customer set nama_customer = initcap(:nama), jk_customer = :jk, alamat_customer = :alamat, " +
-                        "notelp_customer = :no where id_customer = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":jk", jk);
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Data Customer Berhasil diUpdate!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Customer Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        string jk = "M";
+                        if (rperempuan.IsChecked == true) jk = "F";
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("update customer set nama_customer = initcap(:nama), jk_customer = :jk, alamat_customer = :alamat, " +
+                            "notelp_customer = :no where id_customer = :id", conn);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":jk", jk);
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+                        cmd.Parameters.Add(":id", id.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Data Customer Berhasil diUpdate!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }

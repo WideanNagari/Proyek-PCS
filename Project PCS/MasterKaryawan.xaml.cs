@@ -91,6 +91,7 @@ namespace Project_PCS
             insert.IsEnabled = true;
             update.IsEnabled = false;
             delete.IsEnabled = false;
+            dgvKaryawan.SelectedIndex = -1;
         }
 
         private void loadData()
@@ -349,32 +350,41 @@ namespace Project_PCS
             else if (salah.Visibility == Visibility.Visible) MessageBox.Show("Password dan Confirm Password Karyawan Tidak Sama!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    string jk = "M";
-                    if (rperempuan.IsChecked == true) jk = "F";
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("insert into karyawan values (:id, initcap(:nama), :jk, :pass,:alamat,:no,to_date('" + lahir.Text + "','DD/MM/YYYY'), sysdate,'1')", conn);
-                    cmd.Parameters.Add(":id", id.Text);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":jk", jk);
-                    cmd.Parameters.Add(":pass", pass.Password.ToString());
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Karyawan Baru Berhasil Ditambahkan!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper())) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Karyawan Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        string jk = "M";
+                        if (rperempuan.IsChecked == true) jk = "F";
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("insert into karyawan values (:id, initcap(:nama), :jk, :pass,:alamat,:no,to_date('" + lahir.Text + "','DD/MM/YYYY'), sysdate,'1')", conn);
+                        cmd.Parameters.Add(":id", id.Text);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":jk", jk);
+                        cmd.Parameters.Add(":pass", pass.Password.ToString());
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Karyawan Baru Berhasil Ditambahkan!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
@@ -389,38 +399,47 @@ namespace Project_PCS
             else if (salah.Visibility == Visibility.Visible) MessageBox.Show("Password dan Confirm Password Karyawan Tidak Sama!");
             else
             {
-                try
+                bool ada = false;
+                foreach (DataRow row in ds.Rows)
                 {
-                    string jk = "M";
-                    if (rperempuan.IsChecked == true) jk = "F";
-                    string stat = "0";
-                    if (active.IsChecked == true) stat = "1";
-                    OracleCommand cmd = new OracleCommand();
-                    conn.Close();
-                    cmd = new OracleCommand("Update karyawan set nama_karyawan = initcap(:nama), " +
-                        "jk_karyawan = :jk, password = :pass, alamat_karyawan = :alamat, notelp_karyawan = :no," +
-                        "dob_karyawan = to_date('" + lahir.Text + "', 'DD/MM/YYYY'), status_karyawan = :stat" +
-                        " where id_karyawan = :id", conn);
-                    cmd.Parameters.Add(":nama", nama.Text);
-                    cmd.Parameters.Add(":jk", jk);
-                    cmd.Parameters.Add(":pass", pass.Password.ToString());
-                    cmd.Parameters.Add(":alamat", alamat.Text);
-                    cmd.Parameters.Add(":no", notelp.Text);
-                    cmd.Parameters.Add(":stat", stat);
-                    cmd.Parameters.Add(":id", id.Text);
-
-                    conn.Close();
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    loadData();
-                    reset();
-                    MessageBox.Show("Update Berhasil!");
+                    if (row[1].ToString().ToUpper().Equals(nama.Text.ToUpper()) && !row[0].Equals(id.Text)) ada = true;
                 }
-                catch (Exception ex)
+                if (ada) MessageBox.Show("Nama Karyawan Sudah Ada! Masukkan Nama Lain.");
+                else
                 {
-                    conn.Close();
-                    MessageBox.Show(ex.Message.ToString());
+                    try
+                    {
+                        string jk = "M";
+                        if (rperempuan.IsChecked == true) jk = "F";
+                        string stat = "0";
+                        if (active.IsChecked == true) stat = "1";
+                        OracleCommand cmd = new OracleCommand();
+                        conn.Close();
+                        cmd = new OracleCommand("Update karyawan set nama_karyawan = initcap(:nama), " +
+                            "jk_karyawan = :jk, password = :pass, alamat_karyawan = :alamat, notelp_karyawan = :no," +
+                            "dob_karyawan = to_date('" + lahir.Text + "', 'DD/MM/YYYY'), status_karyawan = :stat" +
+                            " where id_karyawan = :id", conn);
+                        cmd.Parameters.Add(":nama", nama.Text);
+                        cmd.Parameters.Add(":jk", jk);
+                        cmd.Parameters.Add(":pass", pass.Password.ToString());
+                        cmd.Parameters.Add(":alamat", alamat.Text);
+                        cmd.Parameters.Add(":no", notelp.Text);
+                        cmd.Parameters.Add(":stat", stat);
+                        cmd.Parameters.Add(":id", id.Text);
+
+                        conn.Close();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        loadData();
+                        reset();
+                        MessageBox.Show("Update Berhasil!");
+                    }
+                    catch (Exception ex)
+                    {
+                        conn.Close();
+                        MessageBox.Show(ex.Message.ToString());
+                    }
                 }
             }
         }
