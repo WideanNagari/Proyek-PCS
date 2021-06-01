@@ -33,27 +33,30 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="0.7*"/>
                 <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Rectangle Width="280" Height="280" Margin="0,0,0,0" Fill="#FF6B7B8C" Grid.RowSpan="9">
+            <Rectangle Width="280" Height="280" Margin="0,0,0,0" Fill="#FF6B7B8C" Grid.RowSpan="10">
                 <Rectangle.Effect>
                     <BlurEffect/>
                 </Rectangle.Effect>
             </Rectangle>
-            <TextBox Name="txtId" HorizontalAlignment="Left" Height="23" Margin="25,5,0,0" TextWrapping="Wrap" Text="Admin" VerticalAlignment="Top" Width="241" BorderThickness="0,0,0,1" Background="#FF6B7B8C" Foreground="White" Grid.Row="2"/>
-            <PasswordBox Name="password" HorizontalAlignment="Left" Password="Admin" Height="23" Margin="25,5,0,0" VerticalAlignment="Top" Width="241" BorderThickness="0,0,0,1" Background="#FF6B7B8C" Foreground="White" Grid.Row="4" />
+            <TextBox Name="txtId" HorizontalAlignment="Left" Height="23" Margin="25,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" BorderThickness="0,0,0,1" Background="#FF6B7B8C" Foreground="White" Grid.Row="2"/>
+            <PasswordBox Name="password" HorizontalAlignment="Left" Height="23" Margin="25,5,0,0" VerticalAlignment="Top" Width="241" BorderThickness="0,0,0,1" Background="#FF6B7B8C" Foreground="White" Grid.Row="4" />
+            <TextBox Name="txtPass" HorizontalAlignment="Left" Height="23" Margin="25,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" BorderThickness="0,0,0,1" Background="#FF6B7B8C" Foreground="White" Grid.Row="4"/>
             <Label Content="ID" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="23" Width="24"  Foreground="White" FontFamily="Fonts/#Dosis" Grid.Row="1"/>
             <Label Content="Password" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Height="23" Width="61" Foreground="White" FontFamily="Fonts/#Dosis" Grid.Row="3"/>
+            <CheckBox Foreground="White" x:Name="show" Content="Show Password" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Top" Grid.Row="5" FontSize="10" Checked="Show_Checked" Unchecked="Show_Unchecked"/>
             <Button Content="LOGIN"
             Foreground="White"
             FontSize="14"
             FontWeight="Medium"
             Margin="0,0,0,0"
             Name="btn_login"
-            Grid.Row="6"
+            Grid.Row="7"
                 Click="Btn_login_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -86,7 +89,7 @@
             FontWeight="Medium"
             Margin="0,0,0,0"
             Name="Exit" 
-            Grid.Row="7"
+            Grid.Row="8"
             Click="Exit_Click">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">

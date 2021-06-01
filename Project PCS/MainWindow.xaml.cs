@@ -34,8 +34,22 @@ namespace Project_PCS
             App.Current.Shutdown();
         }
 
+        private void Show_Checked(object sender, RoutedEventArgs e)
+        {
+            password.Visibility = Visibility.Hidden;
+            txtPass.Visibility = Visibility.Visible;
+            txtPass.Text = password.Password.ToString();
+        }
+
+        private void Show_Unchecked(object sender, RoutedEventArgs e)
+        {
+            password.Visibility = Visibility.Visible;
+            txtPass.Visibility = Visibility.Hidden;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            txtPass.Visibility = Visibility.Hidden;
             source = "widean";
             userId = "widean";
             pass = "219116863";
@@ -52,6 +66,7 @@ namespace Project_PCS
 
         private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
+            if (txtPass.Visibility == Visibility.Visible) password.Password = txtPass.Text;
             if (txtId.Text.Equals("") || password.Password.ToString().Equals("")) MessageBox.Show("Mohon isi ID dan Password dengan lengkap!");
             else if (txtId.Text.ToUpper().Equals("ADMIN") && password.Password.ToString().ToUpper().Equals("ADMIN"))
             {
