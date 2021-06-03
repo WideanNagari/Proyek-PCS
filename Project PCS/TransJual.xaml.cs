@@ -136,20 +136,9 @@ namespace Project_PCS
             string kata2 = "";
             if (kata.Length > 0)
             {
-                if (kata[kata.Length - 1] != '1' && kata[kata.Length - 1] != '2' && kata[kata.Length - 1] != '3' && kata[kata.Length - 1] != '4' && kata[kata.Length - 1] != '5'
-                    && kata[kata.Length - 1] != '6' && kata[kata.Length - 1] != '7' && kata[kata.Length - 1] != '8' && kata[kata.Length - 1] != '9' && kata[kata.Length - 1] != '0')
+                for (int i = 0; i < kata.Length; i++)
                 {
-                    for (int i = 0; i < kata.Length - 1; i++)
-                    {
-                        kata2 += kata[i];
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < kata.Length; i++)
-                    {
-                        kata2 += kata[i];
-                    }
+                    if (Char.IsDigit(kata[i])) kata2 += kata[i];
                 }
             }
             return kata2;
@@ -553,16 +542,18 @@ namespace Project_PCS
 
         private void Qty_TextChanged(object sender, TextChangedEventArgs e)
         {
+            int temp = qty.SelectionStart;
             string kata2 = katabaru(qty.Text);
             qty.Text = kata2;
-            qty.SelectionStart = qty.Text.Length;
+            qty.SelectionStart = temp;
         }
 
         private void Qty2_TextChanged(object sender, TextChangedEventArgs e)
         {
+            int temp = qty2.SelectionStart;
             string kata2 = katabaru(qty2.Text);
             qty2.Text = kata2;
-            qty2.SelectionStart = qty2.Text.Length;
+            qty2.SelectionStart = temp;
         }
 
         private void ResetM_Click(object sender, RoutedEventArgs e)

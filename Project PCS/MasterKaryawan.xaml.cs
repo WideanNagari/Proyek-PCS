@@ -131,20 +131,9 @@ namespace Project_PCS
             string kata2 = "";
             if (kata.Length > 0)
             {
-                if (kata[kata.Length - 1] != '1' && kata[kata.Length - 1] != '2' && kata[kata.Length - 1] != '3' && kata[kata.Length - 1] != '4' && kata[kata.Length - 1] != '5'
-                    && kata[kata.Length - 1] != '6' && kata[kata.Length - 1] != '7' && kata[kata.Length - 1] != '8' && kata[kata.Length - 1] != '9' && kata[kata.Length - 1] != '0')
+                for (int i = 0; i < kata.Length; i++)
                 {
-                    for (int i = 0; i < kata.Length - 1; i++)
-                    {
-                        kata2 += kata[i];
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < kata.Length; i++)
-                    {
-                        kata2 += kata[i];
-                    }
+                    if (Char.IsDigit(kata[i])) kata2 += kata[i];
                 }
             }
             return kata2;
@@ -152,9 +141,10 @@ namespace Project_PCS
 
         private void Notelp_TextChanged(object sender, TextChangedEventArgs e)
         {
+            int temp = notelp.SelectionStart;
             string kata2 = katabaru(notelp.Text);
             notelp.Text = kata2;
-            notelp.SelectionStart = notelp.Text.Length;
+            notelp.SelectionStart = temp;
         }
 
         private void DgvKaryawan_SelectionChanged(object sender, SelectionChangedEventArgs e)

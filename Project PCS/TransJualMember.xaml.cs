@@ -217,7 +217,6 @@ namespace Project_PCS
         }
         private void DgvCustomer_Loaded(object sender, RoutedEventArgs e) { kolom(); }
 
-
         private void loadData()
         {
             string query = "SELECT ID_CUSTOMER AS \"ID\", NAMA_CUSTOMER AS \"Nama\", " +

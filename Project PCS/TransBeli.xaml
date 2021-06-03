@@ -373,7 +373,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Foreground="White" Content="Quantity :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Grid.Row="0" Grid.Column="0" FontSize="14" Grid.ColumnSpan="2"/>
                 <Label Foreground="White" Content="Harga Beli :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0" Grid.Row="0" Grid.Column="2" FontSize="14"/>
-                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qty" HorizontalAlignment="Left" Height="22"  Margin="10,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" TextChanged="Qty_TextChanged"/>
+                <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="qty" HorizontalAlignment="Left" Height="22"  Margin="10.4,0,0,16.2" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="120" Grid.Row="0" Grid.Column="1" TextChanged="Qty_TextChanged"/>
                 <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" x:Name="harga" HorizontalAlignment="Left" Height="22"  Margin="10,5,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" TextChanged="Harga_TextChanged"/>
                 <Button Content="Add" x:Name ="addM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="27" Grid.Row="0" Grid.Column="4" FontSize="16" Margin="0,3,0,0" Click="AddM_Click">
                     <Button.Style>
