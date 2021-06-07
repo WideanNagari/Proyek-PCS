@@ -354,7 +354,8 @@ namespace Project_PCS
                         if (rperempuan.IsChecked == true) jk = "F";
                         OracleCommand cmd = new OracleCommand();
                         conn.Close();
-                        cmd = new OracleCommand("insert into karyawan values (:id, initcap(:nama), :jk, :pass,:alamat,:no,to_date('" + lahir.Text + "','DD/MM/YYYY'), sysdate,'1')", conn);
+
+                        cmd = new OracleCommand("insert into karyawan values (:id, initcap(:nama), :jk, :pass,:alamat,:no,to_date('" + lahir.SelectedDate.Value.ToString("dd/MM/yyyy") + "','DD/MM/YYYY'), sysdate,'1')", conn);
                         cmd.Parameters.Add(":id", id.Text);
                         cmd.Parameters.Add(":nama", nama.Text);
                         cmd.Parameters.Add(":jk", jk);
@@ -374,6 +375,7 @@ namespace Project_PCS
                     {
                         conn.Close();
                         MessageBox.Show(ex.Message.ToString());
+                        MessageBox.Show(ex.ToString());
                     }
                 }
             }
@@ -403,11 +405,12 @@ namespace Project_PCS
                         if (rperempuan.IsChecked == true) jk = "F";
                         string stat = "0";
                         if (active.IsChecked == true) stat = "1";
+
                         OracleCommand cmd = new OracleCommand();
                         conn.Close();
                         cmd = new OracleCommand("Update karyawan set nama_karyawan = initcap(:nama), " +
                             "jk_karyawan = :jk, password = :pass, alamat_karyawan = :alamat, notelp_karyawan = :no," +
-                            "dob_karyawan = to_date('" + lahir.Text + "', 'DD/MM/YYYY'), status_karyawan = :stat" +
+                            "dob_karyawan = to_date('" + lahir.SelectedDate.Value.ToString("dd/MM/yyyy") + "', 'DD/MM/YYYY'), status_karyawan = :stat" +
                             " where id_karyawan = :id", conn);
                         cmd.Parameters.Add(":nama", nama.Text);
                         cmd.Parameters.Add(":jk", jk);
