@@ -22,8 +22,9 @@ namespace Project_PCS
     public partial class TransJualMember : Window
     {
         OracleConnection conn;
-        DataTable dtMember, dtCustomer;
-        OracleDataAdapter daMember, daCustomer;
+        DataTable dtMember, dtCustomer, dtTrans;
+        OracleDataAdapter daMember, daCustomer, daTrans;
+        OracleCommandBuilder builder;
         string idKaryawan;
         public TransJualMember()
         {
@@ -101,18 +102,22 @@ namespace Project_PCS
                     try
                     {
                         int total = int.Parse(subtotal.Content.ToString());
-                        string nota = "";
                         string id_customer = dtCustomer.Rows[dgvCustomer.SelectedIndex][0].ToString();
-
-                        OracleCommand cmd = new OracleCommand($"INSERT INTO PENJUALAN_MEMBER VALUES(" +
-                            $"'{nota}', SYSDATE, '{idKaryawan}', '{id_customer}', '{cbmember.SelectedValue}', '{total}', 1)", conn);
-                        cmd.ExecuteNonQuery();
+                        
+                        DataRow dr = dtTrans.NewRow();
+                        dr[2] = idKaryawan;
+                        dr[3] = id_customer;
+                        dr[4] = cbmember.SelectedValue;
+                        dr[5] = total;
+                        dr[6] = 1;
+                        dtTrans.Rows.Add(dr);
+                        daTrans.Update(dtTrans);
 
                         trans.Commit();
                         conn.Close();
                         MessageBox.Show("Bayar sukses");
 
-                        cmd = new OracleCommand("select max(nota_jual_member) from penjualan_member where nota_jual_member like '%'||to_char(sysdate,'ddmmyy')||'%'", conn);
+                        OracleCommand cmd = new OracleCommand("select max(nota_jual_member) from penjualan_member where nota_jual_member like '%'||to_char(sysdate,'ddmmyy')||'%'", conn);
                         conn.Open();
                         string noNota = cmd.ExecuteScalar().ToString();
                         conn.Close();
@@ -237,6 +242,11 @@ namespace Project_PCS
             cbmember.SelectedValuePath = "ID_MEMBER";
             cbmember.SelectedIndex = -1;
             kolom();
+
+            daTrans = new OracleDataAdapter("select * from penjualan_member", conn);
+            builder = new OracleCommandBuilder(daTrans);
+            dtTrans = new DataTable();
+            daTrans.Fill(dtTrans);
         }
         
         private void reset()

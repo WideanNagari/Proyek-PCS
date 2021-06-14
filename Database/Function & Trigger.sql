@@ -83,6 +83,7 @@ BEGIN
 	nj_member := nj_member||lpad(id,2,'0');
 	:new.nota_jual_member := nj_member;
 	:new.status := 1;
+	:new.tgl_jual := sysdate;
 	update penjualan_member set status = 0 where id_customer = :new.id_customer;
 END;
 /
@@ -96,6 +97,7 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_beli,4,7)))+1 into id from h_beli;
 	:new.nota_beli := 'HBL'||lpad(id,7,'0');
+	:new.tgl_beli := sysdate;
 END;
 /
 SHOW ERR;
@@ -138,6 +140,8 @@ DECLARE
 BEGIN
 	select max(to_number(substr(nota_jual,4,7)))+1 into id from h_jual;
 	:new.nota_jual := 'HJL'||lpad(id,7,'0');
+	
+	:new.tgl_jual := sysdate;
 END;
 /
 SHOW ERR;

@@ -24,7 +24,9 @@ namespace Project_PCS
         OracleConnection conn;
         DataTable dam, dak, dt;
         DataTable produsens, jeniss, customers, promos;
+        DataTable dtdjual, dtdjuala, dthjual;
         OracleDataAdapter daam, daak, dat, uni;
+        OracleDataAdapter djual, djualA, hjual;
         
         OracleCommandBuilder builder;
         string idMember, namaMember;
@@ -74,7 +76,6 @@ namespace Project_PCS
             tb.Show();
         }
 
-
         private void loadData()
         {
             daam = new OracleDataAdapter("select id_alat_musik as \"ID\", a.nama_alat_musik as \"Nama Alat Musik\", j.nama_jenis as \"Jenis\", " +
@@ -82,7 +83,6 @@ namespace Project_PCS
                 "from alat_musik a, jenis_alat_musik j, produsen p " +
                 "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen and a.stok>0 " +
                 "order by 1", conn);
-            builder = new OracleCommandBuilder(daam);
             dam = new DataTable();
             daam.Fill(dam);
             dgvMusik.ItemsSource = dam.DefaultView;
@@ -91,7 +91,6 @@ namespace Project_PCS
             daak = new OracleDataAdapter("select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
                 "stok as \"Stok\", harga as \"Harga\", keterangan as \"Keterangan\"  " +
                 "from aksesoris where stok>0 order by 1", conn);
-            builder = new OracleCommandBuilder(daak);
             dak = new DataTable();
             daak.Fill(dak);
             dgvAksesoris.ItemsSource = dak.DefaultView;
@@ -100,11 +99,25 @@ namespace Project_PCS
             dgvTrans.Columns.Clear();
             dat = new OracleDataAdapter("select '' as \"ID\", '' as \"Nama Barang\", " +
                 "'' as \"Quantity\", '' as \"Harga\", '' as \"Jenis Barang\" from dual where 1=2", conn);
-            builder = new OracleCommandBuilder(dat);
             dt = new DataTable();
             dat.Fill(dt);
             dgvTrans.ItemsSource = dt.DefaultView;
             kolom3();
+
+            djual = new OracleDataAdapter("select * from d_jual", conn);
+            builder = new OracleCommandBuilder(djual);
+            dtdjual = new DataTable();
+            djual.Fill(dtdjual);
+
+            djualA = new OracleDataAdapter("select * from d_jual_aksesoris", conn);
+            builder = new OracleCommandBuilder(djualA);
+            dtdjuala = new DataTable();
+            djualA.Fill(dtdjuala);
+
+            hjual = new OracleDataAdapter("select * from h_jual", conn);
+            builder = new OracleCommandBuilder(hjual);
+            dthjual = new DataTable();
+            hjual.Fill(dthjual);
         }
 
         private void reset()
@@ -305,27 +318,38 @@ namespace Project_PCS
                             string idpromo = "";
                             if (kode.SelectedIndex != -1) idpromo = kode.SelectedValue.ToString();
 
-                            OracleCommand cmd = new OracleCommand($"insert into h_jual values('', sysdate,'{cus}','{idMember}','{idKaryawan}','{jumlah.Content}','{idpromo}','{subtotal.Content}')", conn);
-                            cmd.ExecuteNonQuery();
+                            DataRow dr = dthjual.NewRow();
+                            dr[2] = cus;
+                            dr[3] = idMember;
+                            dr[4] = idKaryawan;
+                            dr[5] = jumlah.Content;
+                            dr[6] = idpromo;
+                            dr[7] = subtotal.Content;
+                            dthjual.Rows.Add(dr);
+                            hjual.Update(dthjual);
                             foreach (DataRow row in dt.Rows)
                             {
                                 if (row[4].Equals("Alat Musik"))
                                 {
-                                    cmd = new OracleCommand($"insert into d_jual values('','{row[0]}',{row[2]})", conn);
-                                    cmd.ExecuteNonQuery();
+                                    DataRow drA = dtdjual.NewRow();
+                                    drA[1] = row[0];
+                                    drA[2] = row[2];
+                                    dtdjual.Rows.Add(drA);
                                 }
                             }
                             foreach (DataRow row in dt.Rows)
                             {
                                 if (row[4].Equals("Aksesoris"))
                                 {
-                                    cmd = new OracleCommand($"insert into d_jual_aksesoris values('','{row[0]}',{row[2]})", conn);
-                                    cmd.ExecuteNonQuery();
+                                    DataRow drA = dtdjuala.NewRow();
+                                    drA[1] = row[0];
+                                    drA[2] = row[2];
+                                    dtdjuala.Rows.Add(drA);
                                 }
                             }
 
-                            daam.Update(dam);
-                            daak.Update(dak);
+                            djual.Update(dtdjual);
+                            djualA.Update(dtdjuala);
                             loadData();
 
                             trans.Commit();
@@ -333,7 +357,7 @@ namespace Project_PCS
                             MessageBox.Show("Penjualan Berhasil!");
                             dt.Rows.Clear();
 
-                            cmd = new OracleCommand("select max(nota_jual) from h_jual", conn);
+                            OracleCommand cmd = new OracleCommand("select max(nota_jual) from h_jual", conn);
                             conn.Open();
                             string noNota = cmd.ExecuteScalar().ToString();
                             conn.Close();

@@ -24,7 +24,10 @@ namespace Project_PCS
         OracleConnection conn;
         DataTable dam, dak, dt;
         DataTable produsens, jeniss, suppliers;
+        DataTable dtdbeli, dtdbelia, dthbeli;
         OracleDataAdapter daam, daak, dat, uni;
+        OracleDataAdapter dbeli, dbeliA, hbeli;
+
         OracleCommandBuilder builder;
         string idKaryawan;
         public TransBeli()
@@ -78,7 +81,6 @@ namespace Project_PCS
                 "from alat_musik a, jenis_alat_musik j, produsen p " +
                 "where a.id_jenis = j.id_jenis and a.id_produsen = p.id_produsen " +
                 "order by 1", conn);
-            builder = new OracleCommandBuilder(daam);
             dam = new DataTable();
             daam.Fill(dam);
             dgvMusik.ItemsSource = dam.DefaultView;
@@ -88,7 +90,6 @@ namespace Project_PCS
             daak = new OracleDataAdapter("select id_aksesoris as \"ID\", nama_aksesoris as \"Nama Aksesoris\", " +
                 "stok as \"Stok\", harga as \"Harga\", keterangan as \"Keterangan\"  " +
                 "from aksesoris order by 1", conn);
-            builder = new OracleCommandBuilder(daak);
             dak = new DataTable();
             daak.Fill(dak);
             dgvAksesoris.ItemsSource = dak.DefaultView;
@@ -97,11 +98,25 @@ namespace Project_PCS
             dgvTrans.Columns.Clear();
             dat = new OracleDataAdapter("select '' as \"ID\", '' as \"Nama Barang\", " +
                 "'' as \"Quantity\", '' as \"Harga\", '' as \"Jenis Barang\" from dual where 1=2", conn);
-            builder = new OracleCommandBuilder(dat);
             dt = new DataTable();
             dat.Fill(dt);
             dgvTrans.ItemsSource = dt.DefaultView;
             kolom3();
+
+            dbeli = new OracleDataAdapter("select * from d_beli", conn);
+            builder = new OracleCommandBuilder(dbeli);
+            dtdbeli = new DataTable();
+            dbeli.Fill(dtdbeli);
+
+            dbeliA = new OracleDataAdapter("select * from d_beli_aksesoris", conn);
+            builder = new OracleCommandBuilder(dbeliA);
+            dtdbelia = new DataTable();
+            dbeliA.Fill(dtdbelia);
+
+            hbeli = new OracleDataAdapter("select * from h_beli", conn);
+            builder = new OracleCommandBuilder(hbeli);
+            dthbeli = new DataTable();
+            hbeli.Fill(dthbeli);
         }
 
         private void reset()
@@ -277,9 +292,13 @@ namespace Project_PCS
                         try
                         {
                             string sup = supplier.SelectedValue.ToString();
-
-                            OracleCommand cmd = new OracleCommand($"insert into h_beli values('', sysdate,'{idKaryawan}','{sup}','{subtotal.Content}')", conn);
-                            cmd.ExecuteNonQuery();
+                            DataRow dr = dthbeli.NewRow();
+                            dr[2] = idKaryawan;
+                            dr[3] = sup;
+                            dr[4] = subtotal.Content;
+                            dthbeli.Rows.Add(dr);
+                            hbeli.Update(dthbeli);
+                            
                             string temp, h;
                             foreach (DataRow row in dt.Rows)
                             {
@@ -291,9 +310,11 @@ namespace Project_PCS
                                     {
                                         if (Char.IsDigit(h[i])) temp += h[i];
                                     }
-
-                                    cmd = new OracleCommand($"insert into d_beli values('','{row[0]}',{Convert.ToInt32(temp)},{row[2]})", conn);
-                                    cmd.ExecuteNonQuery();
+                                    DataRow drA = dtdbeli.NewRow();
+                                    drA[1] = row[0];
+                                    drA[2] = Convert.ToInt32(temp);
+                                    drA[3] = row[2];
+                                    dtdbeli.Rows.Add(drA);
                                 }
                             }
                             foreach (DataRow row in dt.Rows)
@@ -306,13 +327,16 @@ namespace Project_PCS
                                     {
                                         if (Char.IsDigit(h[i])) temp += h[i];
                                     }
-                                    cmd = new OracleCommand($"insert into d_beli_aksesoris values('','{row[0]}',{Convert.ToInt32(temp)},{row[2]})", conn);
-                                    cmd.ExecuteNonQuery();
+                                    DataRow drA = dtdbelia.NewRow();
+                                    drA[1] = row[0];
+                                    drA[2] = Convert.ToInt32(temp);
+                                    drA[3] = row[2];
+                                    dtdbelia.Rows.Add(drA);
                                 }
                             }
 
-                            daam.Update(dam);
-                            daak.Update(dak);
+                            dbeli.Update(dtdbeli);
+                            dbeliA.Update(dtdbelia);
                             loadData();
 
                             trans.Commit();
@@ -320,7 +344,7 @@ namespace Project_PCS
                             MessageBox.Show("Pembelian Berhasil!");
                             dt.Rows.Clear();
 
-                            cmd = new OracleCommand("select max(nota_beli) from h_beli", conn);
+                            OracleCommand cmd = new OracleCommand("select max(nota_beli) from h_beli", conn);
                             conn.Open();
                             string noNota = cmd.ExecuteScalar().ToString();
                             conn.Close();
